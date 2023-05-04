@@ -8,6 +8,7 @@ specifiers:
   autoprefixer: 10.4.14
   eslint: 8.39.0
   eslint-config-next: 13.3.4
+  lucide-react: ^0.206.0
   next: 13.3.4
   postcss: 8.4.23
   prettier: ^2.8.8
@@ -24,6 +25,7 @@ dependencies:
   autoprefixer: 10.4.14_postcss@8.4.23
   eslint: 8.39.0
   eslint-config-next: 13.3.4_eslint@8.39.0+typescript@5.0.4
+  lucide-react: 0.206.0_react@18.2.0
   next: 13.3.4_react-dom@18.2.0+react@18.2.0
   postcss: 8.4.23
   react: 18.2.0
@@ -1772,6 +1774,14 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lucide-react/0.206.0_react@18.2.0:
+    resolution: {integrity: sha512-F19KIhWMs7gy+BFobAdRh822wrEm3b7mPuyX7wNOR2TMQ4QETs5lLkw3SYRLzOA833vpxsY17bvVwK05Z1jzRQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /merge-stream/2.0.0:
