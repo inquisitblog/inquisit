@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="bg-light py-8">
       <div className="mx-auto max-w-screen-xl px-8 text-lg">
-        <div className="flex justify-between">
+        <div className="flex justify-between text-center sm:text-start flex-col sm:flex-row gap-12 sm:gap-0">
           <div className="flex flex-col gap-2">
             <h6 className="text-xl font-[600]">Darshan</h6>
             <p>Some sort of tagline?</p>
@@ -13,11 +13,6 @@ function Footer() {
 
           <div className="flex flex-col gap-2">
             <p className="font-[500]">Reach out</p>
-            <div className="flex gap-2">
-              <a href="https://instagram.com">
-                <InstagramIcon size={32} />
-              </a>
-            </div>
             <a href="mailto:reachout@email.com">reachout@email.com</a>
           </div>
           <div className="flex flex-col gap-2">
