@@ -12,7 +12,12 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-poppins)", ...theme.fontFamily.sans],
       },
+      colors: {
+        dark: "#182A3B",
+        light: "#FBEAD2",
+        lighter: "#FFF4E3",
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("prettier-plugin-tailwindcss")],
 }
