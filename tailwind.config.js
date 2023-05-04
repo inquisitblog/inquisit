@@ -1,3 +1,5 @@
+const { theme } = require("tailwindcss/defaultConfig")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,7 +8,11 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-poppins)", ...theme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
 }
