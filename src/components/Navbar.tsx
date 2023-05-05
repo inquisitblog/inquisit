@@ -4,8 +4,8 @@ import NavLink from "./NavLink"
 
 const Navbar = ({ pathname }: { pathname: string }) => {
   return (
-    <nav className="bg-light sticky py-8 top-0 shadow-lg shadow-stone-900/5 z-10">
-      <div className="mx-auto max-w-screen-xl px-8 flex justify-between items-center flex-col sm:flex-row gap-8 sm:gap-0">
+    <nav className="sticky top-0 z-10 bg-light py-8 shadow-lg shadow-stone-900/5">
+      <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-8 px-8 sm:flex-row sm:gap-0">
         <Link href="/" className="text-xl font-bold">
           Darshan
         </Link>

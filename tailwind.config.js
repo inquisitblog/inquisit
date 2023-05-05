@@ -1,4 +1,4 @@
-const { theme } = require("tailwindcss/defaultConfig")
+const { theme } = require("tailwindcss/defaultConfig");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,8 +16,9 @@ module.exports = {
         dark: "#182A3B",
         light: "#FBEAD2",
         lighter: "#FFF4E3",
+        accent: "#2079CC",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("prettier-plugin-tailwindcss")],
-}
+  plugins: [require("@tailwindcss/typography")],
+};

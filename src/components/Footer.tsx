@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="bg-light py-8">
       <div className="mx-auto max-w-screen-xl px-8 text-lg">
-        <div className="flex justify-between text-center sm:text-start flex-col sm:flex-row gap-12 sm:gap-0">
+        <div className="flex flex-col justify-between gap-12 text-center sm:flex-row sm:gap-0 sm:text-start">
           <div className="flex flex-col gap-2">
             <h6 className="text-xl font-[600]">Darshan</h6>
             <p>Some sort of tagline?</p>

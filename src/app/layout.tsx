@@ -44,12 +44,16 @@ const poppins = Poppins({
 //   },
 // }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const pathname = usePathname()
 
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-sans bg-lighter`}>
+      <body className={`${poppins.variable} bg-lighter font-sans`}>
         <Navbar pathname={pathname} />
         {children}
         <Footer />
