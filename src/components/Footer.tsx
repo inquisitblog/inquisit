@@ -1,4 +1,3 @@
-import { Instagram, InstagramIcon } from "lucide-react"
 import NavLink from "./NavLink"
 
 function Footer() {
@@ -15,7 +14,7 @@ function Footer() {
             <p className="font-[500]">Reach out</p>
             <a
               href="mailto:reachout@email.com"
-              className="transition-all hover:underline"
+              className="underline-offset-4 transition-all hover:underline"
             >
               reachout@email.com
             </a>
