@@ -53,7 +53,7 @@ export default function RootLayout({
   const pathname = usePathname()
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-p-12 scroll-smooth">
       <body className={`${poppins.variable} bg-lighter font-sans`}>
         <Navbar pathname={pathname} />
         {children}
