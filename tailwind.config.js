@@ -1,4 +1,4 @@
-const { theme } = require("tailwindcss/defaultConfig");
+const { theme } = require("tailwindcss/defaultConfig")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -18,7 +18,10 @@ module.exports = {
         lighter: "#FFF4E3",
         accent: "#2079CC",
       },
+      gridTemplateColumns: {
+        "1-2": "1.5fr 2fr",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
-};
+}
