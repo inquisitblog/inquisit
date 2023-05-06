@@ -13,7 +13,12 @@ function Footer() {
 
           <div className="flex flex-col gap-2">
             <p className="font-[500]">Reach out</p>
-            <a href="mailto:reachout@email.com">reachout@email.com</a>
+            <a
+              href="mailto:reachout@email.com"
+              className="transition-all hover:underline"
+            >
+              reachout@email.com
+            </a>
           </div>
           <div className="flex flex-col gap-2">
             {[
