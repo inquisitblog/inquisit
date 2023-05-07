@@ -18,7 +18,7 @@ const BlogArticle = async ({ params }: ArticleType) => {
   const { date, title, imgUrl, imgAlt, contentHtml } = await getPost(slug)
 
   return (
-    <main className="mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-16 md:gap-6">
+    <main className="mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-6 md:py-16">
       <Link
         href="/blog"
         className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"

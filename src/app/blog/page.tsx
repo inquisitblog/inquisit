@@ -5,8 +5,8 @@ const Blog = () => {
   const posts = getPosts()
 
   return (
-    <main id="blog" className="mx-auto max-w-screen-xl px-8 py-16">
-      <h1 className="mb-16 text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
+    <main id="blog" className="mx-auto max-w-screen-xl px-8 py-8 md:py-16">
+      <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
         Blog Posts
       </h1>
       {posts ? (
