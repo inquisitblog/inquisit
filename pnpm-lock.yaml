@@ -9,13 +9,13 @@ specifiers:
   eslint: 8.39.0
   eslint-config-next: 13.3.4
   gray-matter: ^4.0.3
-  lucide-react: ^0.206.0
   next: 13.3.4
   postcss: 8.4.23
   prettier: ^2.8.8
   prettier-plugin-tailwindcss: ^0.2.8
   react: 18.2.0
   react-dom: 18.2.0
+  react-icons: ^4.8.0
   remark: ^14.0.2
   remark-html: ^15.0.2
   tailwindcss: 3.3.2
@@ -29,11 +29,11 @@ dependencies:
   eslint: 8.39.0
   eslint-config-next: 13.3.4_eslint@8.39.0+typescript@5.0.4
   gray-matter: 4.0.3
-  lucide-react: 0.206.0_react@18.2.0
   next: 13.3.4_react-dom@18.2.0+react@18.2.0
   postcss: 8.4.23
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.8.0_react@18.2.0
   remark: 14.0.2
   remark-html: 15.0.2
   tailwindcss: 3.3.2
@@ -2007,14 +2007,6 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /lucide-react/0.206.0_react@18.2.0:
-    resolution: {integrity: sha512-F19KIhWMs7gy+BFobAdRh822wrEm3b7mPuyX7wNOR2TMQ4QETs5lLkw3SYRLzOA833vpxsY17bvVwK05Z1jzRQ==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /mdast-util-definitions/5.1.2:
     resolution: {integrity: sha512-8SVPMuHqlPME/z3gqVwWY4zVXn8lqKv/pAhC57FuJ40ImXyBpmO5ukh98zB2v7Blql2FiHjHv9LVztSIqjY+MA==}
     dependencies:
@@ -2762,6 +2754,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
