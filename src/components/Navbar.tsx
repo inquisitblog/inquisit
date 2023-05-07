@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link"
-import React from "react"
+import { usePathname } from "next/navigation"
 import NavLink from "./NavLink"
 
-const Navbar = ({ pathname }: { pathname: string }) => {
+const Navbar = () => {
+  const pathname = usePathname()
+
   return (
     <nav className="sticky top-0 z-10 bg-light py-4 shadow-lg shadow-stone-900/5 md:py-8">
       <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-2 px-8 md:flex-row md:gap-8">
