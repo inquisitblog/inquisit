@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </main>
       <section id="blog" className="mx-auto max-w-screen-xl px-8 py-16">
-        <h2 className="text-5xl font-bold text-accent">My Blog</h2>
+        <h2 className="text-5xl font-bold text-accent">Latest posts</h2>
         {featuredPost && posts ? (
           <div
             className={`flex max-w-2xl flex-col py-16 xl:w-full xl:max-w-none xl:flex-row ${verticalBlogGap}`}
