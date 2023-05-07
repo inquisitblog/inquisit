@@ -19,7 +19,7 @@ function Footer() {
               reachout@email.com
             </a>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-center gap-2">
             {[
               { text: "Home", path: "/" },
               { text: "Blog", path: "/blog" },
