@@ -59,7 +59,7 @@ const BlogCard: FC<BlogCardProps> = ({
               type === "Regular" && "xl:text-lg"
             }`}
           >
-            {truncate(description, 190)}
+            {truncate(description, 185)}
           </p>
         </div>
         <Link
