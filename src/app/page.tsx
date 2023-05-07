@@ -1,5 +1,6 @@
 import BlogCard from "@/components/BlogCard"
 import Image from "next/image"
+import Link from "next/link"
 
 const verticalBlogGap = "gap-16 xl:gap-6"
 
@@ -74,9 +75,11 @@ export default function Home() {
           </div>
         </div>
 
-        <button className="block rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:mx-auto xl:px-8 xl:py-4 xl:text-2xl">
-          Browse More
-        </button>
+        <Link href="/blog">
+          <button className="block rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:mx-auto xl:px-8 xl:py-4 xl:text-2xl">
+            Browse More
+          </button>
+        </Link>
       </section>
     </>
   )
