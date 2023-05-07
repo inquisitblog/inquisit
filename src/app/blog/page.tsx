@@ -7,7 +7,7 @@ const Blog = () => {
   return (
     <main id="blog" className="mx-auto max-w-screen-xl px-8 py-16">
       <h1 className="mb-16 text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
-        My Blog
+        Blog Posts
       </h1>
       {posts ? (
         <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
