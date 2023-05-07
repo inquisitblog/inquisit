@@ -22,7 +22,7 @@ function Footer() {
           <div className="flex flex-col gap-2">
             {[
               { text: "Home", path: "/" },
-              { text: "Blog", path: "/#blog" },
+              { text: "Blog", path: "/blog" },
               { text: "About", path: "/about" },
             ].map(({ text, path }, index) => (
               <NavLink text={text} path={path} key={index} />
