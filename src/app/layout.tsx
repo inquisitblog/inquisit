@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-p-12 scroll-smooth">
+    <html lang="en" className="scroll-p-12 scroll-smooth text-dark">
       <body className={`${poppins.variable} bg-lighter font-sans`}>
         <Navbar />
         {children}
