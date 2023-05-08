@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: ParamsType) {
     openGraph: {
       title,
       description,
-      images: imgUrl,
+      images: [imgUrl],
       url: config.url,
       siteName: config.title,
       type: "article",
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: ParamsType) {
     twitter: {
       title,
       description,
-      images: imgUrl,
+      images: [imgUrl],
       creator: config.twitterUsername,
       card: "summary",
     },
