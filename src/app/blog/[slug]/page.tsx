@@ -1,3 +1,4 @@
+import * as config from "@/config"
 import { getPost, getPosts } from "@/posts"
 import { formatDate } from "@/utils"
 import { notFound } from "next/navigation"
@@ -5,14 +6,14 @@ import { FiArrowLeftCircle } from "react-icons/fi"
 import Link from "next/link"
 import Image from "next/image"
 
-type ArticleType = { params: { slug: string } }
+type ParamsType = { params: { slug: string } }
 
-const BlogArticle = async ({ params }: ArticleType) => {
+const BlogArticle = async ({ params }: ParamsType) => {
   const posts = getPosts()
   const { slug } = params
 
   if (!posts.find((post) => post.id === slug)) {
-    return notFound
+    return notFound()
   }
 
   const { date, title, imgUrl, imgAlt, contentHtml } = await getPost(slug)
