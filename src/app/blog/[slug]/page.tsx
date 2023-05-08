@@ -93,7 +93,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
       <article>
         <section
           dangerouslySetInnerHTML={{ __html: contentHtml }}
-          className="prose prose-base md:prose-lg prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover"
+          className="prose prose-base md:prose-lg prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8"
         />
       </article>
 
