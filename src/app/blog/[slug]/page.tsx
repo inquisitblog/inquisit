@@ -80,7 +80,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
           src={imgUrl}
           alt={imgAlt}
           fill
-          className="rounded-lg object-cover"
+          className="rounded-xl object-cover"
         />
       </div>
       <p className="w-fit rounded border border-accent px-2 py-1 text-sm md:text-base">
@@ -93,7 +93,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
       <article>
         <section
           dangerouslySetInnerHTML={{ __html: contentHtml }}
-          className="prose prose-base md:prose-lg"
+          className="prose prose-base md:prose-lg prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover"
         />
       </article>
 
