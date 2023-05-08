@@ -6,7 +6,7 @@ import html from "remark-html"
 
 const postsDirectory = path.join(process.cwd(), "blogposts")
 
-export function getPosts(limit?: number): BlogPost[] {
+export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
   // Get blog filenames
   const fileNames = fs.readdirSync(postsDirectory)
 
@@ -25,6 +25,7 @@ export function getPosts(limit?: number): BlogPost[] {
       id,
       title: matterResult.data.title,
       description: matterResult.data.description,
+      tags: matterResult.data.tags.split(", "),
       imgUrl: matterResult.data.imgUrl,
       imgAlt: matterResult.data.imgAlt,
       date: matterResult.data.date,
@@ -33,12 +34,30 @@ export function getPosts(limit?: number): BlogPost[] {
     return blogPost
   })
 
+  let limit
+
+  if (noOfPosts !== -1) {
+    limit = noOfPosts
+  }
+
   // Sort by date
   const sortedPosts = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
 
-  const allPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts
+  let allPosts = sortedPosts
 
-  return sortedPosts
+  // If category is requested check category exists
+  if (tag) {
+    if (sortedPosts.find((post) => post.tags.includes(tag)) === undefined) {
+      return []
+    } else {
+      allPosts = sortedPosts.filter((post) => post.tags.includes(tag))
+    }
+  }
+
+  // If limit is requested, slice to that size
+  allPosts = limit ? allPosts.slice(0, limit) : allPosts
+
+  return allPosts
 }
 
 export async function getPost(id: string) {
@@ -59,6 +78,7 @@ export async function getPost(id: string) {
     id,
     title: matterResult.data.title,
     description: matterResult.data.description,
+    tags: matterResult.data.tags.split(", "),
     imgUrl: matterResult.data.imgUrl,
     imgAlt: matterResult.data.imgAlt,
     date: matterResult.data.date,
