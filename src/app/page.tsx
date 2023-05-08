@@ -1,3 +1,4 @@
+import * as config from "@/config"
 import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/posts"
 import Image from "next/image"
@@ -23,7 +24,7 @@ export default function Home() {
             Darshan
           </h1>
           <p className="mb:mt-4 mt-2 text-2xl xl:text-3xl">
-            I do x y z with my life. I like this in my free time.
+            {config.heroTagline}
           </p>
         </div>
         <div className="relative aspect-square w-3/5 overflow-hidden rounded-full shadow-lg shadow-stone-900/50 sm:w-2/5">

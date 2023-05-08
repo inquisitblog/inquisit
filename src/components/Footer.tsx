@@ -1,3 +1,4 @@
+import * as config from "@/config"
 import NavLink from "./NavLink"
 
 function Footer() {
@@ -6,17 +7,17 @@ function Footer() {
       <div className="mx-auto max-w-screen-xl px-8 text-lg">
         <div className="flex flex-col justify-between gap-12 text-center md:flex-row md:gap-0 md:text-start">
           <div className="flex flex-col gap-2">
-            <h6 className="text-xl font-[600]">Darshan</h6>
-            <p>Some sort of tagline?</p>
+            <h6 className="text-xl font-[600]">{config.logoText}</h6>
+            <p>{config.footerTagline}</p>
           </div>
 
           <div className="flex flex-col gap-2">
             <p className="font-[500]">Reach out</p>
             <a
-              href="mailto:reachout@email.com"
+              href={`mailto:${config.email}`}
               className="underline-offset-4 transition-all hover:underline"
             >
-              reachout@email.com
+              {config.email}
             </a>
           </div>
           <div className="flex flex-col items-center gap-2">

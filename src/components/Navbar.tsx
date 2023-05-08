@@ -1,5 +1,6 @@
 "use client"
 
+import * as config from "@/config"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavLink from "./NavLink"
@@ -14,7 +15,7 @@ const Navbar = () => {
           href="/"
           className="text-xl font-bold text-accent transition-opacity hover:opacity-70"
         >
-          Darshan
+          {config.logoText}
         </Link>
         <div className="flex gap-6 text-lg">
           {[
