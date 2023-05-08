@@ -36,7 +36,7 @@ const BlogCard: FC<BlogCardProps> = ({
           type === "Sidebar" && "xl:aspect-square"
         }`}
       >
-        <Image src={img} alt={alt} className="rounded-lg object-cover" fill />
+        <Image src={img} alt={alt} className="rounded-xl object-cover" fill />
       </div>
       <div className="flex flex-col gap-4">
         <p
