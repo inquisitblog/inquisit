@@ -1,5 +1,23 @@
+import * as config from "@/config"
 import { getPosts } from "@/posts"
 import BlogCard from "@/components/BlogCard"
+
+export const metadata = {
+  title: config.blogTitle,
+  description: config.blogDescription,
+  openGraph: {
+    title: config.blogTitle,
+    description: config.blogDescription,
+    url: "/blog",
+  },
+  twitter: {
+    title: config.blogTitle,
+    description: config.blogDescription,
+  },
+  alternates: {
+    canonical: "/blog",
+  },
+}
 
 const Blog = () => {
   const posts = getPosts()

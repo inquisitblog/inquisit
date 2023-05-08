@@ -5,8 +5,54 @@ import { notFound } from "next/navigation"
 import { FiArrowLeftCircle } from "react-icons/fi"
 import Link from "next/link"
 import Image from "next/image"
+import { Metadata } from "next"
 
 type ParamsType = { params: { slug: string } }
+
+export async function generateMetadata({ params }: ParamsType) {
+  const posts = getPosts()
+  const { slug } = params
+
+  if (!posts.find((post) => post.id === slug)) {
+    return { title: "Article not found" }
+  }
+
+  const { date, title, description, imgUrl } = await getPost(slug)
+
+  const meta: Metadata = {
+    title,
+    description,
+
+    openGraph: {
+      title,
+      description,
+      images: imgUrl,
+      url: config.url,
+      siteName: config.title,
+      type: "article",
+      authors: [config.author],
+      publishedTime: new Date(date).toISOString(),
+    },
+
+    twitter: {
+      title,
+      description,
+      images: imgUrl,
+      creator: config.twitterUsername,
+      card: "summary",
+    },
+
+    themeColor: "#FBEAD2",
+    alternates: {
+      canonical: `/blog/${slug}`,
+      //   types: {
+      //     "application/rss+xml": "url/rss.xml",
+      //   },
+    },
+  }
+
+  return meta
+}
 
 const BlogArticle = async ({ params }: ParamsType) => {
   const posts = getPosts()

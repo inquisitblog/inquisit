@@ -5,6 +5,10 @@ import Link from "next/link"
 
 const verticalBlogGap = "gap-16 xl:gap-6"
 
+export const metadata = {
+  title: "Home | Darshan",
+}
+
 export default function Home() {
   const posts = getPosts().slice(0, 4)
 

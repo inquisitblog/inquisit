@@ -1,3 +1,4 @@
+import * as config from "@/config"
 import "./globals.css"
 import { Poppins } from "next/font/google"
 import Navbar from "@/components/Navbar"
@@ -12,33 +13,32 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "Darshan",
-  description: "Shan's little blog.",
-  // openGraph: {
-  //   title: "Shan Blog - Home",
-  //   description: "Shan's little blog.",
-  //   image: "",
-  //   url: "",
-  //   siteName: "",
-
-  //   type: "article",
-  //   authors: ["Shan"],
-  //   publishedTime: "2023-01-01T00:00:00.000Z",
-  // },
-  // twitter: {
-  //   title: "",
-  //   description: "",
-  //   image: "",
-  //   creator: "",
-  //   card: "",
-  // },
-  // themeColor: "",
-  // alternates: {
-  //   canonical: "",
-  //   types: {
-  //     "application/rss+xml": "url/rss.xml",
-  //   },
-  // },
+  metadataBase: new URL(config.url),
+  title: {
+    default: config.title,
+    template: `%s | ${config.title}`,
+  },
+  description: config.description,
+  openGraph: {
+    title: config.title,
+    description: config.description,
+    url: "/",
+    siteName: config.title,
+    type: "website",
+  },
+  twitter: {
+    title: config.title,
+    description: config.description,
+    creator: config.twitterUsername,
+    card: "summary",
+  },
+  themeColor: "#FBEAD2",
+  alternates: {
+    canonical: "/",
+    //  types: {
+    //    "application/rss+xml": "url/rss.xml",
+    //  },
+  },
 }
 
 export default function RootLayout({
