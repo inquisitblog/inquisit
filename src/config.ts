@@ -11,9 +11,9 @@ export const dev = inDevEnv
 export const url = !dev
   ? "https://darshan-blog.vercel.app"
   : "http://localhost:3000"
-export const author = "Darshan"
+export const author = "Darshan" // Shows in the page's metadata
 export const logoText = "Darshan" // Shows in the Navigation & Footer
-export const twitterUsername = ""
+export const twitterUsername = "" // Shows in the page's metadata. Helps when the page is shared on Twitter. If it's empty no issues, it won't be shown.
 
 // Footer
 export const footerTagline = "Some sort of tagline?"
