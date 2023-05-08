@@ -50,6 +50,7 @@ export default function Home() {
                 date={featuredPost.date}
                 title={featuredPost.title}
                 description={featuredPost.description}
+                tags={featuredPost.tags}
                 slug={featuredPost.id}
               />
             </div>
@@ -63,6 +64,7 @@ export default function Home() {
                   date={post.date}
                   title={post.title}
                   description={post.description}
+                  tags={post.tags}
                   slug={post.id}
                 />
               ))}

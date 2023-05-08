@@ -38,6 +38,7 @@ const Blog = () => {
               date={post.date}
               title={post.title}
               description={post.description}
+              tags={post.tags}
               slug={post.id}
             />
           ))}
