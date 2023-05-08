@@ -1,6 +1,6 @@
 ---
 title: "A Broken Backpack"
-description: "This is the description of post FOUR."
+description: "This is a lot more characters being added to demonstrate that excess gets cut and replaced with an ellipsis to preserve the layout. Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries."
 tags: "one, two, three"
 imgUrl: "https://cdn.tuk.dev/assets/components/111220/blg-17/blog2.png"
 imgAlt: "Beard placeholder"
