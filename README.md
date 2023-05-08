@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Guide
 
-## Getting Started
+## Getting Started - Clone this repo
 
-First, run the development server:
+1. Navigate to this repo - [neeshsamsi/shan-blog](https://github.com/neeshsamsi/shan-blog)
+2. Click on Code on the top right
+3. Under the local tab, copy the command to clone the repo based on if you want to use https, ssh or the cli
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Writing Articles
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. To create a new article, start by copying the `template.md` file from the root directory into the `app/blogposts` directory.
+2. Rename the file to whatever you want the url of the post. This means that you cannot have special characters or spaces. Words can be divided by -. Example: `post-one.md`
+3. Fill in all the metadata enclosed within the 2 `---`
+   - **title:** This is the title of your post. It shows in the Blog Card, Blog Article and in the Browser Window when a post is open
+   - **description:** This is the description or excerpt of your post. This shows in the Blog Cards & metadata of the page (helps in SEO)
+   - **imgUrl:** This is the url of your article's cover image. Use a complete link if it's an external image host. Use `/filename.ext` if you're using local images. [More about images](#using-images-in-your-articles-images)
+   - **imgAlt:** This is alternate text that will show if/when the image cannot load. This may be due to the link provided being broken or simply because the user has a slow network. More importantly it helps make your website accessible to those visually impaired.
+4. Now to write your blog. You need to write in markdown. Refer to this [Markdown Guide](https://www.markdownguide.org/basic-syntax/) for help
+5. Now to publish this:
+   - Open your terminal, or any GitHub GUI if you have it.
+   - `git add your-post-title.md`
+   - `git commit -m "feat: Add Your post title"`
+   - `git push` or `git push origin main`
+   - Once something is pushed to the repo, Vercel automatically detects it and deploys the latest version of the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If we were smart or concerned that we might make a git mistake that could be fatal to the app -
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+- Before copying the `template.md` file and editing it
+- We could create a new branch with `git branch post_title`
+- Then create the post file and edit it within this branch.
+- Once ready to publish, commit this file to this branch. Run the project locally to see that nothing's wrong.
+- And once everything's all fine, open [GitHub](https://github.com/neeshsamsi/shan-blog) and merge our new branch into main.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Using images in your articles
 
-## Learn More
+- **Image Size:** Create an image that's ideally 1200x630 px.
 
-To learn more about Next.js, take a look at the following resources:
+This is the the required size for images that show when you share a link on Social Media. The size that will show in the website will be the centre 852x630 px out of the total 1200x630 px
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Anything lower will pixelate at large screen sizes and anything bigger unnecessarily adds to the image size and therefore to load times.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Once you have your image, we need to optimize it further to get the lowest file size without losing quality.
+  - To do this visit [Convertio](https://convertio.co/)
+  - Upload your file and choose `webp` as the format to convert it to.
+- Once we have an optimized `.webp` image, you have 2 options to upload it -
+  - You can upload your image locally by putting it into the `public` directory.
+  - Alternatively You can use a third-party host like [Imgur](imgur.com) - Upload your image. Hover the image, click the 3 dots and Get share links. Now find the `i.imgur.com` link that has a `.webp` extension. (It doesn't work if there isn't an extension in the url).
+  - If you're using local images your url will look like `/image.webp` - no need to add darshan-blog.vercel.app, it automatically adds the url. If you're using a third party, your url will be a complete `https://host.com/image.webp`.
+  - When using third party image hosts, their domain name needs to be noted in the `next.config.js` or they won't work. I've added `i.imgur.com` but anything else will need to be added.
