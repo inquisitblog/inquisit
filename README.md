@@ -13,6 +13,7 @@
 3. Fill in all the metadata enclosed within the 2 `---`
    - **title:** This is the title of your post. It shows in the Blog Card, Blog Article and in the Browser Window when a post is open
    - **description:** This is the description or excerpt of your post. This shows in the Blog Cards & metadata of the page (helps in SEO)
+   - **tags:** These are to be written in lower case, (kebab case separated by dashes) as they will become urls. I am not accounting for you having too many tags and messing up the layout so try having about 20-30 characters in all tags of a single article combined.
    - **imgUrl:** This is the url of your article's cover image. Use a complete link if it's an external image host. Use `/filename.ext` if you're using local images. [More about images](#using-images-in-your-articles-images)
    - **imgAlt:** This is alternate text that will show if/when the image cannot load. This may be due to the link provided being broken or simply because the user has a slow network. More importantly it helps make your website accessible to those visually impaired.
 4. Now to write your blog. You need to write in markdown. Refer to this [Markdown Guide](https://www.markdownguide.org/basic-syntax/) for help
