@@ -8,3 +8,7 @@ export function formatDate(
   const formatter = new Intl.DateTimeFormat(locales, { dateStyle })
   return formatter.format(new Date(date))
 }
+
+export function capitalise(str: string) {
+  return str.charAt(0)?.toUpperCase() + str.slice(1)
+}
