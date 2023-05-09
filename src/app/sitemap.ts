@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     posts &&
     posts.map((post) => {
       return {
-        url: `${config.url}/posts/post.id`,
+        url: `${config.url}/posts/${post.id}`,
         lastModified: new Date(post.date),
       }
     })
