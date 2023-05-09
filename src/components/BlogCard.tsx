@@ -49,7 +49,7 @@ const BlogCard: FC<BlogCardProps> = ({
               className={`w-fit rounded border border-accent px-2 py-1 text-sm transition-all hover:bg-accent hover:text-light  ${
                 type === "Regular" && "xl:text-base"
               }`}
-              href={`/blog/category/${tag}`}
+              href={`/blog/categories/${tag}`}
             >
               {tag}
             </Link>
