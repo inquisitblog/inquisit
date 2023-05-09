@@ -25,8 +25,9 @@ function Footer() {
               { text: "Home", path: "/" },
               { text: "Blog", path: "/blog" },
               { text: "About", path: "/about" },
+              { text: "RSS", path: "/rss.xml", newWindow: true },
             ].map(({ text, path }, index) => (
-              <NavLink text={text} path={path} key={index} />
+              <NavLink text={text} path={path} key={index} newWindow />
             ))}
           </div>
         </div>
