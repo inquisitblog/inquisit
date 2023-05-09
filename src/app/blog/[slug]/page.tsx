@@ -9,7 +9,15 @@ import { Metadata } from "next"
 
 type ParamsType = { params: { slug: string } }
 
-export const fetchCache = "force-cache"
+export const dynamic = "force-static"
+
+export async function generateStaticParams() {
+  const posts = getPosts()
+
+  return posts.map((post) => ({
+    slug: post.id,
+  }))
+}
 
 export async function generateMetadata({ params }: ParamsType) {
   const posts = getPosts()
