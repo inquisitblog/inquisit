@@ -1,23 +1,72 @@
+import * as config from "@/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
 import { getPosts } from "@/posts"
+import { capitalise } from "@/utils"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 
-type Props = {
+type ParamsType = {
   params: { slug: string }
 }
 
-const Category: FC<Props> = ({ params }) => {
+export const fetchCache = "force-cache"
+
+export async function generateMetadata({ params }: ParamsType) {
+  const { slug } = params
+
+  const posts = getPosts(-1, slug)
+
+  if (!posts.length) {
+    return {
+      title: "Category not found",
+    }
+  }
+
+  const title = `${capitalise(slug)} - Blog`
+  const description = `${capitalise(slug)} Category of posts on the Blog.`
+  const imgUrl = ""
+
+  const meta: Metadata = {
+    title,
+    description: "",
+
+    openGraph: {
+      title,
+      description,
+      images: [imgUrl],
+      url: config.url,
+      siteName: config.title,
+      type: "website",
+    },
+
+    twitter: {
+      title: `${capitalise(slug)} - Blog`,
+      description,
+      images: [imgUrl],
+      creator: config.twitterUsername,
+      card: "summary",
+    },
+
+    themeColor: "#FBEAD2",
+    alternates: {
+      canonical: `/blog/${slug}`,
+      //   types: {
+      //     "application/rss+xml": "url/rss.xml",
+      //   },
+    },
+  }
+
+  return meta
+}
+
+const Category: FC<ParamsType> = ({ params }) => {
   const { slug } = params
 
   const posts = getPosts(-1, slug)
 
   if (!posts.length) {
     return notFound()
-  }
-
-  function capitalise(str: string) {
-    return str.charAt(0)?.toUpperCase() + str.slice(1)
   }
 
   return (
