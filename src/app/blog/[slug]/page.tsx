@@ -75,15 +75,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
 
   return (
     <main className="mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
-      <Link
-        href="/blog"
-        className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
-      >
-        <div className="w-6 lg:w-8">
-          <FiArrowLeftCircle size="auto" strokeWidth={1.5} />
-        </div>
-        <p>Back to blog posts</p>
-      </Link>
+      <BackToBlog />
       <div className="relative aspect-[4/3] max-w-3xl">
         <Image
           src={imgUrl}
@@ -93,7 +85,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
         />
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2 md:gap-4">
         <div className="flex items-center gap-2">
           {tags.map((tag, i) => (
             <Link
@@ -117,17 +109,22 @@ const BlogArticle = async ({ params }: ParamsType) => {
           className="prose prose-base md:prose-lg prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8"
         />
       </article>
-
-      <Link
-        href="/blog"
-        className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
-      >
-        <div className="w-6 lg:w-8">
-          <FiArrowLeftCircle size="auto" strokeWidth={1.5} />
-        </div>
-        <p>Back to blog posts</p>
-      </Link>
+      <BackToBlog />
     </main>
+  )
+}
+
+function BackToBlog() {
+  return (
+    <Link
+      href="/blog"
+      className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
+    >
+      <div className="w-6 lg:w-8">
+        <FiArrowLeftCircle size="auto" strokeWidth={1.5} />
+      </div>
+      <p>Back to blog posts</p>
+    </Link>
   )
 }
 
