@@ -9,8 +9,6 @@ import { Metadata } from "next"
 
 type ParamsType = { params: { slug: string } }
 
-export const dynamic = "force-static"
-
 export async function generateStaticParams() {
   const posts = getPosts()
 
@@ -27,11 +25,12 @@ export async function generateMetadata({ params }: ParamsType) {
     return { title: "Article not found" }
   }
 
-  const { date, title, description, imgUrl } = await getPost(slug)
+  const { date, title, description, tags, imgUrl } = await getPost(slug)
 
   const meta: Metadata = {
     title,
     description,
+    keywords: tags,
 
     openGraph: {
       title,
@@ -72,10 +71,10 @@ const BlogArticle = async ({ params }: ParamsType) => {
     return notFound()
   }
 
-  const { date, title, imgUrl, imgAlt, contentHtml } = await getPost(slug)
+  const { date, title, tags, imgUrl, imgAlt, contentHtml } = await getPost(slug)
 
   return (
-    <main className="mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-6 md:py-16">
+    <main className="mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
       <Link
         href="/blog"
         className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
@@ -93,12 +92,24 @@ const BlogArticle = async ({ params }: ParamsType) => {
           className="rounded-xl object-cover"
         />
       </div>
-      <p className="w-fit rounded border border-accent px-2 py-1 text-sm md:text-base">
-        {formatDate(date)}
-      </p>
-      <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
-        {title}
-      </h1>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-2">
+          {tags.map((tag, i) => (
+            <Link
+              key={i}
+              className="w-fit rounded border border-accent px-2 py-1 text-base transition-all hover:bg-accent hover:text-light xl:text-lg"
+              href={`/blog/categories/${tag}`}
+            >
+              {tag}
+            </Link>
+          ))}
+        </div>
+        <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
+          {title}
+        </h1>
+        <p className="text-lg font-semibold md:text-xl">{formatDate(date)}</p>
+      </div>
 
       <article>
         <section
