@@ -5,9 +5,10 @@ type NavLinkProps = {
   text: string
   pathname?: string
   active?: boolean
+  newWindow?: boolean
 }
 
-const NavLink = ({ text, path, pathname, active }: NavLinkProps) => {
+const NavLink = ({ text, path, pathname, active, newWindow }: NavLinkProps) => {
   const isActive = active ? true : pathname === path ? true : false
 
   return (
@@ -16,6 +17,7 @@ const NavLink = ({ text, path, pathname, active }: NavLinkProps) => {
       className={`relative w-fit transition-opacity before:absolute before:-bottom-1  before:left-0 before:h-[2px] before:w-full before:scale-x-0  before:bg-accent before:transition-transform hover:opacity-70 hover:before:scale-x-100 ${
         isActive ? "before:scale-x-100" : ""
       }`}
+      target={newWindow ? "_blank" : ""}
     >
       {text}
     </Link>
