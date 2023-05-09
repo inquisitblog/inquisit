@@ -1,10 +1,31 @@
+import * as config from "@/lib/config"
 import { getPostCategories, getPosts } from "@/lib/posts"
 import { capitalise } from "@/lib/utils"
 import Link from "next/link"
 import { FC } from "react"
-import { FiArrowRight, FiArrowRightCircle } from "react-icons/fi"
+import { FiArrowRight } from "react-icons/fi"
 
 type Props = {}
+
+const title = "Categories"
+const description = "All categories of blog posts."
+
+export const metadata = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "/blog/categories",
+  },
+  twitter: {
+    title,
+    description,
+  },
+  alternates: {
+    canonical: "/blog/categories",
+  },
+}
 
 const Category: FC<Props> = () => {
   const categories = getPostCategories()
