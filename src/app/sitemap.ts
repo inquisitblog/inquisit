@@ -1,8 +1,10 @@
 import { MetadataRoute } from "next"
-import { getPosts } from "@/posts"
-import * as config from "@/config"
+import * as config from "@/lib/config"
+import { getPosts } from "@/lib/posts"
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const pageUrls = ["", "/blog"]
+
   const posts = getPosts()
   const postUrls =
     posts &&
