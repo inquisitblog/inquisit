@@ -21,7 +21,10 @@ const Category: FC<Props> = () => {
       </h1>
       <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
         {tags.map(({ tag, posts }, i) => (
-          <div className="flex flex-col gap-4 rounded-xl bg-light p-8" key={i}>
+          <div
+            className="flex flex-col gap-2 rounded-xl bg-light p-4 md:gap-4 md:p-8"
+            key={i}
+          >
             <h3 className="text-2xl font-semibold leading-7 xl:text-3xl">
               {capitalise(tag)}
             </h3>
