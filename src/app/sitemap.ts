@@ -1,24 +1,26 @@
 import { MetadataRoute } from "next"
 import * as config from "@/lib/config"
-import { getPosts } from "@/lib/posts"
+import { getPostCategories, getPosts } from "@/lib/posts"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pageUrls = ["", "/blog"]
+  const pages = ["", "blog", "categories"]
+  const pageUrls = pages.map((page) => ({
+    url: `${config.url}/${page}`,
+  }))
 
   const posts = getPosts()
   const postUrls =
     posts &&
-    posts.map((post) => {
-      return {
-        url: `${config.url}/posts/${post.id}`,
-        lastModified: new Date(post.date),
-      }
-    })
+    posts.map((post) => ({
+      url: `${config.url}/posts/${post.id}`,
+      lastModified: new Date(post.date),
+    }))
 
-  return [
-    { url: `${config.url}`, lastModified: new Date() },
-    { url: `${config.url}/blog`, lastModified: new Date() },
-    // {url: '/about', lastModified: new Date()},
-    ...postUrls,
-  ]
+  const categories = getPostCategories()
+  const categoryUrls = categories.map((tag) => ({
+    url: `${config.url}/blog/categories/${tag}`,
+    lastModified: new Date(),
+  }))
+
+  return [...pageUrls, ...postUrls, ...categoryUrls]
 }
