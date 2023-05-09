@@ -9,6 +9,8 @@ import { Metadata } from "next"
 
 type ParamsType = { params: { slug: string } }
 
+export const fetchCache = "force-cache"
+
 export async function generateMetadata({ params }: ParamsType) {
   const posts = getPosts()
   const { slug } = params
