@@ -87,3 +87,19 @@ export async function getPost(id: string) {
 
   return blogPostWithHtml
 }
+
+export function getPostCategories() {
+  const posts = getPosts()
+
+  let categories = [] as string[]
+
+  posts.forEach((post) => {
+    post.tags.forEach((tag) => {
+      if (!categories.includes(tag)) {
+        categories.push(tag)
+      }
+    })
+  })
+
+  return categories
+}
