@@ -1,6 +1,6 @@
 import * as config from "@/lib/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
-import { getPosts } from "@/lib/posts"
+import { getPostCategories, getPosts } from "@/lib/posts"
 import { capitalise } from "@/lib/utils"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -10,7 +10,13 @@ type ParamsType = {
   params: { slug: string }
 }
 
-export const fetchCache = "force-cache"
+export async function generateStaticParams() {
+  const categories = getPostCategories()
+
+  return categories.map((tag) => ({
+    slug: tag,
+  }))
+}
 
 export async function generateMetadata({ params }: ParamsType) {
   const { slug } = params
