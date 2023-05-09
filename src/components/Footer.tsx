@@ -1,4 +1,4 @@
-import * as config from "@/config"
+import * as config from "@/lib/config"
 import NavLink from "./NavLink"
 
 function Footer() {

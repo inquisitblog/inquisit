@@ -1,4 +1,4 @@
-import * as config from "@/config"
+import * as config from "@/lib/config"
 import "./globals.css"
 import { Poppins } from "next/font/google"
 import Navbar from "@/components/Navbar"

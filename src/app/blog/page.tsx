@@ -1,5 +1,5 @@
-import * as config from "@/config"
-import { getPosts } from "@/posts"
+import * as config from "@/lib/config"
+import { getPosts } from "@/lib/posts"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
 
 export const metadata = {

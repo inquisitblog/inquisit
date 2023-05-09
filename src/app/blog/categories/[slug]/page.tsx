@@ -1,7 +1,7 @@
-import * as config from "@/config"
+import * as config from "@/lib/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
-import { getPosts } from "@/posts"
-import { capitalise } from "@/utils"
+import { getPosts } from "@/lib/posts"
+import { capitalise } from "@/lib/utils"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: ParamsType) {
   }
 
   const title = `${capitalise(slug)} - Blog`
-  const description = `${capitalise(slug)} Category of posts on the Blog.`
+  const description = `${capitalise(slug)} Category of Blog Posts.`
   const imgUrl = ""
 
   const meta: Metadata = {

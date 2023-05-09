@@ -1,6 +1,6 @@
-import * as config from "@/config"
+import * as config from "@/lib/config"
 import BlogCard from "@/components/BlogCard"
-import { getPosts } from "@/posts"
+import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
 

@@ -1,6 +1,6 @@
 "use client"
 
-import * as config from "@/config"
+import * as config from "@/lib/config"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavLink from "./NavLink"

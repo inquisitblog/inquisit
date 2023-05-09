@@ -1,4 +1,4 @@
-import { formatDate } from "@/utils"
+import { formatDate } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import React, { FC } from "react"
