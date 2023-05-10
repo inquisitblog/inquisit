@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ParamsType) {
     }
   }
 
-  const title = `${capitalise(slug)} - Blog`
+  const title = `${capitalise(slug)} - Articles`
   const description = `${capitalise(slug)} Category of Blog Posts.`
   const imgUrl = ""
 
