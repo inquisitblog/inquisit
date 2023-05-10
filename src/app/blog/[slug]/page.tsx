@@ -6,6 +6,7 @@ import { FiArrowLeftCircle } from "react-icons/fi"
 import Link from "next/link"
 import Image from "next/image"
 import { Metadata } from "next"
+import ScrollToTop from "@/components/ScrollToTop"
 
 type ParamsType = { params: { slug: string } }
 
@@ -74,7 +75,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
   const { date, title, tags, imgUrl, imgAlt, contentHtml } = await getPost(slug)
 
   return (
-    <main className="mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
+    <main className="relative mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
       <BackToBlog />
       <div className="relative aspect-[4/3] max-w-3xl">
         <Image
@@ -110,6 +111,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
         />
       </article>
       <BackToBlog />
+      <ScrollToTop />
     </main>
   )
 }
