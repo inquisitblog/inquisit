@@ -35,9 +35,9 @@ export const metadata = {
   themeColor: "#FBEAD2",
   alternates: {
     canonical: "/",
-    //  types: {
-    //    "application/rss+xml": "url/rss.xml",
-    //  },
+    types: {
+      "application/rss+xml": `${config.url}/rss.xml`,
+    },
   },
 }
 
@@ -47,8 +47,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-p-12 scroll-smooth text-dark">
-      <body className={`${poppins.variable} bg-lighter font-sans`}>
+    <html lang="en" className="text-dark">
+      <body
+        className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
+      >
         <Navbar />
         {children}
         <Footer />
