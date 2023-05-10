@@ -54,9 +54,9 @@ export async function generateMetadata({ params }: ParamsType) {
     themeColor: "#FBEAD2",
     alternates: {
       canonical: `/blog/${slug}`,
-      //   types: {
-      //     "application/rss+xml": "url/rss.xml",
-      //   },
+      types: {
+        "application/rss+xml": `${config.url}/rss.xml`,
+      },
     },
   }
 

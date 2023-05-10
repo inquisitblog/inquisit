@@ -24,6 +24,9 @@ export const metadata = {
   },
   alternates: {
     canonical: "/blog/categories",
+    types: {
+      "application/rss+xml": `${config.url}/rss.xml`,
+    },
   },
 }
 
