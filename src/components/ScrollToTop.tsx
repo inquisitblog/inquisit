@@ -24,14 +24,14 @@ const ScrollToTop = () => {
 
   return (
     <button
-      className={`hover ring-none sticky bottom-4 right-4 w-16 self-end rounded-full bg-accent p-4 text-light shadow-md shadow-stone-900/50 outline-none transition-all duration-500 hover:border-2 hover:border-accent hover:bg-lighter hover:text-accent hover:outline-none focus:outline-none ${
+      className={`hover ring-none sticky bottom-4 right-4 w-12 self-end rounded-full bg-accent p-2 text-light shadow-md shadow-stone-900/50 outline-none transition-all duration-500 hover:border-2 hover:border-accent hover:bg-lighter hover:text-accent hover:outline-none focus:outline-none md:w-16 md:p-4 ${
         scrollPos && scrollPos > 0
           ? "translate-y-0 opacity-100"
           : "translate-y-24 opacity-0"
       }`}
       onClick={scrollToTop}
     >
-      <FiArrowUp size="auto" strokeWidth={2.5} />
+      <FiArrowUp size="auto" />
     </button>
   )
 }
