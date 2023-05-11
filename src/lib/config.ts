@@ -32,6 +32,7 @@ export const title = "Darshan"
 export const description = "Description"
 export const heroTagline =
   "I do x y z with my life. I like this in my free time."
+export const homeImg = "https://placebeard.it/800x800"
 
 // Blog Page
 export const blogTitle = "Blog" // | {title} is added to it => Blog | Darshan

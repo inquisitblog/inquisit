@@ -29,7 +29,7 @@ export default function Home() {
         </div>
         <div className="relative aspect-square w-3/5 overflow-hidden rounded-full shadow-lg shadow-stone-900/50 sm:w-2/5">
           <Image
-            src="https://placebeard.it/800x800"
+            src={config.homeImg}
             alt="placeholder image"
             className="object-cover"
             fill
