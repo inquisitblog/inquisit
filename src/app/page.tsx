@@ -33,6 +33,9 @@ export default function Home() {
             alt="placeholder image"
             className="object-cover"
             fill
+            priority
+            // 100vw till sm: - then 40vw till xl: - max 468px
+            sizes="(min-width: 1280px) 468px, (min-width: 640px) 40vw, 100vw"
           />
         </div>
       </main>

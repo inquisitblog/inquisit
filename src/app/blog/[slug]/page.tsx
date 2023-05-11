@@ -82,6 +82,9 @@ const BlogArticle = async ({ params }: ParamsType) => {
           src={imgUrl}
           alt={imgAlt}
           fill
+          priority
+          // 100vw on till 860px - max 768px
+          sizes="(min-width: 860px) 768px, 100vw"
           className="rounded-xl object-cover"
         />
       </div>
