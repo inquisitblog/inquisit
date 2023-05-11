@@ -65,13 +65,13 @@ const BlogCard: FC<BlogCardProps> = ({
             </Link>
           ))}
         </div>
-        <h3
+        <h2
           className={`text-2xl font-semibold leading-7 ${
             type === "Regular" && "xl:text-3xl"
           }`}
         >
           {title}
-        </h3>
+        </h2>
         <p className="text-sm font-semibold xl:text-base">{formatDate(date)}</p>
         <p
           className={`text-base leading-relaxed ${

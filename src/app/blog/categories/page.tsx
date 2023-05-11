@@ -49,9 +49,9 @@ const Category: FC<Props> = () => {
             className="flex flex-col gap-2 rounded-xl bg-light p-4 md:gap-4 md:p-8"
             key={i}
           >
-            <h3 className="text-2xl font-semibold leading-7 xl:text-3xl">
+            <h2 className="text-2xl font-semibold leading-7 xl:text-3xl">
               {capitalise(tag)}
-            </h3>
+            </h2>
             <p className="text-lg font-medium xl:text-xl">{`${posts.length} posts`}</p>
             <Link
               href={`/blog/${tag}`}
