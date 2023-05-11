@@ -2,6 +2,7 @@ import { formatDate } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import React, { FC } from "react"
+import { FiArrowRight } from "react-icons/fi"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -72,11 +73,14 @@ const BlogCard: FC<BlogCardProps> = ({
         </p>
         <Link
           href={`/blog/${slug}`}
-          className={`text-base font-semibold text-accent underline transition-opacity hover:opacity-70 ${
+          className={`flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70 ${
             type === "Regular" && "xl:text-lg"
           }`}
         >
-          Read More
+          <span>Full article </span>
+          <span>
+            <FiArrowRight />
+          </span>
         </Link>
       </div>
     </div>
