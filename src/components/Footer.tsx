@@ -21,12 +21,7 @@ function Footer() {
             </a>
           </div>
           <div className="flex flex-col items-center gap-2">
-            {[
-              { text: "Home", path: "/" },
-              { text: "Blog", path: "/blog" },
-              { text: "About", path: "/about" },
-              { text: "RSS", path: "/rss.xml", newWindow: true },
-            ].map(({ text, path }, index) => (
+            {config.navLinks.map(({ text, path }, index) => (
               <NavLink text={text} path={path} key={index} newWindow />
             ))}
           </div>

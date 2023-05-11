@@ -5,6 +5,14 @@ process && process.env.NODE_ENV === "development"
 
 export const dev = inDevEnv
 
+type NavLink = { text: string; path: string }
+export const navLinks: NavLink[] = [
+  { text: "Home", path: "/" },
+  { text: "Blog", path: "/blog" },
+  { text: "Categories", path: "/categories" },
+  { text: "Feed", path: "/rss.xml" },
+]
+
 // IGNORE ABOVE THIS
 
 // General Settings

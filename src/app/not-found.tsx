@@ -1,5 +1,6 @@
 "use client"
 import NavLink from "@/components/NavLink"
+import { navLinks } from "@/lib/config"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 
@@ -17,11 +18,7 @@ export default function NotFound() {
         <div className="flex flex-col gap-2 text-lg md:gap-4 md:text-xl xl:text-2xl">
           <p>Here&rsquo;s some useful links instead:</p>
           <div className="flex justify-center gap-6">
-            {[
-              { text: "Home", path: "/" },
-              { text: "Blog", path: "/blog" },
-              { text: "About", path: "/about" },
-            ].map(({ text, path }, index) => (
+            {navLinks.map(({ text, path }, index) => (
               <NavLink
                 text={text}
                 path={path}
