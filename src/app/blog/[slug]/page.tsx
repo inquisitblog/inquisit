@@ -126,7 +126,7 @@ function BackToBlog() {
       className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
     >
       <div className="w-6 lg:w-8">
-        <FiArrowLeftCircle size="auto" strokeWidth={1.5} />
+        <FiArrowLeftCircle size="100%" strokeWidth={1.5} />
       </div>
       <p>Back to blog posts</p>
     </Link>

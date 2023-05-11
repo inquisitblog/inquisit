@@ -59,7 +59,7 @@ const Category: FC<Props> = () => {
             >
               <span>Check them out</span>
               <span className="w-6">
-                <FiArrowRight size="auto" strokeWidth={2} />
+                <FiArrowRight size="100%" strokeWidth={2} />
               </span>
             </Link>
           </div>
