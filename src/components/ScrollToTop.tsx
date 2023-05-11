@@ -30,6 +30,7 @@ const ScrollToTop = () => {
           : "translate-y-24 opacity-0"
       }`}
       onClick={scrollToTop}
+      aria-label="Scroll to the top"
     >
       <FiArrowUp size="100%" />
     </button>
