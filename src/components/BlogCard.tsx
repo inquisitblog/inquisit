@@ -17,6 +17,7 @@ type BlogCardProps = {
   description: string
   tags: string[]
   slug: string
+  priority?: boolean
 }
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -28,6 +29,7 @@ const BlogCard: FC<BlogCardProps> = ({
   description,
   tags,
   slug,
+  priority,
 }) => {
   return (
     <div
@@ -40,7 +42,14 @@ const BlogCard: FC<BlogCardProps> = ({
           type === "Sidebar" && "xl:aspect-square"
         }`}
       >
-        <Image src={img} alt={alt} className="rounded-xl object-cover" fill />
+        <Image
+          src={img}
+          alt={alt}
+          className="rounded-xl object-cover"
+          fill
+          priority={priority}
+          sizes="(min-width: 1280px) 580px, (min-width: 740px) 672px, 100vw"
+        />
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
