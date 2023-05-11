@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: ParamsType) {
 
   const meta: Metadata = {
     title,
-    description: "",
+    description,
 
     openGraph: {
       title,
