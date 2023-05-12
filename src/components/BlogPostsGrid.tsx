@@ -10,7 +10,7 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
     <main>
       {posts ? (
         <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
-          {posts.map((post) => (
+          {posts.map((post, i) => (
             <BlogCard
               key={post.id}
               type="Regular"
@@ -21,6 +21,8 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
               description={post.description}
               tags={post.tags}
               slug={post.id}
+              // Prio image loading for the first 4 posts bcoz they will be above the fold
+              priority={i < 4}
             />
           ))}
         </div>
