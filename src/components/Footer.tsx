@@ -21,8 +21,13 @@ function Footer() {
             </a>
           </div>
           <div className="flex flex-col items-center gap-2">
-            {config.navLinks.map(({ text, path }, index) => (
-              <NavLink text={text} path={path} key={index} newWindow />
+            {config.navLinks.map(({ text, path, newWindow }, index) => (
+              <NavLink
+                text={text}
+                path={path}
+                key={index}
+                newWindow={newWindow}
+              />
             ))}
           </div>
         </div>

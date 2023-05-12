@@ -5,12 +5,12 @@ process && process.env.NODE_ENV === "development"
 
 export const dev = inDevEnv
 
-type NavLink = { text: string; path: string }
+type NavLink = { text: string; path: string; newWindow?: boolean }
 export const navLinks: NavLink[] = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/blog" },
   { text: "Categories", path: "/categories" },
-  { text: "Feed", path: "/rss.xml" },
+  { text: "Feed", path: "/rss.xml", newWindow: true },
 ]
 
 // IGNORE ABOVE THIS

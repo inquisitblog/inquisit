@@ -18,13 +18,14 @@ export default function NotFound() {
         <div className="flex flex-col gap-2 text-lg md:gap-4 md:text-xl xl:text-2xl">
           <p>Here&rsquo;s some useful links instead:</p>
           <div className="flex justify-center gap-6">
-            {navLinks.map(({ text, path }, index) => (
+            {navLinks.map(({ text, path, newWindow }, index) => (
               <NavLink
                 text={text}
                 path={path}
                 key={index}
                 pathname={pathname}
                 active
+                newWindow={newWindow}
               />
             ))}
           </div>

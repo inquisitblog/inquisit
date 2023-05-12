@@ -18,8 +18,14 @@ const Navbar = () => {
           {config.logoText}
         </Link>
         <div className="flex gap-6 text-lg">
-          {config.navLinks.map(({ text, path }, index) => (
-            <NavLink text={text} path={path} key={index} pathname={pathname} />
+          {config.navLinks.map(({ text, path, newWindow }, index) => (
+            <NavLink
+              text={text}
+              path={path}
+              key={index}
+              pathname={pathname}
+              newWindow={newWindow}
+            />
           ))}
         </div>
       </div>
