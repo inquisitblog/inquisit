@@ -35,5 +35,5 @@ export const heroTagline =
 export const homeImg = "https://placebeard.it/800x800"
 
 // Blog Page
-export const blogTitle = "Blog" // | {title} is added to it => Blog | Darshan
+export const blogTitle = "Blog" // Shows as "this | {title}" => Blog | Darshan
 export const blogDescription = "Check out my latest articles."
