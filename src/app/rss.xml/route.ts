@@ -30,6 +30,7 @@ export async function GET() {
 	`.trim()
 
   return new NextResponse(xml, {
+    status: 200,
     headers: { "Content-Type": "application/xml" },
   })
 }
