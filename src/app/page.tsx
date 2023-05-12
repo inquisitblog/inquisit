@@ -75,7 +75,7 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <p>No latest posts.</p>
+          <p className="mb-16 mt-8 text-xl">No latest posts.</p>
         )}
 
         <Link href="/blog">

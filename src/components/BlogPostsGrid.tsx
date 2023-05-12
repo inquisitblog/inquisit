@@ -8,7 +8,7 @@ type Props = {
 const BlogPostsGrid: FC<Props> = ({ posts }) => {
   return (
     <main>
-      {posts ? (
+      {posts.length ? (
         <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
           {posts.map((post, i) => (
             <BlogCard
@@ -27,7 +27,7 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
           ))}
         </div>
       ) : (
-        <p>No posts to show.</p>
+        <p className="text-xl">No articles to show.</p>
       )}
     </main>
   )
