@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <main className="mx-auto flex max-w-screen-xl flex-col items-start gap-8 px-8 py-8 md:flex-row md:items-center md:gap-24 md:py-16">
         <div>
-          <p className="mb-1 text-xl md:mb-2 xl:text-2xl">Hello, My name is</p>
+          <p className="mb-1 text-xl md:mb-2 xl:text-2xl">Hi, I'm</p>
           <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
             Darshan
           </h1>
