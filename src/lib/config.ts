@@ -31,12 +31,7 @@ export const email = "darshan2004s@gmail.com"
 export const title = "Darshan"
 export const description = "Description"
 export const heroTagline =
-<<<<<<< Updated upstream
-  "I do x y z with my life. I like this in my free time."
-=======
   "I'm interested in studying AI through an array of interdiciplinary lenses"
-export const homeImg = "https://placebeard.it/800x800"
->>>>>>> Stashed changes
 
 // Blog Page
 export const blogTitle = "Blog" // Shows as "this | {title}" => Blog | Darshan
