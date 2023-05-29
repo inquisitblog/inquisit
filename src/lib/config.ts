@@ -30,8 +30,7 @@ export const email = "darshan2004s@gmail.com"
 // Home Page
 export const title = "Darshan"
 export const description = "Description"
-export const heroTagline =
-  "I'm interested in studying AI through an array of interdiciplinary lenses"
+export const heroTagline = "I'm interested in studying AI through an array of interdiciplinary lenses"
 
 // Blog Page
 export const blogTitle = "Blog" // Shows as "this | {title}" => Blog | Darshan
