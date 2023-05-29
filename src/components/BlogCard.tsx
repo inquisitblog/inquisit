@@ -78,7 +78,7 @@ const BlogCard: FC<BlogCardProps> = ({
             type === "Regular" && "xl:text-lg"
           }`}
         >
-          {truncate(description, 150)}
+          {truncate(description, 500)}
         </p>
         <Link
           href={`/blog/${slug}`}

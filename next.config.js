@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["placebeard.it", "imgur.com", "i.imgur.com", "cdn.tuk.dev"],
+    domains: ["placebeard.it", "imgur.com", "i.imgur.com", "cdn.tuk.dev", "iili.io"],
   },
   redirects: async () => [
     {
