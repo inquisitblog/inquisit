@@ -35,7 +35,7 @@ We know that the tremendous advances in the intelligence of the human species ha
 
 It was baffling to Wallace how these brilliant abilities waited a million years to be realized. So much so, that the only feasible explanation, he thought, was a “higher intelligence” directing the evolution of human nature.
 
-# General Intelligence
+## General Intelligence
 
 On the origin of human intelligence, most modern theories resemble Darwin’s explanation on a fundamental level, but with important distinctions.
 
