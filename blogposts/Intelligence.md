@@ -7,8 +7,9 @@ imgAlt: "Intelligence DALL.E Art"
 date: "05-24-2023"
 ---
 
-> “What a piece of work is a man! How noble in reason, how infinite in faculty! … In apprehension how like a god!”
-> — Hamlet, William Shakespeare
+> What a piece of work is a man! How noble in reason, how infinite in faculty! … In apprehension how like a god! 
+
+— Hamlet, William Shakespeare
 
 The question of intelligence is a deeply enigmatic one. It is a marvel of metacognition that we, beings of intellect, can question and reflect upon it at all. Yet, as a species, we have come to identify ourselves by our ability to think. And by this ability, we have often proclaimed ourselves above and apart from other living beings.
 
