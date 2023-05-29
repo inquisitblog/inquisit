@@ -17,27 +17,14 @@ export default function Home() {
 
   return (
     <>
-      <main className="mx-auto flex max-w-screen-xl flex-col items-start gap-8 px-8 py-8 md:flex-row md:items-center md:gap-24 md:py-16">
-        <div>
-          <p className="mb-1 text-xl md:mb-2 xl:text-2xl">Hi, I'm</p>
-          <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
-            Darshan
-          </h1>
-          <p className="mb:mt-4 mt-2 text-2xl xl:text-3xl">
-            {config.heroTagline}
-          </p>
-        </div>
-        <div className="relative aspect-square w-3/5 overflow-hidden rounded-full shadow-lg shadow-stone-900/50 sm:w-2/5">
-          <Image
-            src={config.homeImg}
-            alt="placeholder image"
-            className="object-cover"
-            fill
-            priority
-            // 100vw till sm: - then 40vw till xl: - max 468px
-            sizes="(min-width: 1280px) 468px, (min-width: 640px) 40vw, 100vw"
-          />
-        </div>
+      <main className="mx-auto max-w-screen-xl px-8 py-12 md:py-24">
+        <p className="mb-1 text-xl md:mb-2 xl:text-2xl">Hi, I'm</p>
+        <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
+          Darshan
+        </h1>
+        <p className="mb:mt-4 mt-2 text-2xl xl:text-3xl">
+          {config.heroTagline}
+        </p>
       </main>
       <section id="blog" className="mx-auto max-w-screen-xl px-8 py-16">
         <h2 className="text-5xl font-bold text-accent">Latest posts</h2>
