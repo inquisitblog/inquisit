@@ -10,7 +10,8 @@ export const navLinks: NavLink[] = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/blog" },
   { text: "Categories", path: "/categories" },
-  { text: "Feed", path: "/rss.xml", newWindow: true },
+  { text: "Submit Entry", path: "https://r2fma1pv48c.typeform.com/to/wXC7QnZC", newWindow: true},
+  // { text: "Feed", path: "/rss.xml", newWindow: true },
 ]
 
 // IGNORE ABOVE THIS
@@ -20,7 +21,7 @@ export const url = !dev
   ? "https://darshan-blog.vercel.app"
   : "http://localhost:3000"
 export const author = "Darshan" // Shows in the page's metadata
-export const logoText = "Darshan" // Shows in the Navigation & Footer
+export const logoText = "Inquisit" // Shows in the Navigation & Footer
 export const twitterUsername = "" // Shows in the page's metadata. Helps when the page is shared on Twitter. If it's empty no issues, it won't be shown.
 
 // Footer
