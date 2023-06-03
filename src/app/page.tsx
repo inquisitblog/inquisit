@@ -41,7 +41,7 @@ export default function Home() {
               const isOdd = i % 2 !== 0
               return (
                 <div
-                  className={`mt-8 flex flex-col items-center gap-4 text-base text-dark/80 md:text-lg xl:text-xl ${
+                  className={`mt-6 flex flex-col items-center gap-4 text-base text-dark/80 md:text-lg lg:mt-12 xl:text-xl ${
                     isOdd ? "md:flex-row-reverse" : "md:flex-row"
                   }`}
                   key={i}
