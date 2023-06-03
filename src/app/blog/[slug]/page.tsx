@@ -108,9 +108,10 @@ const BlogArticle = async ({ params }: ParamsType) => {
       </div>
 
       <article>
+        {/* prose-quoteless is a custom class - tailwind.config.js */}
         <section
           dangerouslySetInnerHTML={{ __html: contentHtml }}
-          className="prose prose-base md:prose-lg prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8"
+          className="prose prose-base prose-quoteless md:prose-lg prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8"
         />
       </article>
       <BackToBlog />

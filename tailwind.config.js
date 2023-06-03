@@ -21,6 +21,14 @@ module.exports = {
       gridTemplateColumns: {
         "1-2": "1.5fr 2fr",
       },
+      typography: {
+        quoteless: {
+          css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
+          },
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
