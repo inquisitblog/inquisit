@@ -8,7 +8,7 @@ import { FC, PropsWithChildren } from "react"
 const verticalBlogGap = "gap-16 xl:gap-6"
 
 export const metadata = {
-  title: "Home | Darshan",
+  title: "Home | Inquisit",
 }
 
 export default function Home() {
