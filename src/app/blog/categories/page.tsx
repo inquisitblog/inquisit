@@ -3,7 +3,7 @@ import { getPostCategories, getPosts } from "@/lib/posts"
 import { capitalise } from "@/lib/utils"
 import Link from "next/link"
 import { FC } from "react"
-import { FiArrowRight } from "react-icons/fi"
+import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 const title = "Categories"
 const description = "All categories of blog posts."
@@ -57,8 +57,8 @@ const Category: FC = () => {
                 className="flex w-fit items-center gap-2 rounded border-2 border-accent px-2 py-1 text-base font-semibold text-accent transition-all hover:bg-accent hover:text-light xl:text-lg"
               >
                 <span>Check them out</span>
-                <span className="w-6">
-                  <FiArrowRight size="100%" strokeWidth={2} />
+                <span className="w-5">
+                  <ArrowRightIcon strokeWidth={2} />
                 </span>
               </Link>
             </div>

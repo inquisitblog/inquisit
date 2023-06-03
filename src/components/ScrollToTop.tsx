@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { FiArrowUp } from "react-icons/fi"
+import { ArrowUpIcon } from "@heroicons/react/24/outline"
 
 const ScrollToTop = () => {
   const [scrollPos, setScrollPos] = useState<number>()
@@ -32,7 +32,7 @@ const ScrollToTop = () => {
       onClick={scrollToTop}
       aria-label="Scroll to the top"
     >
-      <FiArrowUp size="100%" />
+      <ArrowUpIcon />
     </button>
   )
 }

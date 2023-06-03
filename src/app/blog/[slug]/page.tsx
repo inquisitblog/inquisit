@@ -2,7 +2,7 @@ import * as config from "@/lib/config"
 import { getPost, getPosts } from "@/lib/posts"
 import { formatDate } from "@/lib/utils"
 import { notFound } from "next/navigation"
-import { FiArrowLeftCircle } from "react-icons/fi"
+import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import Image from "next/image"
 import { Metadata } from "next"
@@ -127,7 +127,7 @@ function BackToBlog() {
       className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
     >
       <div className="w-6 lg:w-8">
-        <FiArrowLeftCircle size="100%" strokeWidth={1.5} />
+        <ArrowLeftCircleIcon strokeWidth={1.5} />
       </div>
       <p>Back to blog posts</p>
     </Link>

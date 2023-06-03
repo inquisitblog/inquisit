@@ -2,7 +2,7 @@ import { formatDate } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import React, { FC } from "react"
-import { FiArrowRight } from "react-icons/fi"
+import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -87,8 +87,8 @@ const BlogCard: FC<BlogCardProps> = ({
           }`}
         >
           <span>Full article </span>
-          <span>
-            <FiArrowRight />
+          <span className="w-4">
+            <ArrowRightIcon strokeWidth={2} />
           </span>
         </Link>
       </div>
