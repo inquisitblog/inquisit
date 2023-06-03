@@ -10,11 +10,11 @@ export const navLinks: NavLink[] = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/blog" },
   { text: "Categories", path: "/categories" },
-  {
-    text: "Submit Post",
-    path: "https://r2fma1pv48c.typeform.com/to/wXC7QnZC",
-    newWindow: true,
-  },
+  // {
+  //   text: "Submit Post",
+  //   path: "https://r2fma1pv48c.typeform.com/to/wXC7QnZC",
+  //   newWindow: true,
+  // },
   // { text: "Feed", path: "/rss.xml", newWindow: true },
 ]
 
@@ -22,7 +22,7 @@ export const navLinks: NavLink[] = [
 
 // General Settings
 export const url = !dev
-  ? "https://darshan-blog.vercel.app"
+  ? "https://inquisit.vercel.app"
   : "http://localhost:3000"
 export const author = "Darshan" // Shows in the page's metadata
 export const logoText = "Inquisit" // Shows in the Navigation & Footer
