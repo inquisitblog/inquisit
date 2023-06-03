@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <main className="mx-auto max-w-screen-xl px-8 py-12 text-center md:py-24">
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
-          Welcome to <span className="text-accent">Inquisit</span>
+          Welcome to <span className="text-accent">{config.title}</span>
         </h1>
         <p className="mt-4 text-xl text-dark/80 md:mt-8 md:text-2xl xl:text-3xl">
           {config.heroTagline}
@@ -59,16 +59,6 @@ export default function Home() {
                 </div>
               )
             })}
-            {/* <div className="mt-4 flex items-center">
-                <p className="text-lg text-dark/80 xl:text-xl">
-                  {config.aboutNeesh}
-                </p>
-                <img
-                  src="https://iili.io/HrDCg0Q.png"
-                  alt="Neesh's image"
-                  className="mr-4 h-40 w-40 rounded-full"
-                />
-              </div> */}
           </InfoCard>
         </div>
       </main>
