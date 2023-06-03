@@ -2,7 +2,7 @@
 
 ## Getting Started - Clone this repo
 
-1. Navigate to this repo - [neeshsamsi/shan-blog](https://github.com/neeshsamsi/shan-blog)
+1. Navigate to this repo - [NeeshSamsi/inquisit](https://github.com/neeshsamsi/inquisit)
 2. Click on Code on the top right
 3. Under the local tab, copy the command to clone the repo based on if you want to use https, ssh or the cli
 
@@ -30,7 +30,7 @@ If we were smart or concerned that we might make a git mistake that could be fat
 - We could create a new branch with `git branch post_title`
 - Then create the post file and edit it within this branch.
 - Once ready to publish, commit this file to this branch. Run the project locally to see that nothing's wrong.
-- And once everything's all fine, open [GitHub](https://github.com/neeshsamsi/shan-blog) and merge our new branch into main.
+- And once everything's all fine, open [GitHub](https://github.com/NeeshSamsi/inquisit) and merge our new branch into main.
 
 ## Using images in your articles
 
@@ -46,5 +46,5 @@ Anything lower will pixelate at large screen sizes and anything bigger unnecessa
 - Once we have an optimized `.webp` image, you have 2 options to upload it -
   - You can upload your image locally by putting it into the `public` directory.
   - Alternatively You can use a third-party host like [Imgur](imgur.com) - Upload your image. Hover the image, click the 3 dots and Get share links. Now find the `i.imgur.com` link that has a `.webp` extension. (It doesn't work if there isn't an extension in the url).
-  - If you're using local images your url will look like `/image.webp` - no need to add darshan-blog.vercel.app, it automatically adds the url. If you're using a third party, your url will be a complete `https://host.com/image.webp`.
+  - If you're using local images your url will look like `/image.webp` - no need to add inquisit.vercel.app, it automatically adds the url. If you're using a third party, your url will be a complete `https://host.com/image.webp`.
   - When using third party image hosts, their domain name needs to be noted in the `next.config.js` or they won't work. I've added `i.imgur.com` but anything else will need to be added.
