@@ -30,7 +30,7 @@ export default function Home() {
             {config.aboutBlog.map((paragraph, index) => (
               <p
                 key={index}
-                className="mt-6 text-base text-dark/80 md:text-lg xl:text-xl"
+                className= "text-left mt-6 text-base text-dark/80 md:text-lg xl:text-xl"
               >
                 {paragraph}
               </p>
@@ -51,9 +51,9 @@ export default function Home() {
                     alt={`${person.name}'s image`}
                     height={200}
                     width={200}
-                    className="aspect-square w-24 flex-1 rounded-full"
+                    className="w-36 flex-1 rounded-full"
                   />
-                  <p className={`${isOdd ? "md:text-end" : "md:text-start"}`}>
+                  <p className={`${isOdd ? "md:text-center" : "md:text-center"}`}>
                     {person.about}
                   </p>
                 </div>

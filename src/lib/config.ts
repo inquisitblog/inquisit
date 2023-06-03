@@ -34,30 +34,29 @@ export const email = "darshan2004s@gmail.com"
 
 // Home Page
 export const title = "Inquisit"
-export const description =
-  "Inquisit is a project intended to incentivize and share academic adventures across a variety of fields. I hope you find value in this blog as a source of inspiration and a platform for showcasing your own interdisciplinary pursuits."
-export const heroTagline =
-  "A project intended to incentivize and share academic adventures across a variety fields. I hope you find value in this blog as a source of inspiration and a platform for showcasing your own interdisciplinary pursuits."
-
+export const description = "Inquisit is a project about igniting curiosity and exploring diverse academic adventures. I hope you find value in this blog as a source of inspiration and a platform for showcasing your own interdisciplinary pursuits."
+export const heroTagline = "A project about igniting curiosity and exploring diverse academic adventures. I hope you find value in this blog as a source of inspiration and a platform for showcasing your own interdisciplinary pursuits."
 export const aboutBlog = [
-  "Science and philosophy have been inseparable for most of their history. The Greek pioneers of Western scientific inquiry made no distinction between the two, nor did they separate the range of disciplines such as natural sciences, arts, and literature, that we do today.",
-  "The recent three centuries have seen the reduction of science into restrictive disciplines. Today, even as many fields advance rapidly on their own, a loss of the broader perspective hinders the ability of science to address real problems. The need to recultivate a holistic approach to inquiry is important.",
+  "Science and philosophy have been like two peas in a pod throughout history. Back in the day, those bearded Greek pioneers didn't bother with drawing lines. They were suckers for knowledge from every angle possible.",
+  "Fast forward to the past three centuries, and science got chopped up into all these restrictive disciplines. Sure, each field is making strides, but we're missing out on the broader perspective.",
+  "We're here to shake things up and tap into that holistic approach to inquiry. This is where science meets philosophy and everything in between."
 ]
+
 export const people = [
   {
     name: "Darshan",
     about:
       "Hi, I’m Darshan, a gap-year student just having bid farewell to Sahyadri School. I’m interested in studying AI and Cognitive Science through an array of interdisciplinary lenses.",
-    avatar: "shan.png",
+    avatar: "shan-edge.png",
   },
   {
     name: "Neesh",
     about:
       "Neesh Neesh Neesh Neesh, consectetur adipiscing elit. Nullam interdum eleifend nibh, eget gravida urna bibendum ac. Fusce id volutpat justo. ",
-    avatar: "neesh.png",
+    avatar: "neesh-edge.png",
   },
 ]
 
 // Blog Page
 export const blogTitle = "Blog" // Shows as "this | {title}" => Blog | Darshan
-export const blogDescription = "Check out my latest articles."
+export const blogDescription = "Check out the latest articles on Inquisit."
