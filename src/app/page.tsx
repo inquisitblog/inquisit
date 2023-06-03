@@ -20,7 +20,7 @@ export default function Home() {
       <main className="mx-auto max-w-screen-xl px-8 py-12 md:py-24">
         <div className="text-center">
           <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl mb-4">
-            Welcome to <span className="text-accent">Inquisist</span>
+            Welcome to <span className="text-accent">{config.title}</span>
           </h1>
           <p className="text-xl md:text-2xl xl:text-3xl text-gray-700 mb-8">
             {config.heroTagline}
