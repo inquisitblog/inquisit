@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-2 px-8 md:flex-row md:gap-8">
         <Link
           href="/"
-          className="text-xl font-bold text-accent transition-opacity hover:opacity-70"
+          className= "text-3xl font-bold text-accent transition-opacity hover:opacity-70"
         >
           {config.logoText}
         </Link>
