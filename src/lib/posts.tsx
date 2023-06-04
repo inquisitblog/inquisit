@@ -4,8 +4,7 @@ import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
 
-const dataDir = path.join(process.cwd(), "data")
-const postsDir = path.join(dataDir, "blogposts")
+export const postsDir = path.join("data", "blogposts")
 
 export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
   // Get blog filenames
@@ -15,23 +14,7 @@ export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
     // Remove .md from name to get id
     const id = fileName.replace(/\.md$/, "")
 
-    // Read md file as string
-    const fullPath = path.join(postsDir, fileName)
-    const fileContents = fs.readFileSync(fullPath, "utf8")
-
-    // Use matter to parse metadata
-    const matterResult = matter(fileContents)
-
-    const blogPost: BlogPost = {
-      id,
-      title: matterResult.data.title,
-      description: matterResult.data.description,
-      tags: matterResult.data.tags.split(", "),
-      imgUrl: matterResult.data.imgUrl,
-      imgAlt: matterResult.data.imgAlt,
-      authors: matterResult.data.authors,
-      date: matterResult.data.date,
-    }
+    const { blogPost } = parsePost(id, fileName, false)
 
     return blogPost
   })
@@ -62,12 +45,8 @@ export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
   return allPosts
 }
 
-export async function getPost(id: string) {
-  const fullPath = path.join(postsDir, id + ".md")
-  const fileContents = fs.readFileSync(fullPath, "utf8")
-
-  // Use matter to parse metadata
-  const matterResult = matter(fileContents)
+export async function getPost(id: string): Promise<BlogPostWithHtml> {
+  const { blogPost, matterResult } = await parsePost(id, id + ".md", true)
 
   // Process md into html
   const processedContent = await remark()
@@ -75,8 +54,23 @@ export async function getPost(id: string) {
     .process(matterResult.content)
   const contentHtml = processedContent.toString()
 
-  // Meta + html content + id
-  const blogPostWithHtml: BlogPost & { contentHtml: string } = {
+  const blogPostWithHtml: BlogPostWithHtml = {
+    ...blogPost,
+    contentHtml,
+  }
+
+  return blogPostWithHtml
+}
+
+function parsePost(id: string, fileName: string, withHtml: boolean) {
+  // Read md file as string
+  const fullPath = path.join(postsDir, fileName)
+  const fileContents = fs.readFileSync(fullPath, "utf8")
+
+  // Use matter to parse metadata
+  const matterResult = matter(fileContents)
+
+  const blogPost: BlogPost = {
     id,
     title: matterResult.data.title,
     description: matterResult.data.description,
@@ -85,24 +79,7 @@ export async function getPost(id: string) {
     imgAlt: matterResult.data.imgAlt,
     authors: matterResult.data.authors,
     date: matterResult.data.date,
-    contentHtml,
   }
 
-  return blogPostWithHtml
-}
-
-export function getPostCategories() {
-  const posts = getPosts()
-
-  let categories = [] as string[]
-
-  posts.forEach((post) => {
-    post.tags.forEach((tag) => {
-      if (!categories.includes(tag)) {
-        categories.push(tag)
-      }
-    })
-  })
-
-  return categories
+  return { blogPost, matterResult }
 }
