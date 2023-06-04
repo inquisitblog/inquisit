@@ -4,18 +4,19 @@ import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
 
-const postsDirectory = path.join(process.cwd(), "blogposts")
+const dataDir = path.join(process.cwd(), "data")
+const postsDir = path.join(dataDir, "blogposts")
 
 export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
   // Get blog filenames
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(postsDir)
 
   const allPostsData = fileNames.map((fileName) => {
     // Remove .md from name to get id
     const id = fileName.replace(/\.md$/, "")
 
     // Read md file as string
-    const fullPath = path.join(postsDirectory, fileName)
+    const fullPath = path.join(postsDir, fileName)
     const fileContents = fs.readFileSync(fullPath, "utf8")
 
     // Use matter to parse metadata
@@ -28,6 +29,7 @@ export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
       tags: matterResult.data.tags.split(", "),
       imgUrl: matterResult.data.imgUrl,
       imgAlt: matterResult.data.imgAlt,
+      authors: matterResult.data.authors,
       date: matterResult.data.date,
     }
 
@@ -61,7 +63,7 @@ export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
 }
 
 export async function getPost(id: string) {
-  const fullPath = path.join(postsDirectory, id + ".md")
+  const fullPath = path.join(postsDir, id + ".md")
   const fileContents = fs.readFileSync(fullPath, "utf8")
 
   // Use matter to parse metadata
@@ -81,6 +83,7 @@ export async function getPost(id: string) {
     tags: matterResult.data.tags.split(", "),
     imgUrl: matterResult.data.imgUrl,
     imgAlt: matterResult.data.imgAlt,
+    authors: matterResult.data.authors,
     date: matterResult.data.date,
     contentHtml,
   }
