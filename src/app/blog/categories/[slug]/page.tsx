@@ -1,36 +1,36 @@
 import * as config from "@/lib/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
-import { getPostCategories, getPosts } from "@/lib/posts"
+import { getPosts } from "@/lib/posts"
+import { getCategories, getCategory } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 
 type ParamsType = {
-  params: { slug: string }
+  params: { name: string; slug: string }
 }
 
 export async function generateStaticParams() {
-  const categories = getPostCategories()
+  const categories = getCategories()
 
-  return categories.map((tag) => ({
-    slug: tag,
+  return categories.map((category) => ({
+    slug: category.slug,
   }))
 }
 
 export async function generateMetadata({ params }: ParamsType) {
   const { slug } = params
 
-  const posts = getPosts(-1, slug)
-
-  if (!posts.length) {
+  const category = await getCategory(slug)
+  if (!category) {
     return {
       title: "Category not found",
     }
   }
 
-  const title = `${capitalise(slug)} - Articles`
-  const description = `${capitalise(slug)} Category of Blog Posts.`
+  const title = `${capitalise(category.name)} - Articles`
+  const description = `${capitalise(category.name)} Category of Blog Posts.`
   const imgUrl = ""
 
   const meta: Metadata = {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: ParamsType) {
     },
 
     twitter: {
-      title: `${capitalise(slug)} - Blog`,
+      title: `${capitalise(category.name)} - Blog`,
       description,
       images: [imgUrl],
       creator: config.twitterUsername,
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: ParamsType) {
 
     themeColor: "#FBEAD2",
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `/blog/categories/${slug}`,
       types: {
         "application/rss+xml": `${config.url}/rss.xml`,
       },
@@ -66,19 +66,23 @@ export async function generateMetadata({ params }: ParamsType) {
   return meta
 }
 
-const Category: FC<ParamsType> = ({ params }) => {
+// @ts-expect-error Async Server Component
+const Category: FC<ParamsType> = async ({ params }) => {
   const { slug } = params
+
+  const category = await getCategory(slug)
+  if (!category) {
+    return notFound()
+  }
 
   const posts = getPosts(-1, slug)
 
-  if (!posts.length) {
-    return notFound()
-  }
+  console.log(category)
 
   return (
     <main className="mx-auto max-w-screen-xl px-8 py-8 md:gap-6 md:py-16">
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
-        {capitalise(slug)}
+        {capitalise(category.name)}
       </h1>
       <BlogPostsGrid posts={posts} />
     </main>

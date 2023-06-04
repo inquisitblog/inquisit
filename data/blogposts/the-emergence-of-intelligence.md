@@ -1,7 +1,7 @@
 ---
 title: "The Emergence of Intelligence"
 description: "The question of intelligence is a deeply enigmatic one. It is a marvel of metacognition that we, beings of intellect, can question and reflect upon it at all. Yet, as a species, we have come to identify ourselves by our ability to think. But is this elusive ability unique to us? In the grand tapestry of life, how did this extraordinary ability emerge?"
-tags: "Evolutionary Biology, Cognitive Science"
+tags: "evolutionary-biology, cognitive-science"
 imgUrl: "https://iili.io/Hr05YMu.png"
 imgAlt: "Intelligence DALL.E Art"
 authors: [shan]

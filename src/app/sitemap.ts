@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next"
 import * as config from "@/lib/config"
-import { getPostCategories, getPosts } from "@/lib/posts"
+import { getPosts } from "@/lib/posts"
+import { getCategories } from "@/lib/categories"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "blog", "categories"]
@@ -17,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(post.date),
     }))
 
-  const categories = getPostCategories()
+  const categories = getCategories()
   const categoryUrls = categories.map((tag) => ({
     url: `${config.url}/blog/categories/${tag}`,
     lastModified: new Date(),

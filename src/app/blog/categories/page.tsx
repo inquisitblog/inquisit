@@ -1,5 +1,6 @@
 import * as config from "@/lib/config"
-import { getPostCategories, getPosts } from "@/lib/posts"
+import { getPosts } from "@/lib/posts"
+import { getCategories } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import Link from "next/link"
 import { FC } from "react"
@@ -29,11 +30,11 @@ export const metadata = {
 }
 
 const Category: FC = () => {
-  const categories = getPostCategories()
+  const categories = getCategories()
 
-  const tags = categories.map((tag) => ({
-    tag,
-    posts: getPosts(-1, tag),
+  const tags = categories.map((category) => ({
+    category,
+    posts: getPosts(-1, category.slug),
   }))
 
   return (
@@ -43,17 +44,17 @@ const Category: FC = () => {
       </h1>
       {tags.length ? (
         <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
-          {tags.map(({ tag, posts }, i) => (
+          {tags.map(({ category, posts }, i) => (
             <div
               className="flex flex-col gap-2 rounded-xl bg-light p-4 md:gap-4 md:p-8"
               key={i}
             >
               <h2 className="text-2xl font-semibold leading-7 xl:text-3xl">
-                {capitalise(tag)}
+                {capitalise(category.name)}
               </h2>
               <p className="text-lg font-medium xl:text-xl">{`${posts.length} posts`}</p>
               <Link
-                href={`/blog/${tag}`}
+                href={`/blog/categories/${category.slug}`}
                 className="flex w-fit items-center gap-2 rounded border-2 border-accent px-2 py-1 text-base font-semibold text-accent transition-all hover:bg-accent hover:text-light xl:text-lg"
               >
                 <span>Check them out</span>
