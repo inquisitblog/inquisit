@@ -18,6 +18,9 @@ module.exports = {
         lighter: "#FFF4E3",
         accent: "#2079CC",
       },
+      spacing: {
+        18: "4.5rem",
+      },
       gridTemplateColumns: {
         "1-2": "1.5fr 2fr",
       },
