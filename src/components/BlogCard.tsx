@@ -1,4 +1,3 @@
-import { formatDate } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import React, { FC } from "react"
@@ -55,8 +54,8 @@ const BlogCard: FC<BlogCardProps> = ({
           sizes="(min-width: 1280px) 580px, (min-width: 740px) 672px, 100vw"
         />
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
+      <div className="grid gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <BlogTags tags={tags} />
         </div>
         <h2
@@ -72,7 +71,7 @@ const BlogCard: FC<BlogCardProps> = ({
             type === "Regular" && "xl:text-lg"
           }`}
         >
-          {truncate(description, 500)}
+          {type === "Regular" ? description : truncate(description, 190)}
         </p>
         <Link
           href={`/blog/${slug}`}
