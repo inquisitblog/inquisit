@@ -4,7 +4,6 @@ import * as config from "@/lib/config"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavLink from "./NavLink"
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline"
 
 const Navbar = () => {
   const pathname = usePathname()
