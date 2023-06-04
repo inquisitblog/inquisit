@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "blog", "categories"]
   const pageUrls = pages.map((page) => ({
     url: `${config.url}/${page}`,
+    lastModified: new Date(),
   }))
 
   const posts = getPosts()
