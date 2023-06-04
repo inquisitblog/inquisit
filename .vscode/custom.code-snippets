@@ -1,0 +1,21 @@
+{
+  "Inquisit Blog Metadata": {
+    "scope": "markdown",
+    "prefix": "iq-blog",
+    "description": "Blog post metadata format",
+    "body": [
+      "---",
+      "",
+      "title: $1",
+      "description: $2",
+      "tags: ${3|cognitive-science,evolutionary-biology|}",
+      "imgUrl: $4",
+      "imgAlt: $5",
+      "authors: [${6|shan,neesh|}]",
+      "date: ${7:$CURRENT_DATE-$CURRENT_MONTH-$CURRENT_YEAR}",
+      "",
+      "---",
+      ""
+    ]
+  }
+}
