@@ -30,7 +30,7 @@ export default function Home() {
             {config.aboutBlog.map((paragraph, index) => (
               <p
                 key={index}
-                className= "text-left mt-6 text-base text-dark/80 md:text-lg xl:text-xl"
+                className="mt-6 text-left text-base text-dark/80 md:text-lg xl:text-xl"
               >
                 {paragraph}
               </p>
@@ -53,7 +53,9 @@ export default function Home() {
                     width={200}
                     className="w-36 flex-1 rounded-full"
                   />
-                  <p className={`${isOdd ? "md:text-center" : "md:text-center"}`}>
+                  <p
+                    className={`${isOdd ? "md:text-center" : "md:text-center"}`}
+                  >
                     {person.about}
                   </p>
                 </div>
