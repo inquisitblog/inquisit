@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React, { FC } from "react"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
+import BlogTags from "./BlogTags"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -15,7 +16,7 @@ type BlogCardProps = {
   date: string
   title: string
   description: string
-  tags: string[]
+  tags: Category[]
   slug: string
   priority?: boolean
 }
@@ -53,17 +54,7 @@ const BlogCard: FC<BlogCardProps> = ({
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          {tags.map((tag, i) => (
-            <Link
-              key={i}
-              className={`w-fit rounded border border-accent px-2 py-1 text-sm transition-all hover:bg-accent hover:text-light  ${
-                type === "Regular" && "xl:text-base"
-              }`}
-              href={`/blog/categories/${tag}`}
-            >
-              {tag}
-            </Link>
-          ))}
+          <BlogTags tags={tags} />
         </div>
         <h2
           className={`text-2xl font-semibold leading-7 ${

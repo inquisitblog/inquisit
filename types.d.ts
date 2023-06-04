@@ -2,7 +2,7 @@ type BlogPost = {
   id: string
   title: string
   description: string
-  tags: string[]
+  tags: Category[]
   imgUrl: string
   imgAlt: string
   authors: string[]

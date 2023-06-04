@@ -7,6 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Metadata } from "next"
 import ScrollToTop from "@/components/ScrollToTop"
+import BlogTags from "@/components/BlogTags"
 
 type ParamsType = { params: { slug: string } }
 
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: ParamsType) {
   const meta: Metadata = {
     title,
     description,
-    keywords: tags,
+    keywords: tags.map((tag) => tag.name),
 
     openGraph: {
       title,
@@ -91,15 +92,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
 
       <div className="flex flex-col gap-2 md:gap-4">
         <div className="flex items-center gap-2">
-          {tags.map((tag, i) => (
-            <Link
-              key={i}
-              className="w-fit rounded border border-accent px-2 py-1 text-base transition-all hover:bg-accent hover:text-light xl:text-lg"
-              href={`/blog/categories/${tag}`}
-            >
-              {tag}
-            </Link>
-          ))}
+          <BlogTags tags={tags} />
         </div>
         <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
           {title}
