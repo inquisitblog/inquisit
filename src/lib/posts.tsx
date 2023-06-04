@@ -74,7 +74,7 @@ function parsePost(id: string, fileName: string, withHtml: boolean) {
     id,
     title: matterResult.data.title,
     description: matterResult.data.description,
-    tags: matterResult.data.tags.split(", "),
+    tags: matterResult.data.tags,
     imgUrl: matterResult.data.imgUrl,
     imgAlt: matterResult.data.imgAlt,
     authors: matterResult.data.authors,
