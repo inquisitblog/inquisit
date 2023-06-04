@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { FC, PropsWithChildren } from "react"
 
-const verticalBlogGap = "gap-16 xl:gap-6"
+const verticalBlogGap = "gap-16 xl:gap-10"
 
 export const metadata = {
   title: "Home | Inquisit",
@@ -22,15 +22,15 @@ export default function Home() {
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
           Welcome to <span className="text-accent">{config.title}</span>
         </h1>
-        <p className="mt-4 text-xl text-dark/80 md:mt-8 md:text-2xl xl:text-3xl">
+        <p className="mt-4 text-xl text-dark/70 md:mt-8 md:text-2xl xl:text-3xl">
           {config.heroTagline}
         </p>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:gap-8 lg:grid-cols-2 xl:gap-16">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:gap-8 lg:grid-cols-2 xl:gap-10">
           <InfoCard title={{ text: "The", accent: "Blog" }}>
             {config.aboutBlog.map((paragraph, index) => (
               <p
                 key={index}
-                className="mt-6 text-left text-base text-dark/80 md:text-lg xl:text-xl"
+                className="mt-6 text-left text-base text-dark/70 md:text-lg xl:text-xl"
               >
                 {paragraph}
               </p>
@@ -41,7 +41,7 @@ export default function Home() {
               const isOdd = i % 2 !== 0
               return (
                 <div
-                  className={`mt-6 flex flex-col items-center gap-4 text-base text-dark/80 md:text-lg lg:mt-12 xl:text-xl ${
+                  className={`mt-6 flex flex-col items-center gap-4 text-base text-dark/70 md:text-lg lg:mt-12 xl:text-xl ${
                     isOdd ? "md:flex-row-reverse" : "md:flex-row"
                   }`}
                   key={i}
