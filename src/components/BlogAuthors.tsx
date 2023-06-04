@@ -6,14 +6,19 @@ import { displayNames, formatDate } from "@/lib/utils"
 type Props = {
   authors: Author[]
   date: string
+  className?: string
 }
 
-const BlogAuthors: FC<Props> = ({ authors, date }) => {
-  if (authors.length === 1) {
-    return <SingleAuthor author={authors[0]} date={date} />
-  } else {
-    return <MultipleAuthors authors={authors} date={date} />
-  }
+const BlogAuthors: FC<Props> = ({ authors, date, className }) => {
+  return (
+    <div className={className}>
+      {authors.length === 1 ? (
+        <SingleAuthor author={authors[0]} date={date} />
+      ) : (
+        <MultipleAuthors authors={authors} date={date} />
+      )}
+    </div>
+  )
 }
 
 const SingleAuthor: FC<{ author: Author; date: string }> = ({
