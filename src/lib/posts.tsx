@@ -4,6 +4,7 @@ import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
 import { getCategory } from "./categories"
+import { getAuthor } from "./authors"
 
 export const postsDir = path.join("data", "blogposts")
 
@@ -86,6 +87,16 @@ function parsePost(id: string, fileName: string, withHtml: boolean) {
     return category
   })
 
+  const authors: Author[] = matterResult.data.authors.map(
+    (authorSlug: string) => {
+      const author = getAuthor(authorSlug)
+      if (!author) {
+        throw new Error(`Invalid author in post: ${id}`)
+      }
+      return author
+    }
+  )
+
   const blogPost: BlogPost = {
     id,
     title: matterResult.data.title,
@@ -93,7 +104,7 @@ function parsePost(id: string, fileName: string, withHtml: boolean) {
     tags,
     imgUrl: matterResult.data.imgUrl,
     imgAlt: matterResult.data.imgAlt,
-    authors: matterResult.data.authors,
+    authors,
     date: matterResult.data.date,
   }
 

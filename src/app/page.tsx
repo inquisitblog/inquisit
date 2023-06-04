@@ -77,6 +77,7 @@ export default function Home() {
                 img={featuredPost.imgUrl}
                 alt={featuredPost.imgAlt}
                 date={featuredPost.date}
+                authors={featuredPost.authors}
                 title={featuredPost.title}
                 description={featuredPost.description}
                 tags={featuredPost.tags}
@@ -92,6 +93,7 @@ export default function Home() {
                   img={post.imgUrl}
                   alt={post.imgAlt}
                   date={post.date}
+                  authors={post.authors}
                   title={post.title}
                   description={post.description}
                   tags={post.tags}

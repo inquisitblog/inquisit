@@ -5,7 +5,7 @@ type BlogPost = {
   tags: Category[]
   imgUrl: string
   imgAlt: string
-  authors: string[]
+  authors: Author[]
   date: string
 }
 

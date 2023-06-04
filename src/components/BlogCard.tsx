@@ -4,6 +4,7 @@ import Link from "next/link"
 import React, { FC } from "react"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import BlogTags from "./BlogTags"
+import BlogAuthors from "./BlogAuthors"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -14,6 +15,7 @@ type BlogCardProps = {
   img: string
   alt: string
   date: string
+  authors: Author[]
   title: string
   description: string
   tags: Category[]
@@ -26,6 +28,7 @@ const BlogCard: FC<BlogCardProps> = ({
   img,
   alt,
   date,
+  authors,
   title,
   description,
   tags,
@@ -63,7 +66,7 @@ const BlogCard: FC<BlogCardProps> = ({
         >
           {title}
         </h2>
-        <p className="text-sm font-semibold xl:text-base">{formatDate(date)}</p>
+        <BlogAuthors authors={authors} date={date} />
         <p
           className={`text-base leading-relaxed ${
             type === "Regular" && "xl:text-lg"

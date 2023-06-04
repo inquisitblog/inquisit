@@ -17,6 +17,7 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
               img={post.imgUrl}
               alt={post.imgAlt}
               date={post.date}
+              authors={post.authors}
               title={post.title}
               description={post.description}
               tags={post.tags}

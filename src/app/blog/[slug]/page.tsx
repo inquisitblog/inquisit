@@ -8,6 +8,7 @@ import Image from "next/image"
 import { Metadata } from "next"
 import ScrollToTop from "@/components/ScrollToTop"
 import BlogTags from "@/components/BlogTags"
+import BlogAuthors from "@/components/BlogAuthors"
 
 type ParamsType = { params: { slug: string } }
 
@@ -27,7 +28,9 @@ export async function generateMetadata({ params }: ParamsType) {
     return { title: "Article not found" }
   }
 
-  const { date, title, description, tags, imgUrl } = await getPost(slug)
+  const { date, title, description, tags, authors, imgUrl } = await getPost(
+    slug
+  )
 
   const meta: Metadata = {
     title,
@@ -41,7 +44,7 @@ export async function generateMetadata({ params }: ParamsType) {
       url: config.url,
       siteName: config.title,
       type: "article",
-      authors: [config.author],
+      authors: authors.map((author) => author.name),
       publishedTime: new Date(date).toISOString(),
     },
 
@@ -73,7 +76,8 @@ const BlogArticle = async ({ params }: ParamsType) => {
     return notFound()
   }
 
-  const { date, title, tags, imgUrl, imgAlt, contentHtml } = await getPost(slug)
+  const { date, title, tags, imgUrl, imgAlt, authors, contentHtml } =
+    await getPost(slug)
 
   return (
     <main className="relative mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
@@ -97,7 +101,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
         <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
           {title}
         </h1>
-        <p className="text-lg font-semibold md:text-xl">{formatDate(date)}</p>
+        <BlogAuthors authors={authors} date={date} />
       </div>
 
       <article>
