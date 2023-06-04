@@ -4,7 +4,7 @@ description: "The question of intelligence is a deeply enigmatic one. It is a ma
 tags: [evolutionary-biology, cognitive-science]
 imgUrl: "https://iili.io/Hr05YMu.png"
 imgAlt: "Intelligence DALL.E Art"
-authors: [shan]
+authors: [darshan]
 date: "05-24-2023"
 ---
 
