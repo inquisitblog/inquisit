@@ -51,6 +51,7 @@ export default function Home() {
                     alt={`${person.name}'s image`}
                     height={200}
                     width={200}
+                    priority
                     className="w-36 flex-1 rounded-full"
                   />
                   <p
