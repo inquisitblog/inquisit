@@ -2,13 +2,13 @@
   {
     "name": "Darshan",
     "slug": "darshan",
-    "avatar": "shan.png",
+    "avatar": "/shan.png",
     "link": ""
   },
   {
     "name": "Neesh",
     "slug": "neesh",
-    "avatar": "neesh.png",
+    "avatar": "/neesh.png",
     "link": ""
   }
 ]
