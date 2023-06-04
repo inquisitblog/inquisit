@@ -5,27 +5,24 @@ process && process.env.NODE_ENV === "development"
 
 export const dev = inDevEnv
 
+// IGNORE ABOVE THIS
+
 type NavLink = { text: string; path: string; newWindow?: boolean }
 export const navLinks: NavLink[] = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/blog" },
   { text: "Categories", path: "/categories" },
-  // {
-  //   text: "Submit Post",
-  //   path: "https://r2fma1pv48c.typeform.com/to/wXC7QnZC",
-  //   newWindow: true,
-  // },
   // { text: "Feed", path: "/rss.xml", newWindow: true },
 ]
-
-// IGNORE ABOVE THIS
 
 // General Settings
 export const url = !dev
   ? "https://inquisit.vercel.app"
   : "http://localhost:3000"
-export const author = "Darshan" // Shows in the page's metadata
 export const logoText = "Inquisit" // Shows in the Navigation & Footer
+
+// NEEDS TO BE REMOVED
+export const author = "Darshan" // Shows in the page's metadata
 export const twitterUsername = "" // Shows in the page's metadata. Helps when the page is shared on Twitter. If it's empty no issues, it won't be shown.
 
 // Footer
