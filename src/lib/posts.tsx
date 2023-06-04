@@ -3,10 +3,14 @@ import path from "path"
 import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
+import { getCategory } from "./categories"
 
 export const postsDir = path.join("data", "blogposts")
 
-export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
+export function getPosts(
+  noOfPosts?: number,
+  categorySlug?: string
+): BlogPost[] {
   // Get blog filenames
   const fileNames = fs.readdirSync(postsDir)
 
@@ -31,11 +35,15 @@ export function getPosts(noOfPosts?: number, tag?: string): BlogPost[] {
   let allPosts = sortedPosts
 
   // If category is requested check category exists
-  if (tag) {
-    if (sortedPosts.find((post) => post.tags.includes(tag)) === undefined) {
+  if (categorySlug) {
+    const category = getCategory(categorySlug)
+
+    if (!category) {
       return []
     } else {
-      allPosts = sortedPosts.filter((post) => post.tags.includes(tag))
+      allPosts = sortedPosts.filter((post) => {
+        return post.tags.some((tag) => tag.slug === categorySlug)
+      })
     }
   }
 
@@ -70,11 +78,19 @@ function parsePost(id: string, fileName: string, withHtml: boolean) {
   // Use matter to parse metadata
   const matterResult = matter(fileContents)
 
+  const tags: Category[] = matterResult.data.tags.map((tag: string) => {
+    const category = getCategory(tag)
+    if (!category) {
+      throw new Error(`Invalid tag in post: ${id}`)
+    }
+    return category
+  })
+
   const blogPost: BlogPost = {
     id,
     title: matterResult.data.title,
     description: matterResult.data.description,
-    tags: matterResult.data.tags,
+    tags,
     imgUrl: matterResult.data.imgUrl,
     imgAlt: matterResult.data.imgAlt,
     authors: matterResult.data.authors,
