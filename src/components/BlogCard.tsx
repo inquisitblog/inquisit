@@ -37,8 +37,8 @@ const BlogCard: FC<BlogCardProps> = ({
 }) => {
   return (
     <div
-      className={`grid grid-cols-1 gap-6 ${
-        type === "Sidebar" && "gap-4 xl:grid-cols-1-2"
+      className={`flex flex-col gap-6 ${
+        type === "Sidebar" && "gap-4 xl:grid xl:grid-cols-1-2"
       }`}
     >
       <div
@@ -56,42 +56,45 @@ const BlogCard: FC<BlogCardProps> = ({
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        {type === "Regular" && (
-          <div className="flex flex-wrap items-center gap-2">
-            <BlogTags tags={tags} />
-          </div>
-        )}
-        <h2
-          className={`text-2xl font-semibold leading-7 ${
-            type === "Regular" && "xl:text-3xl"
-          }`}
-        >
-          {title}
-        </h2>
+      <div className="flex flex-grow flex-col justify-between gap-2">
+        <div className="grid gap-2">
+          {type === "Regular" && (
+            <div className="flex flex-wrap items-center gap-2">
+              <BlogTags tags={tags} />
+            </div>
+          )}
+          <h2
+            className={`text-2xl font-semibold leading-7 ${
+              type === "Regular" && "xl:text-3xl 2xl:text-4xl"
+            }`}
+          >
+            {title}
+          </h2>
 
-        <BlogAuthors
-          authors={authors}
-          date={date}
-          className={type === "Sidebar" ? "xl:hidden" : ""}
-        />
-        <p
-          className={`hidden font-medium text-dark xl:text-lg ${
-            type === "Sidebar" && "xl:block"
-          }`}
-        >
-          {formatDate(date)}
-        </p>
+          <BlogAuthors
+            authors={authors}
+            date={date}
+            className={type === "Sidebar" ? "xl:hidden" : ""}
+          />
+          <p
+            className={`hidden font-medium text-dark xl:text-lg ${
+              type === "Sidebar" && "xl:block"
+            }`}
+          >
+            {formatDate(date)}
+          </p>
 
-        <p className={`text-base leading-relaxed xl:text-lg`}>
-          {type === "Regular"
-            ? truncate(description, 380)
-            : truncate(description, 142)}
-        </p>
+          <p className={`text-base leading-relaxed xl:text-lg`}>
+            {type === "Regular"
+              ? truncate(description, 380)
+              : truncate(description, 142)}
+          </p>
+        </div>
+
         <Link
           href={`/blog/${slug}`}
           className={`flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70 ${
-            type === "Regular" && "xl:text-lg"
+            type === "Regular" && "xl:text-lg 2xl:text-xl"
           }`}
         >
           <span>Full article </span>

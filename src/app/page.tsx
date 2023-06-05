@@ -1,9 +1,9 @@
+import type { FC, PropsWithChildren } from "react"
 import * as config from "@/lib/config"
 import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
-import { FC, PropsWithChildren } from "react"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
@@ -11,8 +11,9 @@ export const metadata = {
   title: "Home | Inquisit",
 }
 
-export default function Home() {
-  const posts = getPosts().slice(0, 4)
+export default async function Home() {
+  const postsData = await getPosts()
+  const posts = postsData.slice(0, 4)
 
   const featuredPost = posts.shift()
 

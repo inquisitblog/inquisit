@@ -13,7 +13,7 @@ import BlogAuthors from "@/components/BlogAuthors"
 type ParamsType = { params: { slug: string } }
 
 export async function generateStaticParams() {
-  const posts = getPosts()
+  const posts = await getPosts()
 
   return posts.map((post) => ({
     slug: post.id,
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ParamsType) {
-  const posts = getPosts()
+  const posts = await getPosts()
   const { slug } = params
 
   if (!posts.find((post) => post.id === slug)) {
@@ -69,15 +69,16 @@ export async function generateMetadata({ params }: ParamsType) {
 }
 
 const BlogArticle = async ({ params }: ParamsType) => {
-  const posts = getPosts()
+  const posts = await getPosts()
   const { slug } = params
 
   if (!posts.find((post) => post.id === slug)) {
     return notFound()
   }
 
-  const { date, title, tags, imgUrl, imgAlt, authors, contentHtml } =
-    await getPost(slug)
+  const { date, title, tags, imgUrl, imgAlt, authors, content } = await getPost(
+    slug
+  )
 
   return (
     <main className="relative mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
@@ -104,12 +105,9 @@ const BlogArticle = async ({ params }: ParamsType) => {
         <BlogAuthors authors={authors} date={date} />
       </div>
 
-      <article>
-        {/* prose-quoteless is a custom class - tailwind.config.js */}
-        <section
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-          className="prose prose-base prose-quoteless md:prose-lg prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8"
-        />
+      {/* prose-quoteless is a custom class - tailwind.config.js */}
+      <article className="prose prose-base prose-quoteless md:prose-lg prose-headings:text-dark/80 prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8">
+        {content}
       </article>
       <BackToBlog />
       <ScrollToTop />

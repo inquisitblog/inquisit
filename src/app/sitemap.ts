@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next"
 import * as config from "@/lib/config"
-import { getPosts } from "@/lib/posts"
+// import { getPostIDs } from "@/lib/posts"
 import { getCategories } from "@/lib/categories"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,19 +10,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }))
 
-  const posts = getPosts()
-  const postUrls =
-    posts &&
-    posts.map((post) => ({
-      url: `${config.url}/posts/${post.id}`,
-      lastModified: new Date(post.date),
-    }))
+  // const postUrls = getPostIDs().map((post) => ({
+  //   url: `${config.url}/blog/${post.id}`,
+  //   lastModified: new Date(post.date),
+  // }))
 
   const categories = getCategories()
   const categoryUrls = categories.map((tag) => ({
-    url: `${config.url}/blog/categories/${tag}`,
+    url: `${config.url}/blog/categories/${tag.slug}`,
     lastModified: new Date(),
   }))
 
-  return [...pageUrls, ...postUrls, ...categoryUrls]
+  return [
+    ...pageUrls,
+    // ...postUrls,
+    ...categoryUrls,
+  ]
 }

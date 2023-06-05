@@ -1,22 +1,29 @@
-type BlogPost = {
+interface BlogPostMeta {
   id: string
   title: string
   description: string
-  tags: Category[]
+  tags: string[]
   imgUrl: string
   imgAlt: string
-  authors: Author[]
+  authors: string[]
   date: string
 }
 
-type BlogPostWithHtml = BlogPost & { contentHtml: string }
+interface BlogPostMetaParsed extends BlogPostMeta {
+  tags: Category[]
+  authors: Author[]
+}
 
-type Category = {
+interface BlogPostWithHtml extends BlogPostMetaParsed {
+  content: any
+}
+
+interface Category {
   name: string
   slug: string
 }
 
-type Author = {
+interface Author {
   name: string
   slug: string
   avatar: string

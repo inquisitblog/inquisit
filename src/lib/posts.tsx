@@ -1,28 +1,48 @@
 import fs from "fs"
 import path from "path"
-import matter from "gray-matter"
-import { remark } from "remark"
-import html from "remark-html"
+import { compileMDX } from "next-mdx-remote/rsc"
 import { getCategory } from "./categories"
 import { getAuthor } from "./authors"
+import matter from "gray-matter"
 
 export const postsDir = path.join("data", "blogposts")
 
-export function getPosts(
+export function getPostIDs(): { id: string; date: string }[] {
+  const fileNames = fs.readdirSync(postsDir)
+
+  const postsIDs = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.mdx$/, "")
+
+    const fullPath = path.join(postsDir, fileName)
+
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const { data } = matter(fileContents)
+
+    console.log(data.date)
+
+    return { id, date: data.date }
+  })
+
+  return postsIDs
+}
+
+export async function getPosts(
   noOfPosts?: number,
   categorySlug?: string
-): BlogPost[] {
+): Promise<BlogPostMetaParsed[]> {
   // Get blog filenames
   const fileNames = fs.readdirSync(postsDir)
 
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove .md from name to get id
-    const id = fileName.replace(/\.md$/, "")
+  const allPostsData = await Promise.all(
+    fileNames.map(async (fileName) => {
+      // Remove .mdx from name to get id
+      const id = fileName.replace(/\.mdx$/, "")
 
-    const { blogPost } = parsePost(id, fileName, false)
+      const { blogPost } = await parsePost(id, fileName)
 
-    return blogPost
-  })
+      return blogPost
+    })
+  )
 
   let limit
 
@@ -55,31 +75,29 @@ export function getPosts(
 }
 
 export async function getPost(id: string): Promise<BlogPostWithHtml> {
-  const { blogPost, matterResult } = await parsePost(id, id + ".md", true)
-
-  // Process md into html
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-  const contentHtml = processedContent.toString()
+  const { blogPost, content } = await parsePost(id, id + ".mdx")
 
   const blogPostWithHtml: BlogPostWithHtml = {
     ...blogPost,
-    contentHtml,
+    content,
   }
 
   return blogPostWithHtml
 }
 
-function parsePost(id: string, fileName: string, withHtml: boolean) {
+async function parsePost(id: string, fileName: string) {
   // Read md file as string
   const fullPath = path.join(postsDir, fileName)
   const fileContents = fs.readFileSync(fullPath, "utf8")
 
-  // Use matter to parse metadata
-  const matterResult = matter(fileContents)
+  const { frontmatter, content } = await compileMDX<BlogPostMeta>({
+    source: fileContents,
+    options: {
+      parseFrontmatter: true,
+    },
+  })
 
-  const tags: Category[] = matterResult.data.tags.map((tag: string) => {
+  const tags: Category[] = frontmatter.tags.map((tag: string) => {
     const category = getCategory(tag)
     if (!category) {
       throw new Error(`Invalid tag in post: ${id}`)
@@ -87,26 +105,24 @@ function parsePost(id: string, fileName: string, withHtml: boolean) {
     return category
   })
 
-  const authors: Author[] = matterResult.data.authors.map(
-    (authorSlug: string) => {
-      const author = getAuthor(authorSlug)
-      if (!author) {
-        throw new Error(`Invalid author in post: ${id}`)
-      }
-      return author
+  const authors: Author[] = frontmatter.authors.map((authorSlug: string) => {
+    const author = getAuthor(authorSlug)
+    if (!author) {
+      throw new Error(`Invalid author in post: ${id}`)
     }
-  )
+    return author
+  })
 
-  const blogPost: BlogPost = {
+  const blogPost: BlogPostMetaParsed = {
     id,
-    title: matterResult.data.title,
-    description: matterResult.data.description,
+    title: frontmatter.title,
+    description: frontmatter.description,
     tags,
-    imgUrl: matterResult.data.imgUrl,
-    imgAlt: matterResult.data.imgAlt,
+    imgUrl: frontmatter.imgUrl,
+    imgAlt: frontmatter.imgAlt,
     authors,
-    date: matterResult.data.date,
+    date: frontmatter.date,
   }
 
-  return { blogPost, matterResult }
+  return { blogPost, content }
 }

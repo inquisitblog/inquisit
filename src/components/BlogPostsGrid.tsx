@@ -2,7 +2,7 @@ import { FC } from "react"
 import BlogCard from "./BlogCard"
 
 type Props = {
-  posts: BlogPost[]
+  posts: BlogPostMetaParsed[]
 }
 
 const BlogPostsGrid: FC<Props> = ({ posts }) => {
