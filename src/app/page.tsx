@@ -1,9 +1,9 @@
+import type { FC, PropsWithChildren } from "react"
 import * as config from "@/lib/config"
 import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
-import { FC, PropsWithChildren } from "react"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
