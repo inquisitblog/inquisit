@@ -22,8 +22,8 @@ export const metadata = {
   },
 }
 
-const Blog = () => {
-  const posts = getPosts()
+const Blog = async () => {
+  const posts = await getPosts()
 
   return (
     <main id="blog" className="mx-auto max-w-screen-xl px-8 py-8 md:py-16">

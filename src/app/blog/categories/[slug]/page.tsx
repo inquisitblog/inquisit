@@ -75,7 +75,7 @@ const Category: FC<ParamsType> = async ({ params }) => {
     return notFound()
   }
 
-  const posts = getPosts(-1, category.slug)
+  const posts = await getPosts(-1, category.slug)
 
   return (
     <main className="mx-auto max-w-screen-xl px-8 py-8 md:gap-6 md:py-16">

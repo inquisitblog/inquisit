@@ -11,8 +11,9 @@ export const metadata = {
   title: "Home | Inquisit",
 }
 
-export default function Home() {
-  const posts = getPosts().slice(0, 4)
+export default async function Home() {
+  const postsData = await getPosts()
+  const posts = postsData.slice(0, 4)
 
   const featuredPost = posts.shift()
 

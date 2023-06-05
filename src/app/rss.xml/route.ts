@@ -3,7 +3,7 @@ import { getPosts } from "@/lib/posts"
 import { NextResponse } from "next/server"
 
 export async function GET() {
-  const posts = getPosts()
+  const posts = await getPosts()
 
   const xml = `
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
