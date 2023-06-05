@@ -1,6 +1,8 @@
 import fs from "fs"
 import path from "path"
 import { compileMDX } from "next-mdx-remote/rsc"
+// import rehypeSlug from "rehype-slug"
+// import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import { getCategory } from "./categories"
 import { getAuthor } from "./authors"
 import matter from "gray-matter"
@@ -94,6 +96,12 @@ async function parsePost(id: string, fileName: string) {
     source: fileContents,
     options: {
       parseFrontmatter: true,
+      // mdxOptions: {
+      //   rehypePlugins: [
+      //     rehypeSlug,
+      //     [rehypeAutolinkHeadings, { behavior: "wrap" }],
+      //   ],
+      // },
     },
   })
 
