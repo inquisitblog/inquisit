@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="text-dark">
+    <html lang="en" className="scroll-smooth text-dark">
       <body
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
       >
