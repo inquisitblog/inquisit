@@ -3,8 +3,28 @@ import path from "path"
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getCategory } from "./categories"
 import { getAuthor } from "./authors"
+import matter from "gray-matter"
 
 export const postsDir = path.join("data", "blogposts")
+
+export function getPostIDs(): { id: string; date: string }[] {
+  const fileNames = fs.readdirSync(postsDir)
+
+  const postsIDs = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.mdx$/, "")
+
+    const fullPath = path.join(postsDir, fileName)
+
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const { data } = matter(fileContents)
+
+    console.log(data.date)
+
+    return { id, date: data.date }
+  })
+
+  return postsIDs
+}
 
 export async function getPosts(
   noOfPosts?: number,
@@ -69,9 +89,6 @@ async function parsePost(id: string, fileName: string) {
   // Read md file as string
   const fullPath = path.join(postsDir, fileName)
   const fileContents = fs.readFileSync(fullPath, "utf8")
-
-  // Use matter to parse metadata
-  // const matterResult = matter(fileContents)
 
   const { frontmatter, content } = await compileMDX<BlogPostMeta>({
     source: fileContents,
