@@ -3,7 +3,6 @@ import { getPosts } from "@/lib/posts"
 import { getCategories } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import Link from "next/link"
-import { FC } from "react"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 const title = "Categories"
