@@ -1,7 +1,27 @@
 import { MetadataRoute } from "next"
 import * as config from "@/lib/config"
-import { getPosts } from "@/lib/posts"
+import { postsDir } from "@/lib/posts"
 import { getCategories } from "@/lib/categories"
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
+
+function getPostIDs(): { id: string; date: string }[] {
+  const fileNames = fs.readdirSync(postsDir)
+
+  const postsIDs = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.mdx$/, "")
+
+    const fullPath = path.join(postsDir, fileName)
+
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const matterResult = matter(fileContents)
+
+    return { id, date: matterResult.data.date }
+  })
+
+  return postsIDs
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "blog", "categories"]
@@ -10,13 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }))
 
-  const posts = getPosts()
-  const postUrls =
-    posts &&
-    posts.map((post) => ({
-      url: `${config.url}/posts/${post.id}`,
-      lastModified: new Date(post.date),
-    }))
+  const postUrls = getPostIDs().map((post) => ({
+    url: `${config.url}/posts/${post.id}`,
+    lastModified: new Date(post.date),
+  }))
 
   const categories = getCategories()
   const categoryUrls = categories.map((tag) => ({
