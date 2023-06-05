@@ -29,14 +29,16 @@ export const metadata = {
   },
 }
 
-const Category: FC = () => {
+export default async function Category() {
   const categories = getCategories()
 
-  const tags = categories.map((category) => ({
-    name: category.name,
-    slug: category.slug,
-    posts: getPosts(-1, category.slug),
-  }))
+  const tags = await Promise.all(
+    categories.map(async (category) => ({
+      name: category.name,
+      slug: category.slug,
+      posts: await getPosts(-1, category.slug),
+    }))
+  )
 
   return (
     <main className="mx-auto max-w-screen-xl px-8 py-8 md:py-16">
@@ -72,5 +74,3 @@ const Category: FC = () => {
     </main>
   )
 }
-
-export default Category
