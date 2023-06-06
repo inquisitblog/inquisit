@@ -1,19 +1,21 @@
 import { MetadataRoute } from "next"
 import * as config from "@/lib/config"
-// import { getPostIDs } from "@/lib/posts"
+import { getPosts } from "@/lib/posts"
 import { getCategories } from "@/lib/categories"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = ["", "blog", "categories"]
   const pageUrls = pages.map((page) => ({
     url: `${config.url}/${page}`,
     lastModified: new Date(),
   }))
 
-  // const postUrls = getPostIDs().map((post) => ({
-  //   url: `${config.url}/blog/${post.id}`,
-  //   lastModified: new Date(post.date),
-  // }))
+  const posts = await getPosts()
+  
+  const postUrls = posts.map((post) => ({
+    url: `${config.url}/blog/${post.id}`,
+    lastModified: new Date(post.date),
+  }))
 
   const categories = getCategories()
   const categoryUrls = categories.map((tag) => ({
@@ -21,9 +23,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }))
 
-  return [
-    ...pageUrls,
-    // ...postUrls,
-    ...categoryUrls,
-  ]
+  return [...pageUrls, ...postUrls, ...categoryUrls]
 }
