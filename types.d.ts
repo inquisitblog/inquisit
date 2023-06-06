@@ -15,7 +15,7 @@ interface BlogPostMetaParsed extends BlogPostMeta {
 }
 
 interface BlogPostWithHtml extends BlogPostMetaParsed {
-  content: any
+  content: ReactElement<any, string | JSXElementConstructor<any>>
 }
 
 interface Category {
