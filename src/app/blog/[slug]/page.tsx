@@ -9,6 +9,7 @@ import { Metadata } from "next"
 import ScrollToTop from "@/components/ScrollToTop"
 import BlogTags from "@/components/BlogTags"
 import BlogAuthors from "@/components/BlogAuthors"
+import BlogRenderer from "@/components/BlogRenderer"
 
 type ParamsType = { params: { slug: string } }
 
@@ -16,21 +17,20 @@ export async function generateStaticParams() {
   const posts = await getPosts()
 
   return posts.map((post) => ({
-    slug: post.id,
+    slug: post.slug,
   }))
 }
 
 export async function generateMetadata({ params }: ParamsType) {
-  const posts = await getPosts()
   const { slug } = params
 
-  if (!posts.find((post) => post.id === slug)) {
+  const post = getPost(slug)
+
+  if (!post) {
     return { title: "Article not found" }
   }
 
-  const { date, title, description, tags, authors, imgUrl } = await getPost(
-    slug
-  )
+  const { date, title, description, tags, authors, imgUrl } = post
 
   const meta: Metadata = {
     title,
@@ -69,16 +69,15 @@ export async function generateMetadata({ params }: ParamsType) {
 }
 
 const BlogArticle = async ({ params }: ParamsType) => {
-  const posts = await getPosts()
   const { slug } = params
 
-  if (!posts.find((post) => post.id === slug)) {
+  const post = await getPost(slug)
+
+  if (!post) {
     return notFound()
   }
 
-  const { date, title, tags, imgUrl, imgAlt, authors, content } = await getPost(
-    slug
-  )
+  const { date, title, tags, imgUrl, imgAlt, authors, content } = post
 
   return (
     <main className="relative mx-auto flex max-w-screen-xl flex-col gap-4 px-8 py-8 md:gap-8 md:py-16">
@@ -105,11 +104,9 @@ const BlogArticle = async ({ params }: ParamsType) => {
         <BlogAuthors authors={authors} date={date} />
       </div>
 
-      {/* prose-quoteless is a custom class - tailwind.config.js */}
-      <article className="prose prose-base prose-quoteless md:prose-lg prose-headings:text-dark/80 prose-a:text-accent focus-within:prose-a:text-accent hover:prose-a:opacity-70 prose-img:aspect-[4/3] prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8">
-        {content}
-      </article>
+      <BlogRenderer content={content} />
       <BackToBlog />
+
       <ScrollToTop />
     </main>
   )

@@ -2,7 +2,7 @@ import { FC } from "react"
 import BlogCard from "./BlogCard"
 
 type Props = {
-  posts: BlogPostMetaParsed[]
+  posts: BlogPost[]
 }
 
 const BlogPostsGrid: FC<Props> = ({ posts }) => {
@@ -12,7 +12,7 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
         <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
           {posts.map((post, i) => (
             <BlogCard
-              key={post.id}
+              key={post.slug}
               type="Regular"
               img={post.imgUrl}
               alt={post.imgAlt}
@@ -21,7 +21,7 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
               title={post.title}
               description={post.description}
               tags={post.tags}
-              slug={post.id}
+              slug={post.slug}
               // Prio image loading for the first 4 posts bcoz they will be above the fold
               priority={i < 4}
             />

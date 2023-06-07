@@ -17,23 +17,13 @@ export const metadata = {
   title: "Home | Inquisit",
 }
 
-export default async function Home() {
-  const postsData = await getPosts()
-  const posts = postsData.slice(0, 4)
+export default function Home() {
+  const posts = getPosts()
 
   const featuredPost = posts.shift()
 
-  const clPosts: Post[] = allPosts
-  const clCategories = allCategories
-  const clAuthors = allAuthors
-
   return (
     <>
-      <pre>
-        <code>
-          {JSON.stringify({ clPosts, clCategories, clAuthors }, null, 2)}
-        </code>
-      </pre>
       <main className="mx-auto max-w-screen-xl px-8 py-12 text-center md:py-24">
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
           Welcome to <span className="text-accent">{config.title}</span>
@@ -98,14 +88,14 @@ export default async function Home() {
                 title={featuredPost.title}
                 description={featuredPost.description}
                 tags={featuredPost.tags}
-                slug={featuredPost.id}
+                slug={featuredPost.slug}
                 priority
               />
             </div>
             <div className={`flex flex-col xl:w-1/2 ${verticalBlogGap}`}>
               {posts.map((post) => (
                 <BlogCard
-                  key={post.id}
+                  key={post.slug}
                   type="Sidebar"
                   img={post.imgUrl}
                   alt={post.imgAlt}
@@ -114,7 +104,7 @@ export default async function Home() {
                   title={post.title}
                   description={post.description}
                   tags={post.tags}
-                  slug={post.id}
+                  slug={post.slug}
                 />
               ))}
             </div>
