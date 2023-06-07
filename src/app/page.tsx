@@ -4,6 +4,12 @@ import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
+import {
+  Post,
+  allPosts,
+  allAuthors,
+  allCategories,
+} from "contentlayer/generated"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
@@ -17,8 +23,17 @@ export default async function Home() {
 
   const featuredPost = posts.shift()
 
+  const clPosts: Post[] = allPosts
+  const clCategories = allCategories
+  const clAuthors = allAuthors
+
   return (
     <>
+      <pre>
+        <code>
+          {JSON.stringify({ clPosts, clCategories, clAuthors }, null, 2)}
+        </code>
+      </pre>
       <main className="mx-auto max-w-screen-xl px-8 py-12 text-center md:py-24">
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
           Welcome to <span className="text-accent">{config.title}</span>
