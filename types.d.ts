@@ -1,23 +1,3 @@
-interface BlogPostMeta {
-  id: string
-  title: string
-  description: string
-  tags: string[]
-  imgUrl: string
-  imgAlt: string
-  authors: string[]
-  date: string
-}
-
-interface BlogPostMetaParsed extends BlogPostMeta {
-  tags: Category[]
-  authors: Author[]
-}
-
-interface BlogPostWithHtml extends BlogPostMetaParsed {
-  content: ReactElement<any, string | JSXElementConstructor<any>>
-}
-
 interface Category {
   name: string
   slug: string
@@ -28,4 +8,19 @@ interface Author {
   slug: string
   avatar: string
   link?: string
+}
+
+interface BlogPost {
+  slug: string
+  title: string
+  description: string
+  tags: Category[]
+  imgUrl: string
+  imgAlt: string
+  authors: Author[]
+  date: string
+}
+
+interface BlogPostWithHtml extends BlogPost {
+  content: string
 }
