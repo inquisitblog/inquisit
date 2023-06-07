@@ -1,11 +1,15 @@
-import authors from "@data/authors.json"
+import { Authors, allAuthors } from "contentlayer/generated"
 
-export function getAuthors(): Author[] {
-  return authors
-}
+export function singleAuthor(slug: string): Author | undefined {
+  const authors: Authors[] = allAuthors
 
-export function getAuthor(slug: string): Author | undefined {
-  const author = authors.find((author) => author.slug === slug)
+  const clAuthor = authors.find((author) => author.slug === slug)
 
-  return author
+  if (clAuthor) {
+    const { _id, _raw, type, ...author } = clAuthor
+
+    return author
+  } else {
+    return undefined
+  }
 }

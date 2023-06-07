@@ -4,7 +4,7 @@ import { compileMDX } from "next-mdx-remote/rsc"
 // import rehypeSlug from "rehype-slug"
 // import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import { getCategory } from "./categories"
-import { getAuthor } from "./authors"
+import { singleAuthor } from "./authors"
 import matter from "gray-matter"
 
 export const postsDir = path.join("data", "blogposts")
@@ -114,7 +114,7 @@ async function parsePost(id: string, fileName: string) {
   })
 
   const authors: Author[] = frontmatter.authors.map((authorSlug: string) => {
-    const author = getAuthor(authorSlug)
+    const author = singleAuthor(authorSlug)
     if (!author) {
       throw new Error(`Invalid author in post: ${id}`)
     }
