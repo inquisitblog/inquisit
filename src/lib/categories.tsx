@@ -1,11 +1,14 @@
-import categories from "@data/categories.json"
-
-export function getCategories(): Category[] {
-  return categories
-}
+import { Categories, allCategories } from "contentlayer/generated"
 
 export function getCategory(slug: string): Category | undefined {
-  const category = categories.find((category) => category.slug === slug)
+  const categories: Categories[] = allCategories
 
-  return category
+  const clCategory = categories.find((category) => category.slug === slug)
+
+  if (clCategory) {
+    const { _id, _raw, type, ...category } = clCategory
+    return category
+  } else {
+    return undefined
+  }
 }

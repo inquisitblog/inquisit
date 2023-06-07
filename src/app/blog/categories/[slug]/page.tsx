@@ -1,18 +1,19 @@
 import * as config from "@/lib/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
 import { getPosts } from "@/lib/posts"
-import { getCategories, getCategory } from "@/lib/categories"
+import { getCategory } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { allCategories } from "contentlayer/generated"
 
 type ParamsType = {
   params: { name: string; slug: string }
 }
 
 export async function generateStaticParams() {
-  const categories = getCategories()
+  const categories = allCategories
 
   return categories.map((category) => ({
     slug: category.slug,

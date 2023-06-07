@@ -1,9 +1,9 @@
 import * as config from "@/lib/config"
 import { getPosts } from "@/lib/posts"
-import { getCategories } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
+import { allCategories } from "contentlayer/generated"
 
 const title = "Categories"
 const description = "All categories of blog posts."
@@ -29,7 +29,7 @@ export const metadata = {
 }
 
 export default async function Category() {
-  const categories = getCategories()
+  const categories = allCategories
 
   const tags = await Promise.all(
     categories.map(async (category) => ({
