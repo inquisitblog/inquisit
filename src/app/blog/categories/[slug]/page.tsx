@@ -1,7 +1,7 @@
 import * as config from "@/lib/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
 import { getPosts } from "@/lib/posts"
-import { getCategory } from "@/lib/categories"
+import { singleCategory } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ParamsType) {
   const { slug } = params
 
-  const category = await getCategory(slug)
+  const category = await singleCategory(slug)
   if (!category) {
     return {
       title: "Category not found",
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: ParamsType) {
 const Category: FC<ParamsType> = async ({ params }) => {
   const { slug } = params
 
-  const category = await getCategory(slug)
+  const category = await singleCategory(slug)
   if (!category) {
     return notFound()
   }

@@ -1,6 +1,6 @@
 import { Categories, allCategories } from "contentlayer/generated"
 
-export function getCategory(slug: string): Category | undefined {
+export function singleCategory(slug: string): Category | undefined {
   const categories: Categories[] = allCategories
 
   const clCategory = categories.find((category) => category.slug === slug)
