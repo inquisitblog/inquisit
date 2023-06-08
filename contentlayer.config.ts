@@ -78,13 +78,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "nord",
-          // onVisitLine(node: any) {
-          //   // Allow empty lines
-          //   if (node.children.length === 0) {
-          //     node.children = [{ type: "text", value: " " }]
-          //   }
-          // },
+          theme: "monokai",
         },
       ],
     ],
