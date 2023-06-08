@@ -1,6 +1,6 @@
 import type { FC } from "react"
 import { useMDXComponent } from "next-contentlayer/hooks"
-import ExternalLink from "./ExternalLink"
+import ExternalLink from './mdx/ExternalLink'
 
 type Props = {
   content: string
