@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: ParamsType) {
   const { date, title, description, tags, authors, imgUrl } = post
 
   const meta: Metadata = {
-    title,
+    title: `${title} | Inquisit Blog`,
     description,
     keywords: tags.map((tag) => tag.name),
 
     openGraph: {
-      title,
+      title: `${title} | Inquisit Blog`,
       description,
       images: [imgUrl],
       url: config.url,

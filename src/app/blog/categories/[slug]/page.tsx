@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: ParamsType) {
     }
   }
 
-  const title = `${capitalise(category.name)} - Articles`
+  const title = `${capitalise(category.name)} - Blog Posts`
   const description = `${capitalise(category.name)} Category of Blog Posts.`
   const imgUrl = ""
 

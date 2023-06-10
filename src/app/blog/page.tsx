@@ -3,7 +3,7 @@ import { getPosts } from "@/lib/posts"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
 
 export const metadata = {
-  title: config.blogTitle,
+  title: "Blog",
   description: config.blogDescription,
   openGraph: {
     title: config.blogTitle,

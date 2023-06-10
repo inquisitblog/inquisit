@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { allCategories } from "contentlayer/generated"
 
-const title = "Categories"
+const title = "Blog Categories"
 const description = "All categories of blog posts."
 
 export const metadata = {
