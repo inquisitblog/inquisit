@@ -4,12 +4,6 @@ import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  Post,
-  allPosts,
-  allAuthors,
-  allCategories,
-} from "contentlayer/generated"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
