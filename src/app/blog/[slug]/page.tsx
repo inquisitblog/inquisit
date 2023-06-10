@@ -95,7 +95,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
       </div>
 
       <div className="flex flex-col gap-2 md:gap-4">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <BlogTags tags={tags} />
         </div>
         <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
