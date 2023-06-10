@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
 type DateStyle = Intl.DateTimeFormatOptions["dateStyle"]
 
 export function formatDate(
@@ -21,4 +24,8 @@ export function displayNames(names: string[]) {
   } else {
     return last
   }
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }
