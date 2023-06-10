@@ -50,8 +50,9 @@ export const people = [
   },
   {
     name: "Neesh",
+    // about: "Hey, I'm Neesh! Also still recovering from Sahyadri Separation Syndrome. Bringing my knack for killer UI/UX Design to life exploring the frustrating, yet fulfilling world of Web Development.",
     about:
-      "Neesh Neesh Neesh Neesh, consectetur adipiscing elit. Nullam interdum eleifend nibh, eget gravida urna bibendum ac. Fusce id volutpat justo. ",
+      "Hey, I'm Neesh! Also still recovering from Sahyadri Separation Syndrome. Bringing my knack for killer design to life exploring the frustrating, yet fulfilling world that is learning to code.",
     avatar: "neesh-edge.png",
   },
 ]
