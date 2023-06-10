@@ -1,12 +1,13 @@
 import type { FC } from "react"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import ExternalLink from "./mdx/ExternalLink"
+import H2 from "./mdx/H2"
 
 type Props = {
   content: string
 }
 
-const components = { ExternalLink }
+const components = { h2: H2, ExternalLink }
 
 const BlogRenderer: FC<Props> = ({ content }) => {
   const MDXComponent = useMDXComponent(content)
