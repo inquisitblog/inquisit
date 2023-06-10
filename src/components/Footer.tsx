@@ -4,7 +4,7 @@ import NavLink from "./NavLink"
 function Footer() {
   return (
     <footer className="bg-light py-8">
-      <div className="mx-auto max-w-screen-xl px-8 text-lg">
+      <div className="mx-auto max-w-screen-2xl px-8 text-lg">
         <div className="flex flex-col justify-between gap-12 text-center md:flex-row md:gap-0 md:text-start">
           <div className="flex flex-col gap-2">
             <p className="text-xl font-[600]">{config.logoText}</p>

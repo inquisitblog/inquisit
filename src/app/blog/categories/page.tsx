@@ -40,7 +40,7 @@ export default async function Category() {
   )
 
   return (
-    <main className="mx-auto max-w-screen-xl px-8 py-8 md:py-16">
+    <main className="mx-auto max-w-screen-2xl px-8 py-8 md:py-16">
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
         Categories
       </h1>
