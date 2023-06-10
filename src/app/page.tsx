@@ -26,7 +26,7 @@ export default function Home() {
           {config.heroTagline}
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:gap-8 lg:grid-cols-2 xl:gap-10">
-          <InfoCard title={{ text: "The", accent: "Blog" }}>
+          <InfoCard title={{ text: "The Blog", accent: "" }}>
             {config.aboutBlog.map((paragraph, index) => (
               <p
                 key={index}
@@ -36,7 +36,7 @@ export default function Home() {
               </p>
             ))}
           </InfoCard>
-          <InfoCard title={{ text: "The", accent: "People" }}>
+          <InfoCard title={{ text: "The People", accent: "" }}>
             {config.people.map((person, i) => {
               const isOdd = i % 2 !== 0
               return (

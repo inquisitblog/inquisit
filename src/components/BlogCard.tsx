@@ -37,9 +37,9 @@ const BlogCard: FC<BlogCardProps> = ({
 }) => {
   return (
     <div
-      className={`flex flex-col gap-6 ${
+      className={`flex flex-col gap-6 rounded-xl bg-light p-4 md:gap-4 md:p-6 ${
         type === "Sidebar" && "gap-4 xl:grid xl:grid-cols-1-2"
-      }`}
+      } hover:shadow-md hover:-translate-y-1 transition-all duration-100`}
     >
       <div
         className={`relative aspect-[4/3] w-full ${
