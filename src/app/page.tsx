@@ -41,7 +41,7 @@ export default function Home() {
               const isOdd = i % 2 !== 0
               return (
                 <div
-                  className={`mt-6 flex flex-col items-center gap-4 text-base text-dark/70 md:text-lg lg:mt-12 xl:text-xl ${
+                  className={`mt-6 flex flex-col items-center gap-4 text-base text-dark/70 md:text-lg xl:text-xl ${
                     isOdd ? "md:flex-row-reverse" : "md:flex-row"
                   }`}
                   key={i}
@@ -52,7 +52,7 @@ export default function Home() {
                     height={200}
                     width={200}
                     priority
-                    className="w-36 flex-1 rounded-full"
+                    className="w-28 flex-1 rounded-full md:w-36"
                   />
                   <p
                     className={`${isOdd ? "md:text-center" : "md:text-center"}`}
