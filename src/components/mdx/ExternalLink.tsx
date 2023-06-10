@@ -11,6 +11,7 @@ const ExternalLink: FC<Props> = ({ text, url }) => {
   return (
     <a
       href={url.toString()}
+      target="_blank"
       className="inline-flex w-fit items-center gap-2 px-1 no-underline"
     >
       <span>{text}</span>
