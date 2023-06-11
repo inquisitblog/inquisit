@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import BlogTags from "./BlogTags"
 import BlogAuthors from "./BlogAuthors"
-import { cardHoverClasses, cn, formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -39,7 +39,7 @@ const BlogCard: FC<BlogCardProps> = ({
     <div
       className={cn(
         "flex flex-col gap-6 overflow-hidden rounded-xl bg-light",
-        cardHoverClasses,
+        "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg", // card hover
         {
           "gap-4 xl:grid xl:grid-cols-1-2": type === "Sidebar",
         }

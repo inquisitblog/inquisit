@@ -4,7 +4,7 @@ import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
-import { cardHoverClasses, cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
@@ -125,7 +125,7 @@ const InfoCard: FC<
     <div
       className={cn(
         "rounded-xl bg-light px-4 py-6 lg:px-8 lg:py-10",
-        cardHoverClasses
+        "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg" // card hover
       )}
     >
       <h2 className="text-xl font-semibold md:text-2xl xl:text-3xl">
