@@ -103,9 +103,9 @@ const BlogCard: FC<BlogCardProps> = ({
         <Link
           href={`/blog/${slug}`}
           className={cn(
-            "flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70",
+            "flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70 xl:text-lg",
             {
-              "xl:text-lg 2xl:text-xl": type === "Regular",
+              "2xl:text-xl": type === "Regular",
             }
           )}
         >
