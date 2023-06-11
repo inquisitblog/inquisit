@@ -39,14 +39,14 @@ const BlogCard: FC<BlogCardProps> = ({
     <div
       className={cn(
         "flex flex-col gap-6 overflow-hidden rounded-xl bg-light",
-        "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg", // card hover
+        "h-full shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg", // card hover
         {
           "gap-4 xl:grid xl:grid-cols-1-2": type === "Sidebar",
         }
       )}
     >
       <div
-        className={cn("relative aspect-[4/3] w-full", {
+        className={cn("relative aspect-[4/3] h-full w-full", {
           "xl:aspect-square": type === "Sidebar",
         })}
       >
