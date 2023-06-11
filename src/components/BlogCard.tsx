@@ -56,7 +56,7 @@ const BlogCard: FC<BlogCardProps> = ({
         />
       </div>
 
-      <div className="flex flex-grow flex-col justify-between gap-2">
+      <div className="flex flex-grow flex-col justify-between gap-4">
         <div className="grid gap-2">
           {type === "Regular" && (
             <div className="flex flex-wrap items-center gap-2">
