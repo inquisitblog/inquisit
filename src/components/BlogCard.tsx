@@ -69,7 +69,7 @@ const BlogCard: FC<BlogCardProps> = ({
           }
         )}
       >
-        <div className="grid gap-2">
+        <div className="grid gap-3">
           {type === "Regular" && (
             <div className="flex flex-wrap items-center gap-2">
               <BlogTags tags={tags} />
