@@ -11,7 +11,7 @@ type NavLink = { text: string; path: string; newWindow?: boolean }
 export const navLinks: NavLink[] = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/blog" },
-  { text: "Categories", path: "/categories" },
+  { text: "Categories", path: "/blog/categories" },
   // { text: "Feed", path: "/rss.xml", newWindow: true },
 ]
 
