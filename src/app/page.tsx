@@ -13,7 +13,7 @@ export const metadata = {
 }
 
 export default function Home() {
-  const posts = getPosts()
+  const posts = getPosts(4)
 
   const featuredPost = posts.shift()
 
