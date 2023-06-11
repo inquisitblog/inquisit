@@ -9,7 +9,7 @@ const Navbar = () => {
   const pathname = usePathname()
 
   return (
-    <nav className="sticky top-0 z-10 bg-light py-4 shadow-lg shadow-stone-900/5 md:py-8">
+    <nav className="sticky top-0 z-10 bg-light py-4 shadow-xl shadow-dark/5 md:py-8">
       <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-4 px-8 md:flex-row md:gap-8">
         <Link
           href="/"

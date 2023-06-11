@@ -31,4 +31,4 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const cardHoverClasses =
-  "transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md"
+  "transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg shadow-md shadow-dark/5"
