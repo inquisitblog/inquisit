@@ -29,3 +29,6 @@ export function displayNames(names: string[]) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const cardHoverClasses =
+  "transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md"

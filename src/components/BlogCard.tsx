@@ -1,10 +1,10 @@
+import type { FC } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import React, { FC } from "react"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import BlogTags from "./BlogTags"
 import BlogAuthors from "./BlogAuthors"
-import { cn, formatDate } from "@/lib/utils"
+import { cardHoverClasses, cn, formatDate } from "@/lib/utils"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -37,9 +37,13 @@ const BlogCard: FC<BlogCardProps> = ({
 }) => {
   return (
     <div
-      className={cn("flex flex-col gap-6", {
-        "gap-4 xl:grid xl:grid-cols-1-2": type === "Sidebar",
-      })}
+      className={cn(
+        "flex flex-col gap-6 overflow-hidden rounded-xl bg-light",
+        cardHoverClasses,
+        {
+          "gap-4 xl:grid xl:grid-cols-1-2": type === "Sidebar",
+        }
+      )}
     >
       <div
         className={cn("relative aspect-[4/3] w-full", {
@@ -49,14 +53,19 @@ const BlogCard: FC<BlogCardProps> = ({
         <Image
           src={img}
           alt={alt}
-          className="rounded-xl object-cover"
+          className="object-cover"
           fill
           priority={priority}
           sizes="(min-width: 1280px) 580px, (min-width: 740px) 672px, 100vw"
         />
       </div>
 
-      <div className="flex flex-grow flex-col justify-between gap-4">
+      <div
+        className={cn("flex flex-grow flex-col justify-between gap-4", {
+          "px-6 pb-6": type === "Regular",
+          "py-4 pr-4": type === "Sidebar",
+        })}
+      >
         <div className="grid gap-2">
           {type === "Regular" && (
             <div className="flex flex-wrap items-center gap-2">

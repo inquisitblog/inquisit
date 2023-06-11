@@ -4,7 +4,7 @@ import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { cardHoverClasses, cn } from "@/lib/utils"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
@@ -122,7 +122,12 @@ const InfoCard: FC<
   PropsWithChildren<{ title: { text: string; accent: string } }>
 > = ({ title, children }) => {
   return (
-    <div className="rounded-xl bg-light px-4 py-6 lg:px-8 lg:py-10">
+    <div
+      className={cn(
+        "rounded-xl bg-light px-4 py-6 lg:px-8 lg:py-10",
+        cardHoverClasses
+      )}
+    >
       <h2 className="text-xl font-semibold md:text-2xl xl:text-3xl">
         {title.text} <span className="text-accent">{title.accent}</span>
       </h2>
