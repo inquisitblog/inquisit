@@ -23,7 +23,7 @@ export default function Home() {
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
           Welcome to <span className="text-accent">{config.title}</span>
         </h1>
-        <p className="mt-4 text-xl text-dark/70 md:mt-8 md:text-2xl xl:text-3xl">
+        <p className="mx-auto mt-4 max-w-[60ch] text-xl text-dark/70 md:mt-8 md:text-2xl xl:text-3xl">
           {config.heroTagline}
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:gap-8 lg:grid-cols-2 xl:gap-10">
