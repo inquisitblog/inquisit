@@ -62,10 +62,12 @@ const BlogCard: FC<BlogCardProps> = ({
       </div>
 
       <div
-        className={cn("flex flex-grow flex-col justify-between gap-4", {
-          "px-6 pb-6": type === "Regular",
-          "py-4 pr-4": type === "Sidebar",
-        })}
+        className={cn(
+          "flex flex-grow flex-col justify-between gap-4 px-4 pb-4 md:px-6 md:pb-6",
+          {
+            "xl:p-0 xl:py-4 xl:pr-4 ": type === "Sidebar",
+          }
+        )}
       >
         <div className="grid gap-2">
           {type === "Regular" && (
