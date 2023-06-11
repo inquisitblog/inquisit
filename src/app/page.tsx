@@ -4,6 +4,7 @@ import BlogCard from "@/components/BlogCard"
 import { getPosts } from "@/lib/posts"
 import Image from "next/image"
 import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
@@ -41,9 +42,13 @@ export default function Home() {
               const isOdd = i % 2 !== 0
               return (
                 <div
-                  className={`mt-6 flex flex-col items-center gap-4 text-base text-dark/70 md:text-lg xl:text-xl ${
-                    isOdd ? "md:flex-row-reverse" : "md:flex-row"
-                  }`}
+                  className={cn(
+                    "mt-6 flex flex-col items-center gap-4 text-base text-dark/70 md:text-lg xl:text-xl",
+                    {
+                      "md:flex-row-reverse": isOdd,
+                      "md:flex-row": !isOdd,
+                    }
+                  )}
                   key={i}
                 >
                   <Image
@@ -54,11 +59,7 @@ export default function Home() {
                     priority
                     className="w-28 flex-1 rounded-full md:w-36"
                   />
-                  <p
-                    className={`${isOdd ? "md:text-center" : "md:text-center"}`}
-                  >
-                    {person.about}
-                  </p>
+                  <p className="md:text-center">{person.about}</p>
                 </div>
               )
             })}

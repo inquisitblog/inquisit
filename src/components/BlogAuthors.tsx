@@ -1,7 +1,7 @@
 import type { FC } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { displayNames, formatDate } from "@/lib/utils"
+import { cn, displayNames, formatDate } from "@/lib/utils"
 
 type Props = {
   authors: Author[]
@@ -72,9 +72,9 @@ const MultipleAuthors: FC<{ authors: Author[]; date: string }> = ({
             alt={`Avatar of ${author.name}`}
             width={72}
             height={72}
-            className={`aspect-square w-12 rounded-full shadow-lg xl:w-18 ${
-              i !== 0 && "-ml-8"
-            }`}
+            className={cn("aspect-square w-12 rounded-full shadow-lg xl:w-18", {
+              "-ml-8": i !== 0,
+            })}
           />
         ))}
       </div>

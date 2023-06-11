@@ -4,7 +4,7 @@ import React, { FC } from "react"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import BlogTags from "./BlogTags"
 import BlogAuthors from "./BlogAuthors"
-import { formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 
 function truncate(str: string, n: number) {
   return str.length > n ? str.slice(0, n - 1) + "..." : str
@@ -37,14 +37,14 @@ const BlogCard: FC<BlogCardProps> = ({
 }) => {
   return (
     <div
-      className={`flex flex-col gap-6 ${
-        type === "Sidebar" && "gap-4 xl:grid xl:grid-cols-1-2"
-      }`}
+      className={cn("flex flex-col gap-6", {
+        "gap-4 xl:grid xl:grid-cols-1-2": type === "Sidebar",
+      })}
     >
       <div
-        className={`relative aspect-[4/3] w-full ${
-          type === "Sidebar" && "xl:aspect-square"
-        }`}
+        className={cn("relative aspect-[4/3] w-full", {
+          "xl:aspect-square": type === "Sidebar",
+        })}
       >
         <Image
           src={img}
@@ -64,9 +64,9 @@ const BlogCard: FC<BlogCardProps> = ({
             </div>
           )}
           <h2
-            className={`text-2xl font-semibold leading-7 ${
-              type === "Regular" && "xl:text-3xl 2xl:text-4xl"
-            }`}
+            className={cn("text-2xl font-semibold leading-7", {
+              "xl:text-3xl 2xl:text-4xl": type === "Regular",
+            })}
           >
             {title}
           </h2>
@@ -77,14 +77,14 @@ const BlogCard: FC<BlogCardProps> = ({
             className={type === "Sidebar" ? "xl:hidden" : ""}
           />
           <p
-            className={`hidden font-medium text-dark xl:text-lg ${
-              type === "Sidebar" && "xl:block"
-            }`}
+            className={cn("hidden font-medium text-dark xl:text-lg", {
+              "xl:block": type === "Sidebar",
+            })}
           >
             {formatDate(date)}
           </p>
 
-          <p className={`text-base leading-relaxed xl:text-lg`}>
+          <p className="text-base leading-relaxed xl:text-lg">
             {type === "Regular"
               ? truncate(description, 380)
               : truncate(description, 142)}
@@ -93,9 +93,12 @@ const BlogCard: FC<BlogCardProps> = ({
 
         <Link
           href={`/blog/${slug}`}
-          className={`flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70 ${
-            type === "Regular" && "xl:text-lg 2xl:text-xl"
-          }`}
+          className={cn(
+            "flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70",
+            {
+              "xl:text-lg 2xl:text-xl": type === "Regular",
+            }
+          )}
         >
           <span>Full article </span>
           <span className="w-4">
