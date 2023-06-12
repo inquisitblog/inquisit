@@ -2,10 +2,8 @@
 import NavLink from "@/components/NavLink"
 import { navLinks } from "@/lib/config"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
 
 export default function NotFound() {
-  const pathname = usePathname()
   return (
     <main className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between px-8 pt-8 text-center lg:pt-16">
       <section>
@@ -23,7 +21,6 @@ export default function NotFound() {
                 text={text}
                 path={path}
                 key={index}
-                pathname={pathname}
                 active
                 newWindow={newWindow}
               />
