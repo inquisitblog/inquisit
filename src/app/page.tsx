@@ -84,7 +84,6 @@ export default function Home() {
                 description={featuredPost.description}
                 tags={featuredPost.tags}
                 slug={featuredPost.slug}
-                priority
               />
             </div>
             <div className={`flex flex-col xl:w-1/2 ${verticalBlogGap}`}>
