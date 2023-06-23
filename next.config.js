@@ -5,13 +5,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: [
-      "placebeard.it",
-      "imgur.com",
-      "i.imgur.com",
-      "cdn.tuk.dev",
-      "iili.io",
-    ],
+    // domains: [],
+    formats: ["image/avif", "image/webp"],
   },
   redirects: async () => [
     {
