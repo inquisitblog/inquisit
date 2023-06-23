@@ -34,7 +34,7 @@ const SingleAuthor: FC<{ author: Author; date: string }> = ({
         width={72}
         height={72}
         sizes="48px, (min-width: 1280px) 72px"
-        className="aspect-square w-12 rounded-full xl:w-18"
+        className="aspect-square w-12 rounded-full object-cover xl:w-18"
       />
       <div className="grid xl:gap-1">
         <p className="text-lg font-semibold xl:text-xl">By {author.name}</p>
