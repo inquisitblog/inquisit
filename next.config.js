@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    // domains: [],
+    domains: ["iili.io"],
     formats: ["image/avif", "image/webp"],
   },
   redirects: async () => [
