@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between px-8 pt-8 text-center lg:pt-16">
+    <main className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between px-8 pt-8 text-center sm:px-12 md:px-16 lg:px-20 lg:pt-16 xl:px-0">
       <section>
         <h1 className="mb-2 text-2xl font-bold text-accent md:mb-4 md:text-3xl xl:text-4xl">
           404 - Not Found
