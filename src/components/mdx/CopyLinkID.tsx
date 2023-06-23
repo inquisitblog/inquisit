@@ -29,6 +29,7 @@ export const CopyLinkID: FC<{ id?: string }> = ({ id }) => {
       <div className="arrow-down absolute -top-2 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 md:-top-3" />
       <button
         className="relative aspect-square w-5 transition-opacity before:absolute hover:opacity-80 md:w-7"
+        aria-label="Copy Link"
         onClick={handleClick}
       >
         <LinkIcon strokeWidth={2.5} />
