@@ -3,6 +3,8 @@ import "./globals.css"
 import { Poppins } from "next/font/google"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import GoogleAnalytics from "@/components/GoogleAnalytics"
+import CookieBanner from "@/components/CookieBanner"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -48,11 +50,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-p-36 scroll-smooth text-dark">
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-55S87ZRETM" />
       <body
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
       >
         <Navbar />
         {children}
+        <CookieBanner />
         <Footer />
       </body>
     </html>
