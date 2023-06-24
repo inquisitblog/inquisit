@@ -24,6 +24,15 @@ module.exports = {
       gridTemplateColumns: {
         "1-2": "1.5fr 2fr",
       },
+      keyframes: {
+        nav: {
+          from: { "clip-path": "inset(0 0 100% 0)" },
+          to: { "clip-path": "inset(0 0 0 0)" },
+        },
+      },
+      animation: {
+        "nav-show": "nav 1000ms cubic-bezier(0.4, 0, 0.2, 1)",
+      },
       typography: (theme) => ({
         quoteless: {
           css: {
