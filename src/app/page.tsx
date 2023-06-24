@@ -31,7 +31,7 @@ export default function Home() {
             {config.aboutBlog.map((paragraph, index) => (
               <p
                 key={index}
-                className="mt-6 text-left text-base text-dark/70 md:text-lg xl:text-xl"
+                className="mt-6 text-left text-lg text-dark/70 md:text-xl"
               >
                 {paragraph}
               </p>
@@ -43,7 +43,7 @@ export default function Home() {
               return (
                 <div
                   className={cn(
-                    "mt-6 flex flex-col items-center gap-4 text-base text-dark/70 md:text-lg xl:text-xl",
+                    "mt-6 flex flex-col items-center gap-4 text-lg text-dark/70 md:text-xl",
                     {
                       "md:flex-row-reverse": isOdd,
                       "md:flex-row": !isOdd,
@@ -126,11 +126,11 @@ const InfoCard: FC<
   return (
     <div
       className={cn(
-        "rounded-xl bg-light px-4 py-6 lg:px-8 lg:py-10",
+        "rounded-xl bg-light px-8 py-6 lg:px-12 lg:py-10",
         "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg" // card hover
       )}
     >
-      <h2 className="text-xl font-semibold md:text-2xl xl:text-3xl">
+      <h2 className="text-2xl font-semibold md:text-3xl">
         {title.text} <span className="text-accent">{title.accent}</span>
       </h2>
       {children}
