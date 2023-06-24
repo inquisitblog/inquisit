@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="mx-auto max-w-screen-2xl px-8 py-12 text-center sm:px-12 md:px-16 md:py-20 lg:px-20 xl:px-0">
+      <main className="mx-auto max-w-screen-2xl px-8 py-12 text-center md:px-16 md:py-20">
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
           Welcome to <span className="text-accent">{config.title}</span>
         </h1>
@@ -69,7 +69,7 @@ export default function Home() {
 
       <section
         id="blog"
-        className="mx-auto max-w-screen-2xl px-8 pb-16 pt-8 sm:px-12 md:px-16 lg:px-20 xl:px-0"
+        className="mx-auto max-w-screen-2xl px-8 pb-16 pt-8 md:px-16"
       >
         <h3 className="text-5xl font-bold text-accent">Latest posts</h3>
         {featuredPost && posts ? (

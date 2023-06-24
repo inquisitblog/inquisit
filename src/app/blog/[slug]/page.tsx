@@ -80,7 +80,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
   const { date, title, tags, imgUrl, imgAlt, authors, content } = post
 
   return (
-    <main className="xl:px-0py-8 relative mx-auto flex max-w-screen-2xl flex-col gap-4 px-8 sm:px-12 md:gap-8 md:px-16 md:py-16 lg:px-20">
+    <main className="relative mx-auto flex max-w-screen-2xl flex-col gap-4 px-8 py-8 md:gap-8 md:px-16 md:py-16">
       <BackToBlog />
       <div className="relative aspect-[4/3] max-w-3xl">
         <Image

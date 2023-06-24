@@ -28,7 +28,7 @@ const Blog = async () => {
   return (
     <main
       id="blog"
-      className="mx-auto max-w-screen-2xl px-8 py-8 sm:px-12 md:px-16 md:py-16 lg:px-20 xl:px-0"
+      className="mx-auto max-w-screen-2xl px-8 py-8 md:px-16 md:py-16"
     >
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
         Blog Posts
