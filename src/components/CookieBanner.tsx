@@ -1,12 +1,10 @@
 "use client"
 
-import Link from "next/link"
-
 import { getLocalStorage, setLocalStorage } from "@/lib/storageHelper"
 import { useState, useEffect } from "react"
 
 export default function CookieBanner() {
-  const [cookieConsent, setCookieConsent] = useState(false)
+  const [cookieConsent, setCookieConsent] = useState<boolean>(false)
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null)
@@ -22,23 +20,15 @@ export default function CookieBanner() {
     })
 
     setLocalStorage("cookie_consent", cookieConsent)
-
-    //For Testing
-    console.log("Cookie Consent: ", cookieConsent)
   }, [cookieConsent])
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0
-                        mx-auto my-10  ${
-                          cookieConsent != null ? "hidden" : "flex"
-                        }  max-w-max 
-                        flex-col items-center justify-between gap-4 rounded-lg bg-lighter px-3 py-3 shadow  
-                         sm:flex-row md:max-w-screen-sm md:px-4`}
+      className={`fixed bottom-0 left-0 right-0 mx-auto my-10 flex max-w-max flex-col items-center justify-between gap-4 rounded-lg bg-lighter px-3 py-3 text-sm shadow-xl shadow-dark/10 sm:flex-row md:max-w-screen-sm md:px-4 lg:text-base 2xl:text-lg ${
+        cookieConsent === null ? "flex" : "hidden"
+      }`}
     >
-      <div className="text-center">
-        <p>We use Cookies on our site.</p>
-      </div>
+      <p>We use Cookies on our site.</p>
 
       <div className="flex gap-2">
         <button
