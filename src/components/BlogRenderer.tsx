@@ -7,7 +7,7 @@ type Props = {
   content: string
 }
 
-const components = { h2: H2, ExternalLink }
+const components = { h2: H2!, ExternalLink }
 
 const BlogRenderer: FC<Props> = ({ content }) => {
   const MDXComponent = useMDXComponent(content)

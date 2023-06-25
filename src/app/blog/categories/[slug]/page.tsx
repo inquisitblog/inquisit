@@ -67,8 +67,7 @@ export async function generateMetadata({ params }: ParamsType) {
   return meta
 }
 
-// @ts-expect-error Async Server Component
-const Category: FC<ParamsType> = async ({ params }) => {
+const Category = async ({ params }: ParamsType) => {
   const { slug } = params
 
   const category = await singleCategory(slug)
@@ -79,7 +78,7 @@ const Category: FC<ParamsType> = async ({ params }) => {
   const posts = await getPosts(-1, category.slug)
 
   return (
-    <main className="mx-auto max-w-screen-2xl px-8 md:px-16 py-8 md:gap-6 md:py-16">
+    <main className="mx-auto max-w-screen-2xl px-8 py-8 md:gap-6 md:px-16 md:py-16">
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
         {capitalise(category.name)}
       </h1>
