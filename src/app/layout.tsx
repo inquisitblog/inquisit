@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-p-36 scroll-smooth text-dark">
-      <GoogleAnalytics GA_MEASUREMENT_ID="G-55S87ZRETM" />
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-1M1T3QCWPN" />
 
       <body
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
