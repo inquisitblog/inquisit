@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ul:m": "npx unlighthouse --site inquisit.vercel.app",
-    "ul:d": "npx unlighthouse --desktop --site inquisit.vercel.app"
+    "ul:m": "npx unlighthouse --site inquisit.blog",
+    "ul:d": "npx unlighthouse --desktop --site inquisit.blog"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
