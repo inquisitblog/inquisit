@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import GoogleAnalytics from "@/components/GoogleAnalytics"
 import CookieBanner from "@/components/CookieBanner"
+import Script from "next/script"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -50,14 +51,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-p-36 scroll-smooth text-dark">
-      <GoogleAnalytics GA_MEASUREMENT_ID="G-1M1T3QCWPN" />
+      {/* <GoogleAnalytics GA_MEASUREMENT_ID="G-1M1T3QCWPN" /> */}
+      <Script
+        strategy="lazyOnload"
+        src="https://neesh-umami.vercel.app/script.js"
+        data-website-id="78a8ae54-c44a-4075-b1cc-c54cfe94789f"
+      />
 
       <body
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
       >
         <Navbar />
         {children}
-        <CookieBanner />
+        {/* <CookieBanner /> */}
         <Footer />
       </body>
     </html>
