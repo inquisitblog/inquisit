@@ -26,7 +26,7 @@ export const twitterUsername = "" // Shows in the page's metadata. Helps when th
 
 // Footer
 export const footerTagline = "Some sort of tagline?"
-export const email = "darshan2004s@gmail.com"
+export const email = "inquisit.blog@gmail.com"
 
 // Home Page
 export const title = "Inquisit"
