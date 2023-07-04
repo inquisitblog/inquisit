@@ -1,11 +1,12 @@
 import * as config from "@/lib/config"
 import "./globals.css"
+
+import type { Metadata } from "next"
+import Script from "next/script"
 import { Poppins } from "next/font/google"
+
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
-import GoogleAnalytics from "@/components/GoogleAnalytics"
-import CookieBanner from "@/components/CookieBanner"
-import Script from "next/script"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,7 +16,7 @@ const poppins = Poppins({
   display: "swap",
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(config.url),
   title: {
     default: config.title,
@@ -42,6 +43,10 @@ export const metadata = {
       "application/rss+xml": `${config.url}/rss.xml`,
     },
   },
+  verification: {
+    google: "_Oxno2-E_ZcD4IzO5us4hYsO256n6ZuLis7bwvJ7n_8",
+    yandex: "5f246635252f3ada",
+  },
 }
 
 export default function RootLayout({
@@ -51,7 +56,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-p-36 scroll-smooth text-dark">
-      {/* <GoogleAnalytics GA_MEASUREMENT_ID="G-1M1T3QCWPN" /> */}
       <Script
         strategy="lazyOnload"
         src="https://neesh-umami.vercel.app/script.js"
@@ -63,7 +67,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
-        {/* <CookieBanner /> */}
+
         <Footer />
       </body>
     </html>
