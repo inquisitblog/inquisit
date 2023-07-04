@@ -16,7 +16,7 @@ export const navLinks: NavLink[] = [
 ]
 
 // General Settings
-export const deployedUrl = "https://inquisit.vercel.app"
+export const deployedUrl = "https://inquisit.blog"
 export const url = !dev ? deployedUrl : "http://localhost:3000"
 export const logoText = "Inquisit" // Shows in the Navigation & Footer
 
