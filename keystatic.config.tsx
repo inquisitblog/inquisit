@@ -1,4 +1,12 @@
-import { collection, config, fields, singleton } from "@keystatic/core"
+import {
+  collection,
+  component,
+  config,
+  fields,
+  singleton,
+} from "@keystatic/core"
+
+import ExternalLink from "@/components/mdx/ExternalLink"
 
 export default config({
   storage: {
@@ -134,6 +142,7 @@ export default config({
         description: fields.text({
           label: "Description",
           description: "Displayed on the Blog Card and on the Blog Page.",
+          multiline: true,
           validation: {
             length: { min: 1 },
           },
@@ -146,7 +155,7 @@ export default config({
           }),
           { label: "Blog Authors" }
         ),
-        tags: fields.array(
+        categories: fields.array(
           fields.relationship({
             label: "Blog Categories",
             collection: "categories",
@@ -170,12 +179,40 @@ export default config({
             length: { min: 1 },
           },
         }),
+        pubDate: fields.date({
+          label: "Published Date",
+          defaultValue: { kind: "today" },
+          validation: { isRequired: true },
+        }),
+        updatedDate: fields.date({
+          label: "Updated At",
+          description: "Used in the metadata to show when content is updated.",
+          defaultValue: { kind: "today" },
+          validation: { isRequired: true },
+        }),
         post: fields.document({
           label: "Blog Post",
           description:
             "Actual blog post. ONLY use Paragraphs, Heading 2s and Heading 3s.",
           formatting: true,
           links: true,
+          dividers: true,
+          componentBlocks: {
+            externalLink: component({
+              preview: (props) => <p>{props.fields.text.value}</p>,
+              label: "External Link",
+              schema: {
+                text: fields.text({
+                  label: "Link Text",
+                  validation: { length: { min: 1 } },
+                }),
+                path: fields.text({
+                  label: "Link Path",
+                  validation: { length: { min: 1 } },
+                }),
+              },
+            }),
+          },
           // images: {
           //   directory: "/public/images/projects/individual/",
           //   publicPath: "/images/projects/individual/",
