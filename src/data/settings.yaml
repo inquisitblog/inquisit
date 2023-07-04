@@ -1,5 +1,6 @@
 siteName: Inquisit
 url: https://inquisit.blog
+email: inquisit.blog@gmail.com
 navLinks:
   - text: Home
     path: /
@@ -10,3 +11,4 @@ navLinks:
   - text: Categories
     path: /blog/categories
     new: true
+footerTagline: Some sort of tagline?
