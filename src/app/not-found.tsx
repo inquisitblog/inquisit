@@ -1,12 +1,26 @@
 "use client"
-import NavLink from "@/components/NavLink"
-import { navLinks } from "@/lib/config"
+
+import "@/app/(main)/globals.css"
+
+import { Poppins } from "next/font/google"
 import Image from "next/image"
+
+import NavLink from "@/components/NavLink"
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
+  display: "swap",
+})
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between px-8 pt-8 text-center sm:px-12 md:px-16 lg:px-20 lg:pt-16 xl:px-0">
-      <section>
+    <main
+      className={`${poppins.variable} flex h-screen flex-col items-center bg-lighter px-8 pt-8 text-center font-sans sm:px-12 md:px-16 lg:px-20 lg:pt-16 xl:px-0`}
+    >
+      <section className="mx-auto max-w-screen-2xl">
         <h1 className="mb-2 text-2xl font-bold text-accent md:mb-4 md:text-3xl xl:text-4xl">
           404 - Not Found
         </h1>
@@ -16,18 +30,15 @@ export default function NotFound() {
         <div className="flex flex-col gap-2 text-lg md:gap-4 md:text-xl xl:text-2xl">
           <p>Here&rsquo;s some useful links instead:</p>
           <div className="flex justify-center gap-6">
-            {navLinks.map(({ text, path, newWindow }, index) => (
-              <NavLink
-                text={text}
-                path={path}
-                key={index}
-                active
-                newWindow={newWindow}
-              />
+            {[
+              { text: "Home", path: "/" },
+              { text: "Blog", path: "/blog" },
+            ].map(({ text, path }) => (
+              <NavLink text={text} path={path} key={path} active />
             ))}
           </div>
         </div>
-        <div className="relative flex aspect-square h-full max-w-xl lg:max-w-full">
+        <div className="relative flex aspect-square max-w-xl lg:max-w-full">
           <Image
             src="/404.svg"
             alt="Illustration of a person with a laptop and question mark."
