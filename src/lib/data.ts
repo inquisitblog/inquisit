@@ -39,6 +39,7 @@ async function parsePosts(slugs: string[]) {
         throw new Error(`Keystatic Content Not Found - Blog Post - ${slug}`)
 
       return {
+        slug,
         ...post,
         authors: await parseAuthors([...post.authors]),
         categories: await parseCategories([...post.categories]),
@@ -49,18 +50,20 @@ async function parsePosts(slugs: string[]) {
   return posts
 }
 
-export async function getPosts(options: {
+export async function getPosts(options?: {
   number?: number
   category?: string
   author?: string
 }) {
-  const { number, category, author } = options
-
   const slugs = await reader.collections.blogposts.list()
 
   let posts = await parsePosts(slugs)
 
   posts = posts.sort((a, b) => (a.pubDate < b.pubDate ? 1 : -1))
+
+  if (!options) return posts
+
+  const { author, category, number } = options
 
   if (category) {
     posts = posts.filter((post) => {
@@ -81,8 +84,6 @@ export async function getPosts(options: {
   if (number && number !== -1) {
     posts.slice(0, number)
   }
-
-  return posts
 }
 
 export async function getPost(slug: string) {
@@ -92,6 +93,7 @@ export async function getPost(slug: string) {
 
   if (post) {
     return {
+      slug,
       ...post,
       authors: await parseAuthors([...post.authors]),
       categories: await parseCategories([...post.categories]),

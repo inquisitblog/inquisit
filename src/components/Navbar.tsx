@@ -7,6 +7,7 @@ import { useState } from "react"
 
 import NavLink from "./NavLink"
 import { Squeeze as Hamburger } from "hamburger-react"
+import NavLinks from "./NavLinks"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -23,16 +24,8 @@ const Navbar = () => {
           </Link>
           <div className="hidden flex-col flex-wrap items-center gap-6 text-base sm:flex-row md:flex md:text-lg xl:text-xl">
             <div className="flex flex-wrap items-center gap-6">
-              {config.navLinks.map(({ text, path, newWindow }, index) => (
-                <NavLink
-                  text={text}
-                  path={path}
-                  key={index}
-                  newWindow={newWindow}
-                />
-              ))}
+              <NavLinks />
             </div>
-            <CTA />
           </div>
           <div className="block md:hidden">
             <Hamburger
@@ -56,31 +49,10 @@ const Navbar = () => {
           className="flex flex-col items-center gap-6"
           onClick={() => setIsOpen(false)}
         >
-          {config.navLinks.map(({ text, path, newWindow }, index) => (
-            <NavLink
-              text={text}
-              path={path}
-              key={index}
-              newWindow={newWindow}
-            />
-          ))}
+          <NavLinks />
         </ul>
-        <div className="w-fit">
-          <CTA />
-        </div>
       </div>
     </nav>
-  )
-}
-
-const CTA = () => {
-  return (
-    <a
-      href="https://r2fma1pv48c.typeform.com/to/wXC7QnZC"
-      className="block rounded border-2 border-accent px-3 py-1 font-medium text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:px-4 md:py-2 xl:mx-auto"
-    >
-      Get involved
-    </a>
   )
 }
 

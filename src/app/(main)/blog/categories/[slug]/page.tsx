@@ -1,6 +1,6 @@
 import * as config from "@/lib/config"
 import BlogPostsGrid from "@/components/BlogPostsGrid"
-import { getPosts } from "@/lib/posts"
+import { getPosts } from "@/lib/data"
 import { singleCategory } from "@/lib/categories"
 import { capitalise } from "@/lib/utils"
 import { Metadata } from "next"

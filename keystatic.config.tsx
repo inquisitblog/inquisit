@@ -54,8 +54,12 @@ export default config({
                 "This can be either a relative path (/blog) or an absolute path (https://typeform.com). If it's an absolute path, consider opening the link in a new tab.",
               validation: { length: { min: 1 } },
             }),
-            new: fields.checkbox({
+            newWindow: fields.checkbox({
               label: "Open link in New Tab?",
+              defaultValue: false,
+            }),
+            btn: fields.checkbox({
+              label: "Display as a Call to Action Button?",
               defaultValue: false,
             }),
           }),
@@ -153,7 +157,10 @@ export default config({
             collection: "authors",
             validation: { isRequired: true },
           }),
-          { label: "Blog Authors" }
+          {
+            label: "Blog Authors",
+            itemLabel: (props) => props.value ?? "Please select an Author",
+          }
         ),
         categories: fields.array(
           fields.relationship({
@@ -161,7 +168,10 @@ export default config({
             collection: "categories",
             validation: { isRequired: true },
           }),
-          { label: "Blog Categories" }
+          {
+            label: "Blog Categories",
+            itemLabel: (props) => props.value ?? "Please select a Category",
+          }
         ),
         image: fields.image({
           label: "Image",

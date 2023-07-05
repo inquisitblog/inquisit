@@ -1,5 +1,5 @@
 import * as config from "@/lib/config"
-import { getPosts } from "@/lib/posts"
+import { getPosts } from "@/lib/data"
 import { capitalise } from "@/lib/utils"
 import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"

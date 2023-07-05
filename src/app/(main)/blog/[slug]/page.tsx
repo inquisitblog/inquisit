@@ -1,5 +1,5 @@
 import * as config from "@/lib/config"
-import { getPost, getPosts } from "@/lib/posts"
+import { getPost, getPosts } from "@/lib/data"
 import { formatDate } from "@/lib/utils"
 import { notFound } from "next/navigation"
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline"

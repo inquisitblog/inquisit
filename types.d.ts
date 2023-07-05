@@ -1,0 +1,25 @@
+interface BlogPost {
+  slug: string
+  title: string
+  description: string
+  authors: Author[]
+  categories: Category[]
+  image: string
+  imageAlt: string
+  pubDate: string
+  updatedDate: string
+  post: DocumentElement[]
+}
+
+interface Author {
+  slug: string
+  name: string
+  description: string
+  avatar: string
+}
+
+interface Category {
+  slug: string
+  name: string
+  description: string
+}

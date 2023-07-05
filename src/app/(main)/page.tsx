@@ -1,10 +1,13 @@
 import type { FC, PropsWithChildren } from "react"
 import * as config from "@/lib/config"
-import BlogCard from "@/components/BlogCard"
-import { getPosts } from "@/lib/posts"
+
 import Image from "next/image"
 import Link from "next/link"
+
+import { getPosts } from "@/lib/data"
 import { cn } from "@/lib/utils"
+
+import BlogCard from "@/components/BlogCard"
 
 const verticalBlogGap = "gap-16 xl:gap-10"
 
@@ -12,10 +15,9 @@ export const metadata = {
   title: "Home | Inquisit",
 }
 
-export default function Home() {
-  const posts = getPosts(4)
-
-  const featuredPost = posts.shift()
+export default async function Home() {
+  const posts = (await getPosts())?.slice(4)
+  const featuredPost = posts?.shift()
 
   return (
     <>
@@ -79,13 +81,13 @@ export default function Home() {
             <div className="xl:w-1/2">
               <BlogCard
                 type="Regular"
-                img={featuredPost.imgUrl}
-                alt={featuredPost.imgAlt}
-                date={featuredPost.date}
+                img={featuredPost.image}
+                alt={featuredPost.imageAlt}
+                date={featuredPost.pubDate}
                 authors={featuredPost.authors}
                 title={featuredPost.title}
                 description={featuredPost.description}
-                tags={featuredPost.tags}
+                tags={featuredPost.categories}
                 slug={featuredPost.slug}
               />
             </div>
@@ -94,13 +96,13 @@ export default function Home() {
                 <BlogCard
                   key={post.slug}
                   type="Sidebar"
-                  img={post.imgUrl}
-                  alt={post.imgAlt}
-                  date={post.date}
+                  img={post.image}
+                  alt={post.imageAlt}
+                  date={post.pubDate}
                   authors={post.authors}
                   title={post.title}
                   description={post.description}
-                  tags={post.tags}
+                  tags={post.categories}
                   slug={post.slug}
                 />
               ))}

@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next"
 import * as config from "@/lib/config"
-import { getPosts } from "@/lib/posts"
+import { getPosts } from "@/lib/data"
 import { allCategories } from "contentlayer/generated"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
