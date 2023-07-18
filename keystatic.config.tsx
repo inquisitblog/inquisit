@@ -28,6 +28,23 @@ export default config({
             "Shows in the Navigation menu. And used in the metadata.",
           validation: { length: { min: 1 } },
         }),
+        metaTitle: fields.text({
+          label: "Metadata Title",
+          description:
+            "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        metaDescription: fields.text({
+          label: "Metadata Description",
+          description:
+            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
+          multiline: true,
+          validation: {
+            length: { min: 1 },
+          },
+        }),
         url: fields.url({
           label: "Deployed URL",
           description: "Used in the site's metadata.",
