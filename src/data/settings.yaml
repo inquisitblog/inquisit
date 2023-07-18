@@ -4,11 +4,11 @@ email: inquisit.blog@gmail.com
 navLinks:
   - text: Home
     path: /
-    new: true
+    newWindow: true
   - text: Blog
     path: /blog
-    new: true
+    newWindow: true
   - text: Categories
     path: /blog/categories
-    new: true
+    newWindow: true
 footerTagline: Some sort of tagline?
