@@ -1,14 +1,22 @@
 siteName: Inquisit
+metaTitle: Inquisit
+metaDescription: >-
+  A project about igniting curiosity and exploring diverse academic adventures.
+  I hope you find value in this blog as a source of inspiration and a platform
+  for showcasing your own interdisciplinary pursuits.
 url: https://inquisit.blog
 email: inquisit.blog@gmail.com
 navLinks:
   - text: Home
     path: /
     newWindow: true
+    btn: false
   - text: Blog
     path: /blog
     newWindow: true
+    btn: false
   - text: Categories
     path: /blog/categories
     newWindow: true
+    btn: false
 footerTagline: Some sort of tagline?
