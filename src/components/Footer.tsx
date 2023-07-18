@@ -1,14 +1,18 @@
-import reader from "@/lib/keystatic"
-
 import NavLinks from "./NavLinks"
 
-async function Footer() {
-  const settings = await reader.singletons.settings.read()
+type Props = {
+  siteName: string
+  footerTagline: string
+  email: string
+  navLinks: readonly {
+    readonly text: string
+    readonly path: string
+    readonly newWindow: boolean
+    readonly btn: boolean
+  }[]
+}
 
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-
-  const { siteName, footerTagline, email } = settings
-
+const Footer = ({ siteName, footerTagline, email, navLinks }: Props) => {
   return (
     <footer className="bg-light py-8">
       <div className="mx-auto max-w-screen-2xl px-8 text-lg">
@@ -28,7 +32,7 @@ async function Footer() {
             </a>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <NavLinks />
+            <NavLinks navLinks={navLinks} />
           </div>
         </div>
       </div>

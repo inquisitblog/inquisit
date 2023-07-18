@@ -1,12 +1,15 @@
-import reader from "@/lib/keystatic"
 import NavLink from "./NavLink"
 
-const NavLinks = async () => {
-  const settings = await reader.singletons.settings.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+type Props = {
+  navLinks: readonly {
+    readonly text: string
+    readonly path: string
+    readonly newWindow: boolean
+    readonly btn: boolean
+  }[]
+}
 
-  const { navLinks } = settings
-
+const NavLinks = ({ navLinks }: Props) => {
   return (
     <>
       {navLinks.map(({ text, path, newWindow, btn }) => {
