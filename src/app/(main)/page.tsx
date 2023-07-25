@@ -4,29 +4,51 @@ import * as config from "@/lib/config"
 import Image from "next/image"
 import Link from "next/link"
 
+import reader from "@/lib/keystatic"
 import { getPosts } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 import BlogCard from "@/components/BlogCard"
 
-const verticalBlogGap = "gap-16 xl:gap-10"
+export async function generateMetadata() {
+  const homepage = await reader.singletons.homepage.read()
+  if (!homepage) throw new Error("Keystatic Content Not Found - Home Page")
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
 
-export const metadata = {
-  title: "Home | Inquisit",
+  return {
+    title: `${homepage.metaTitle} | ${settings.siteName}`,
+    description: homepage.metaDescription,
+  }
 }
 
 export default async function Home() {
-  const posts = (await getPosts())?.slice(4)
+  const homepage = await reader.singletons.homepage.read()
+  const settings = await reader.singletons.settings.read()
+
+  if (!homepage) throw new Error("Keystatic Content Not Found - Home Page")
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
+  const { siteName } = settings
+  const { subheadline, blogHeadline, blogButtonText } = homepage
+
+  const posts = await getPosts({ number: 4 })
   const featuredPost = posts?.shift()
+  console.log({ featuredPost, posts })
+
+  const verticalBlogGap = "gap-16 xl:gap-10"
 
   return (
     <>
+      {/* <pre>
+        <code>{JSON.stringify({ featuredPost, posts }, null, 2)}</code>
+      </pre> */}
       <main className="mx-auto max-w-screen-2xl px-8 py-12 text-center md:px-16 md:py-20">
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
-          Welcome to <span className="text-accent">{config.title}</span>
+          Welcome to <span className="text-accent">{siteName}</span>
         </h1>
         <p className="mx-auto mt-4 max-w-[60ch] text-xl text-dark/70 md:mt-8 md:text-2xl xl:text-3xl">
-          {config.heroTagline}
+          {subheadline}
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:gap-8 lg:grid-cols-2 xl:gap-10">
           <InfoCard title={{ text: "The", accent: "Blog" }}>
@@ -49,7 +71,7 @@ export default async function Home() {
                     {
                       "md:flex-row-reverse": isOdd,
                       "md:flex-row": !isOdd,
-                    }
+                    },
                   )}
                   key={i}
                 >
@@ -73,7 +95,7 @@ export default async function Home() {
         id="blog"
         className="mx-auto max-w-screen-2xl px-8 pb-16 pt-8 md:px-16"
       >
-        <h3 className="text-5xl font-bold text-accent">Latest posts</h3>
+        <h3 className="text-5xl font-bold text-accent">{blogHeadline}</h3>
         {featuredPost && posts ? (
           <div
             className={`flex max-w-2xl flex-col py-16 xl:w-full xl:max-w-none xl:flex-row ${verticalBlogGap}`}
@@ -114,7 +136,7 @@ export default async function Home() {
 
         <Link href="/blog">
           <button className="block rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:mx-auto xl:px-8 xl:py-4 xl:text-2xl">
-            Browse More
+            {blogButtonText}
           </button>
         </Link>
       </section>
@@ -129,7 +151,7 @@ const InfoCard: FC<
     <div
       className={cn(
         "rounded-xl bg-light px-8 py-6 lg:px-12 lg:py-10",
-        "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg" // card hover
+        "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg", // card hover
       )}
     >
       <h2 className="text-2xl font-semibold md:text-3xl">
