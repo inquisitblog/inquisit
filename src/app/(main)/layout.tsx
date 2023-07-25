@@ -78,10 +78,15 @@ export default async function MainLayout({
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
       >
         <Navbar logoText={siteName} navLinks={navLinks} />
-        
+
         {children}
 
-        <Footer siteName={siteName} footerTagline={footerTagline} email={email} navLinks={navLinks} />
+        <Footer
+          siteName={siteName}
+          footerTagline={footerTagline}
+          email={email}
+          navLinks={navLinks}
+        />
       </body>
     </html>
   )
