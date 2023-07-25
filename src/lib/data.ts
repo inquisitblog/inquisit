@@ -8,7 +8,7 @@ async function parseCategories(slugs: string[]) {
         throw new Error(`Keystatic Content Not Found - Category - ${slug}`)
 
       return { slug, ...category }
-    })
+    }),
   )
 
   return categories
@@ -22,7 +22,7 @@ async function parseAuthors(slugs: string[]) {
         throw new Error(`Keystatic Content Not Found - Author - ${slug}`)
 
       return { slug, ...author }
-    })
+    }),
   )
 
   return authors
@@ -44,7 +44,7 @@ async function parsePosts(slugs: string[]) {
         authors: await parseAuthors([...post.authors]),
         categories: await parseCategories([...post.categories]),
       }
-    })
+    }),
   )
 
   return posts
@@ -69,25 +69,27 @@ export async function getPosts(options?: {
   // Now we know we have options, let's work with them
   const { author, category, number } = options
 
-  if (category) {
-    posts = posts.filter((post) => {
-      return post.categories.some((element) => element.slug === category)
-    })
-  } else {
-    return []
-  }
+  // if (category) {
+  //   posts = posts.filter((post) => {
+  //     return post.categories.some((element) => element.slug === category)
+  //   })
+  // } else {
+  //   return []
+  // }
 
-  if (author) {
-    posts = posts.filter((post) => {
-      return post.authors.some((element) => element.slug === author)
-    })
-  } else {
-    return []
-  }
+  // if (author) {
+  //   posts = posts.filter((post) => {
+  //     return post.authors.some((element) => element.slug === author)
+  //   })
+  // } else {
+  //   return []
+  // }
 
   if (number && number !== -1) {
-    posts.slice(0, number)
+    posts = posts.slice(0, number)
   }
+
+  return posts
 }
 
 export async function getPost(slug: string) {
