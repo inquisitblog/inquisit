@@ -3,9 +3,10 @@ import "./globals.css"
 import Script from "next/script"
 import { Poppins } from "next/font/google"
 
+import reader from "@/lib/keystatic"
+
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
-import reader from "@/lib/keystatic"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default async function MainLayout({
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
       >
         <Navbar logoText={siteName} navLinks={navLinks} />
+        
         {children}
 
         <Footer siteName={siteName} footerTagline={footerTagline} email={email} navLinks={navLinks} />
