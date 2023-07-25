@@ -61,8 +61,12 @@ export async function getPosts(options?: {
 
   posts = posts.sort((a, b) => (a.pubDate < b.pubDate ? 1 : -1))
 
-  if (!options) return posts
+  // If no options, return all posts
+  if (!options) {
+    return posts
+  }
 
+  // Now we know we have options, let's work with them
   const { author, category, number } = options
 
   if (category) {
