@@ -16,7 +16,7 @@ type Props = {
   }[]
 }
 
-const Navbar = ({logoText, navLinks}: Props) => {
+const Navbar = ({ logoText, navLinks }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
