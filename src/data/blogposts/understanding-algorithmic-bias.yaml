@@ -1,0 +1,16 @@
+title: Understanding Algorithmic Bias
+description: >-
+  Machine learning models are transforming decision-making and resource
+  allocation. How can these algorithms, essentially complex mathematical
+  functions, exhibit as human an error as racial bias? Data has evolved into an
+  intricate mirror that reflects the complexities of our society, compelling us
+  to confront the ethical challenges posed by algorithmic decision-making.
+authors:
+  - shan
+categories:
+  - artificial-intelligence
+  - ethics
+image: /images/blogposts/understanding-algorithmic-bias/image.jpg
+imageAlt: Something
+pubDate: '2023-07-25'
+updatedDate: '2023-07-25'
