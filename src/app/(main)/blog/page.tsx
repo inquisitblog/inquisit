@@ -1,28 +1,38 @@
-import * as config from "@/lib/config"
+import reader from "@/lib/keystatic"
 import { getPosts } from "@/lib/data"
+
 import BlogPostsGrid from "@/components/BlogPostsGrid"
 
-export const metadata = {
-  title: "Blog",
-  description: config.blogDescription,
-  openGraph: {
-    title: config.blogTitle,
-    description: config.blogDescription,
-    url: "/blog",
-  },
-  twitter: {
-    title: config.blogTitle,
-    description: config.blogDescription,
-  },
-  alternates: {
-    canonical: "/blog",
-    types: {
-      "application/rss+xml": `${config.url}/rss.xml`,
+export async function generateMetadata() {
+  const blogpage = await reader.singletons.blogpage.read()
+  if (!blogpage) throw new Error("Keystatic Content Not Found - Blog Page")
+
+  const { metaTitle: title, metaDescription: description } = blogpage
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: "/blog",
     },
-  },
+    twitter: {
+      title,
+      description,
+    },
+    alternates: {
+      canonical: "/blog",
+    },
+  }
 }
 
 const Blog = async () => {
+  const blogpage = await reader.singletons.blogpage.read()
+  if (!blogpage) throw new Error("Keystatic Content Not Found - Blog Page")
+
+  const { headline } = blogpage
+
   const posts = await getPosts()
 
   return (
@@ -31,8 +41,10 @@ const Blog = async () => {
       className="mx-auto max-w-screen-2xl px-8 py-8 md:px-16 md:py-16"
     >
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
-        Blog Posts
+        {headline}
       </h1>
+
+
       <BlogPostsGrid posts={posts} />
     </main>
   )
