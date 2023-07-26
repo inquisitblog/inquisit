@@ -1,13 +1,18 @@
+import reader from "@/lib/keystatic"
 import type { MetadataRoute } from "next"
-import * as config from "@/lib/config"
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
+  const { url } = settings
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
       disallow: ["/api/", "/keystatic/"],
     },
-    sitemap: `${config.url}/sitemap.xml`,
+    sitemap: `${url}/sitemap.xml`,
   }
 }

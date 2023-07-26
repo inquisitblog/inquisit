@@ -1,25 +1,32 @@
 import { MetadataRoute } from "next"
-import * as config from "@/lib/config"
+
+import reader from "@/lib/keystatic"
 import { getPosts } from "@/lib/data"
-import { allCategories } from "contentlayer/generated"
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings.")
+
+  const categories = await reader.collections.categories.list()
+
+  const { url } = settings
+
   const pages = ["", "blog", "categories"]
   const pageUrls = pages.map((page) => ({
-    url: `${config.url}/${page}`,
+    url: `${url}/${page}`,
     lastModified: new Date(),
   }))
 
   const posts = await getPosts()
 
   const postUrls = posts.map((post) => ({
-    url: `${config.url}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    url: `${url}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedDate),
   }))
 
-  const categories = allCategories
-  const categoryUrls = categories.map((tag) => ({
-    url: `${config.url}/blog/categories/${tag.slug}`,
+  const categoryUrls = categories.map((category) => ({
+    url: `${url}/blog/categories/${category}`,
     lastModified: new Date(),
   }))
 
