@@ -19,5 +19,18 @@ aboutBlog:
   - >-
     We're here to shake things up and tap into that holistic approach to
     inquiry. This is where science meets philosophy and everything in between.
+aboutPeople:
+  - name: Shan
+    description: >-
+      Hi, I’m Darshan, a gap-year student just having bid farewell to Sahyadri
+      School. I’m interested in studying AI and Cognitive Science through an
+      array of interdisciplinary lenses.
+    avatar: shan-edge.png
+  - name: Neesh
+    description: >-
+      Hey, I'm Neesh! Also still recovering from Sahyadri Separation Syndrome.
+      Bringing my knack for killer design to life exploring the frustrating, yet
+      fulfilling world that is learning to code.
+    avatar: neesh-edge.png
 blogHeadline: Latest posts
 blogButtonText: Browse more
