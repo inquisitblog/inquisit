@@ -1,5 +1,4 @@
 import type { FC, PropsWithChildren } from "react"
-import * as config from "@/lib/config"
 
 import Image from "next/image"
 import Link from "next/link"
@@ -12,8 +11,9 @@ import BlogCard from "@/components/BlogCard"
 
 export async function generateMetadata() {
   const homepage = await reader.singletons.homepage.read()
-  if (!homepage) throw new Error("Keystatic Content Not Found - Home Page")
   const settings = await reader.singletons.settings.read()
+
+  if (!homepage) throw new Error("Keystatic Content Not Found - Home Page")
   if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
 
   return {
@@ -30,19 +30,16 @@ export default async function Home() {
   if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
 
   const { siteName } = settings
-  const { subheadline, blogHeadline, blogButtonText } = homepage
+  const { subheadline, aboutBlog, aboutPeople, blogHeadline, blogButtonText } =
+    homepage
 
   const posts = await getPosts({ number: 4 })
   const featuredPost = posts?.shift()
-  console.log({ featuredPost, posts })
 
   const verticalBlogGap = "gap-16 xl:gap-10"
 
   return (
     <>
-      {/* <pre>
-        <code>{JSON.stringify({ featuredPost, posts }, null, 2)}</code>
-      </pre> */}
       <main className="mx-auto max-w-screen-2xl px-8 py-12 text-center md:px-16 md:py-20">
         <h1 className="text-4xl font-semibold md:text-5xl xl:text-6xl">
           Welcome to <span className="text-accent">{siteName}</span>
@@ -52,7 +49,7 @@ export default async function Home() {
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:gap-8 lg:grid-cols-2 xl:gap-10">
           <InfoCard title={{ text: "The", accent: "Blog" }}>
-            {config.aboutBlog.map((paragraph, index) => (
+            {aboutBlog.map((paragraph, index) => (
               <p
                 key={index}
                 className="mt-6 text-left text-lg text-dark/70 md:text-xl"
@@ -62,7 +59,7 @@ export default async function Home() {
             ))}
           </InfoCard>
           <InfoCard title={{ text: "The", accent: "People" }}>
-            {config.people.map((person, i) => {
+            {aboutPeople.map((person, i) => {
               const isOdd = i % 2 !== 0
               return (
                 <div
@@ -83,7 +80,7 @@ export default async function Home() {
                     priority
                     className="w-28 flex-1 rounded-full md:w-36"
                   />
-                  <p className="md:text-center">{person.about}</p>
+                  <p className="md:text-center">{person.description}</p>
                 </div>
               )
             })}

@@ -83,7 +83,7 @@ export default config({
           {
             label: "Navigation Menu Links",
             itemLabel: (props) => props.fields.text.value,
-          }
+          },
         ),
 
         footerTagline: fields.text({
@@ -125,6 +125,43 @@ export default config({
             length: { min: 1 },
           },
         }),
+        aboutBlog: fields.array(
+          fields.text({
+            label: "Paragraph",
+            multiline: true,
+            validation: { length: { min: 1 } },
+          }),
+          {
+            label: "About Blog Card",
+            description: "List of paragraphs in the About Blog Card.",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.value,
+          },
+        ),
+        aboutPeople: fields.array(
+          fields.object({
+            name: fields.text({
+              label: "Name",
+              validation: { length: { min: 1 } },
+            }),
+            description: fields.text({
+              label: "Description",
+              multiline: true,
+              validation: { length: { min: 1 } },
+            }),
+            avatar: fields.text({
+              label: "Image Path",
+              description: "Path to image in public folder.",
+              validation: { length: { min: 1 } },
+            }),
+          }),
+          {
+            label: "About People Card",
+            description: "List of People Cards",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.fields.name.value,
+          },
+        ),
 
         blogHeadline: fields.text({
           label: "Headline - Blog Section",
@@ -177,7 +214,7 @@ export default config({
           {
             label: "Blog Authors",
             itemLabel: (props) => props.value ?? "Please select an Author",
-          }
+          },
         ),
         categories: fields.array(
           fields.relationship({
@@ -188,7 +225,7 @@ export default config({
           {
             label: "Blog Categories",
             itemLabel: (props) => props.value ?? "Please select a Category",
-          }
+          },
         ),
         image: fields.image({
           label: "Image",
