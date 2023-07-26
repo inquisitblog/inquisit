@@ -7,6 +7,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.9
   '@types/gtag.js': ^0.0.12
   '@types/node': 20.4.4
+  '@types/pluralize': ^0.0.30
   '@types/react': 18.2.15
   '@types/react-dom': 18.2.7
   autoprefixer: 10.4.14
@@ -18,6 +19,7 @@ specifiers:
   hamburger-react: ^2.5.0
   next: 13.4.12
   next-contentlayer: ^0.3.4
+  pluralize: ^8.0.0
   postcss: 8.4.27
   prettier: ^3.0.0
   prettier-plugin-tailwindcss: ^0.4.1
@@ -50,6 +52,7 @@ dependencies:
   hamburger-react: 2.5.0_react@18.2.0
   next: 13.4.12_react-dom@18.2.0+react@18.2.0
   next-contentlayer: 0.3.4_85a8ae526beb4c61860d2f496297a417
+  pluralize: 8.0.0
   postcss: 8.4.27
   puppeteer: 20.9.0_typescript@5.1.6
   react: 18.2.0
@@ -66,6 +69,7 @@ dependencies:
 devDependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
   '@types/gtag.js': 0.0.12
+  '@types/pluralize': 0.0.30
   prettier: 3.0.0
   prettier-plugin-tailwindcss: 0.4.1_prettier@3.0.0
   unlighthouse: 0.10.0_620a6139fa864bca70c0068bb1d601d6
@@ -3154,6 +3158,10 @@ packages:
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
+
+  /@types/pluralize/0.0.30:
+    resolution: {integrity: sha512-kVww6xZrW/db5BR9OqiT71J9huRdQ+z/r+LbDuT7/EK50mCmj5FoaIARnVv0rvjUS/YpDox0cDU9lpQT011VBA==}
+    dev: true
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
@@ -7893,6 +7901,11 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
     dev: true
+
+  /pluralize/8.0.0:
+    resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
+    engines: {node: '>=4'}
+    dev: false
 
   /postcss-import/15.1.0_postcss@8.4.27:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
