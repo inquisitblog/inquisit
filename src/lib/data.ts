@@ -69,13 +69,11 @@ export async function getPosts(options?: {
   // Now we know we have options, let's work with them
   const { author, category, number } = options
 
-  // if (category) {
-  //   posts = posts.filter((post) => {
-  //     return post.categories.some((element) => element.slug === category)
-  //   })
-  // } else {
-  //   return []
-  // }
+  if (category) {
+    posts = posts.filter((post) => {
+      return post.categories.some((element) => element.slug === category)
+    })
+  }
 
   // if (author) {
   //   posts = posts.filter((post) => {
