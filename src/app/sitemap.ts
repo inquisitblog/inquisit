@@ -3,7 +3,6 @@ import { MetadataRoute } from "next"
 import reader from "@/lib/keystatic"
 import { getPosts } from "@/lib/data"
 
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const settings = await reader.singletons.settings.read()
   if (!settings) throw new Error("Keystatic Content Not Found - Site Settings.")
