@@ -320,7 +320,7 @@ export default config({
           defaultValue: { kind: "today" },
           validation: { isRequired: true },
         }),
-        post: fields.document({
+        article: fields.document({
           label: "Blog Post",
           description:
             "Actual blog post. ONLY use Paragraphs, Heading 2s and Heading 3s.",

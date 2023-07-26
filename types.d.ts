@@ -8,7 +8,7 @@ interface BlogPost {
   imageAlt: string
   pubDate: string
   updatedDate: string
-  post: DocumentElement[]
+  article: DocumentElement[]
 }
 
 interface Author {
