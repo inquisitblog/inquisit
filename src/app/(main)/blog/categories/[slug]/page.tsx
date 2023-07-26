@@ -1,37 +1,43 @@
-import * as config from "@/lib/config"
-import BlogPostsGrid from "@/components/BlogPostsGrid"
-import { getPosts } from "@/lib/data"
-import { singleCategory } from "@/lib/categories"
-import { capitalise } from "@/lib/utils"
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import { notFound } from "next/navigation"
-import { FC } from "react"
-import { allCategories } from "contentlayer/generated"
+
+import reader from "@/lib/keystatic"
+import { getPosts, getCategory } from "@/lib/data"
+import { capitalise } from "@/lib/utils"
+
+import BlogPostsGrid from "@/components/BlogPostsGrid"
 
 type ParamsType = {
   params: { name: string; slug: string }
 }
 
 export async function generateStaticParams() {
-  const categories = allCategories
+  const categories = await reader.collections.categories.list()
 
-  return categories.map((category) => ({
-    slug: category.slug,
+  return categories.map((slug) => ({
+    slug,
   }))
 }
 
 export async function generateMetadata({ params }: ParamsType) {
   const { slug } = params
 
-  const category = await singleCategory(slug)
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
+  const { url, siteName } = settings
+
+  const category = await getCategory(slug)
   if (!category) {
     return {
       title: "Category not found",
     }
   }
 
-  const title = `${capitalise(category.name)} - Blog Posts`
-  const description = `${capitalise(category.name)} Category of Blog Posts.`
+  const { name } = category
+
+  const title = `${capitalise(name)} - Blog Posts`
+  const description = `${capitalise(name)} Category of Blog Posts.`
   const imgUrl = ""
 
   const meta: Metadata = {
@@ -42,25 +48,22 @@ export async function generateMetadata({ params }: ParamsType) {
       title,
       description,
       images: [imgUrl],
-      url: config.url,
-      siteName: config.title,
+      url,
+      siteName,
       type: "website",
     },
 
     twitter: {
-      title: `${capitalise(category.name)} - Blog`,
+      title: `${capitalise(name)} - Blog`,
       description,
       images: [imgUrl],
-      creator: config.twitterUsername,
+      // creator: twitterUsername,
       card: "summary",
     },
 
     themeColor: "#FBEAD2",
     alternates: {
       canonical: `/blog/categories/${slug}`,
-      types: {
-        "application/rss+xml": `${config.url}/rss.xml`,
-      },
     },
   }
 
@@ -70,15 +73,15 @@ export async function generateMetadata({ params }: ParamsType) {
 const Category = async ({ params }: ParamsType) => {
   const { slug } = params
 
-  const category = await singleCategory(slug)
+  const category = await getCategory(slug)
   if (!category) {
     return notFound()
   }
 
-  const posts = await getPosts(-1, category.slug)
+  const posts = await getPosts({ number: -1, category: slug })
 
   return (
-    <main className="mx-auto max-w-screen-2xl px-8 py-8 md:gap-6 md:px-16 md:py-16">
+    <main className="mx-auto min-h-[80vh] max-w-screen-2xl px-8 py-8 md:gap-6 md:px-16 md:py-16">
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
         {capitalise(category.name)}
       </h1>
