@@ -4,7 +4,6 @@ import reader from "@/lib/keystatic"
 import { cn } from "@/lib/utils"
 
 import { CopyLinkID } from "./CopyLinkID"
-import React from "react"
 
 // @ts-ignore IDK how to type a Functional Component returning a Promise
 const H2: FC<HTMLAttributes<HTMLHeadingElement>> = async ({

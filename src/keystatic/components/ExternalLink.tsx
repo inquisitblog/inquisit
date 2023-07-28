@@ -7,6 +7,17 @@ type Props = {
   url: URL
 }
 
+export const ExternalLinkPreview: FC<{ text: string }> = ({ text }) => {
+  return (
+    <a href="#" className="w-fit items-center gap-2 px-1 no-underline">
+      <span>{text}</span>
+      <span className="aspect-square w-5">
+        <ArrowTopRightOnSquareIcon strokeWidth={2} />
+      </span>
+    </a>
+  )
+}
+
 const ExternalLink: FC<Props> = ({ text, url }) => {
   return (
     <a
