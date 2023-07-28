@@ -1,15 +1,23 @@
-import type { Component, FC, HTMLAttributes } from "react"
-import { CopyLinkID } from "./CopyLinkID"
+import type { FC, HTMLAttributes } from "react"
+
+import reader from "@/lib/keystatic"
 import { cn } from "@/lib/utils"
 
-const H2: FC<HTMLAttributes<HTMLHeadingElement>> = ({
+import { CopyLinkID } from "./CopyLinkID"
+import React from "react"
+
+// @ts-ignore IDK how to type a Functional Component returning a Promise
+const H2: FC<HTMLAttributes<HTMLHeadingElement>> = async ({
   className,
   ...props
 }) => {
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
   return (
     <div className="not-prose mb-6 mt-12 flex items-center gap-3 text-2xl font-bold text-dark/80 md:mb-8 md:mt-14 md:text-3xl/10">
       <h2 className={cn("", className)} {...props} />
-      <CopyLinkID id={props.id} />
+      <CopyLinkID url={settings.url} id={props.id} />
     </div>
   )
 }

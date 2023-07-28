@@ -1,15 +1,16 @@
 "use client"
 
-import * as config from "@/lib/config"
 import { type FC, useState } from "react"
 import { usePathname } from "next/navigation"
 import { LinkIcon } from "@heroicons/react/24/outline"
 
-export const CopyLinkID: FC<{ id?: string }> = ({ id }) => {
+type Props = { url: string; id?: string }
+
+export const CopyLinkID: FC<Props> = ({ url, id }) => {
   const pathname = usePathname()
   const [tooltipText, setTooltipText] = useState<string>("Copy")
 
-  const blogUrl = `${config.url}${pathname}#${id}`
+  const blogUrl = `${url}${pathname}#${id}`
 
   const handleClick = () => {
     navigator.clipboard.writeText(blogUrl)
