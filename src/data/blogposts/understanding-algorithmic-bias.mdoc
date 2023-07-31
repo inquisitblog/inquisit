@@ -60,19 +60,19 @@ I’ve implemented a simple image classification model (
 
 ) that identifies various types of fruits depicted in images. The model was trained on a dataset containing labeled images of apples, bananas, cherries, chickoos, grapes, kiwis, mangoes, oranges, and strawberries. Here’s a snapshot of the training data:
 
-![Training Data Snapshot](https://iili.io/H4LCOuV.png "Training Data Snapshot")
+![Training Data Snapshot](1.%20Training%20Data%20Snapshot.png)
 
 The first model was trained with 40 images from each of the 9  fruit categories. Although 360 images form a rather small dataset, it suffices for training a trivial fruit classifier. The model classified unseen images correctly with about 92% accuracy. There were few errors, with no significant pattern, as seen in the confusion matrix (boxes outside of the main diagonal represent errors). That is to say, the algorithm was not biased towards or against a particular fruit.
 
-![Complete Model Confusion Matrix](https://iili.io/H4LCwyQ.png "Complete Model Confusion Matrix")
+Missing image https://iili.io/H4LCwyQ.png
 
 The second model was exactly identical to the first. The only difference: the training dataset. I manipulated the training dataset to include 50 images from the banana category but only 10 each from the other 8 categories. This makes the banana category heavily overrepresented in the data. Since the total size of the dataset was reduced to 130, the performance dropped expectedly to about 55%. More interestingly though, the errors did show an obvious pattern.
 
-![Biased Model Confusion Matrix](https://iili.io/H4LCj8x.png "Biased Model Confusion Matrix")
+Missing image https://iili.io/H4LCj8x.png
 
 Not only did the model make 0 errors in classifying banana images, a large majority of the errors came from classifying other fruits as bananas. Here’s what some of the predictions looked like:
 
-![Example Predictions](https://iili.io/H4LCewB.png "Example Predictions")
+Missing image https://iili.io/H4LCewB.png
 
 And there you have it! In our little fruit classifier, we've isolated the cause for bias. It turns out, when bananas get all the spotlight in the training data, our algorithm can't resist going bananas itself.
 
