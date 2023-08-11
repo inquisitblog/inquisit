@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import slugify from "slugify"
 
 type DateStyle = Intl.DateTimeFormatOptions["dateStyle"]
 
@@ -28,4 +29,40 @@ export function displayNames(names: string[]) {
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export function getSlug(node: React.ReactNode) {
+  return slugify(getTextNode(node), { lower: true, strict: true })
+}
+
+export function getTextNode(node: React.ReactNode): string {
+  if (!node) {
+    return ""
+  }
+
+  if (typeof node === "string") {
+    return node
+  }
+
+  if (typeof node === "number") {
+    return String(node)
+  }
+
+  if (
+    typeof node === "object" &&
+    "text" in node &&
+    typeof node.text === "string"
+  ) {
+    return node.text
+  }
+
+  if (node instanceof Array) {
+    return node.map(getTextNode).join("")
+  }
+
+  if (typeof node === "object" && "props" in node && "node" in node.props) {
+    return getTextNode(node.props.node)
+  }
+
+  return ""
 }
