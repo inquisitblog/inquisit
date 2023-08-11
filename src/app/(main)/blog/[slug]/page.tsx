@@ -1,67 +1,76 @@
-import * as config from "@/lib/config"
-import { getPost, getPosts } from "@/lib/data"
-import { formatDate } from "@/lib/utils"
-import { notFound } from "next/navigation"
-import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline"
+import { type Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { getHighlighter } from "shiki"
+
+import { getSlug } from "@/lib/utils"
+import reader from "@/lib/keystatic"
+import { getPost } from "@/lib/data"
+import { Code, H2 } from "@/keystatic/components"
+
+import { DocumentRenderer } from "@keystatic/core/renderer"
+import {
+  ArrowLeftCircleIcon,
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/24/outline"
 import ScrollToTop from "@/components/ScrollToTop"
 import BlogTags from "@/components/BlogTags"
 import BlogAuthors from "@/components/BlogAuthors"
-import BlogRenderer from "@/components/BlogRenderer"
 
 type ParamsType = { params: { slug: string } }
 
 export async function generateStaticParams() {
-  const posts = await getPosts()
+  const posts = await reader.collections.blogposts.list()
 
-  return posts.map((post) => ({
-    slug: post.slug,
+  return posts.map((slug) => ({
+    slug,
   }))
 }
 
 export async function generateMetadata({ params }: ParamsType) {
   const { slug } = params
 
-  const post = getPost(slug)
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
+  const { url, siteName } = settings
+
+  const post = await getPost(slug)
 
   if (!post) {
-    return { title: "Article not found" }
+    return { title: "Post not found" }
   }
 
-  const { date, title, description, tags, authors, imgUrl } = post
+  const { title, description, image, categories, authors, pubDate } = post
 
   const meta: Metadata = {
     title: `${title} | Inquisit Blog`,
     description,
-    keywords: tags.map((tag) => tag.name),
+    keywords: categories.map((category) => category.name),
 
     openGraph: {
       title: `${title} | Inquisit Blog`,
       description,
-      images: [imgUrl],
-      url: config.url,
-      siteName: config.title,
+      images: [image],
+      url,
+      siteName,
       type: "article",
       authors: authors.map((author) => author.name),
-      publishedTime: new Date(date).toISOString(),
+      publishedTime: new Date(pubDate).toISOString(),
     },
 
     twitter: {
       title,
       description,
-      images: [imgUrl],
-      creator: config.twitterUsername,
+      images: [image],
+      // creator: twitterUsername,
       card: "summary",
     },
 
     themeColor: "#FBEAD2",
     alternates: {
       canonical: `/blog/${slug}`,
-      types: {
-        "application/rss+xml": `${config.url}/rss.xml`,
-      },
     },
   }
 
@@ -77,15 +86,19 @@ const BlogArticle = async ({ params }: ParamsType) => {
     return notFound()
   }
 
-  const { date, title, tags, imgUrl, imgAlt, authors, content } = post
+  const { image, imageAlt, categories, title, authors, pubDate, article } = post
+
+  const highlighter = await getHighlighter({
+    theme: "monokai",
+  })
 
   return (
     <main className="relative mx-auto flex max-w-screen-2xl flex-col gap-4 px-8 py-8 md:gap-8 md:px-16 md:py-16">
       <BackToBlog />
       <div className="relative aspect-[4/3] max-w-3xl">
         <Image
-          src={imgUrl}
-          alt={imgAlt}
+          src={image}
+          alt={imageAlt}
           fill
           priority
           // 100vw on till 860px - max 768px
@@ -96,15 +109,49 @@ const BlogArticle = async ({ params }: ParamsType) => {
 
       <div className="flex flex-col gap-2 md:gap-4">
         <div className="flex flex-wrap items-center gap-2">
-          <BlogTags tags={tags} />
+          <BlogTags tags={categories} />
         </div>
         <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
           {title}
         </h1>
-        <BlogAuthors authors={authors} date={date} />
+        <BlogAuthors authors={authors} date={pubDate} />
       </div>
 
-      <BlogRenderer content={content} />
+      {/* prose-quoteless is a custom class -> tailwind.config.js */}
+      <article className="prose prose-base prose-quoteless md:prose-lg prose-headings:text-dark/80 prose-a:text-accent prose-a:transition-all focus-within:prose-a:text-accent hover:prose-a:opacity-80 prose-img:rounded-xl prose-img:object-cover prose-hr:my-4 prose-hr:border-dark/50 md:prose-hr:my-8">
+        <DocumentRenderer
+          document={article}
+          // componentBlocks={}
+          renderers={{
+            inline: {
+              link: (props) => (
+                <a className="inline-flex w-fit items-center gap-2" {...props}>
+                  <span>{props.children}</span>
+
+                  {props.href.startsWith("http") && (
+                    <span className="aspect-square h-5">
+                      <ArrowTopRightOnSquareIcon strokeWidth={2} />
+                    </span>
+                  )}
+                </a>
+              ),
+            },
+            block: {
+              heading: ({ children, level }) => {
+                if (level !== 2) {
+                  const Tag = `h${level}` as const
+                  return <Tag>{children}</Tag>
+                } else {
+                  const slug = getSlug(children)
+
+                  return <H2 id={slug}>{children}</H2>
+                }
+              },
+              code: (props) => <Code highlighter={highlighter} {...props} />,
+            },
+          }}
+        />
+      </article>
       <BackToBlog />
 
       <ScrollToTop />
