@@ -1,12 +1,4 @@
-import {
-  collection,
-  component,
-  config,
-  fields,
-  singleton,
-} from "@keystatic/core"
-
-import ExternalLink from "@/components/mdx/ExternalLink"
+import { collection, config, fields, singleton } from "@keystatic/core"
 
 export default config({
   storage: {
@@ -251,6 +243,10 @@ export default config({
     blogposts: collection({
       label: "Blog Posts",
       path: "src/data/blogposts/*",
+      entryLayout: "content",
+      format: {
+        contentField: "article",
+      },
       slugField: "title",
       schema: {
         title: fields.slug({
@@ -324,28 +320,34 @@ export default config({
           label: "Blog Post",
           description:
             "Actual blog post. ONLY use Paragraphs, Heading 2s and Heading 3s.",
-          formatting: true,
+          formatting: {
+            inlineMarks: {
+              bold: true,
+              italic: true,
+              underline: true,
+              strikethrough: true,
+              code: true,
+              superscript: true,
+              subscript: true,
+              keyboard: true,
+            },
+            listTypes: {
+              ordered: true,
+              unordered: true,
+            },
+            headingLevels: [2, 3, 4, 5, 6],
+            blockTypes: {
+              blockquote: true,
+              code: true,
+            },
+          },
           links: true,
           dividers: true,
-          componentBlocks: {
-            externalLink: component({
-              preview: (props) => <p>{props.fields.text.value}</p>,
-              label: "External Link",
-              schema: {
-                text: fields.text({
-                  label: "Link Text",
-                  validation: { length: { min: 1 } },
-                }),
-                path: fields.text({
-                  label: "Link Path",
-                  validation: { length: { min: 1 } },
-                }),
-              },
-            }),
-          },
+          // componentBlocks,
+          images: true,
           // images: {
-          //   directory: "/public/images/projects/individual/",
-          //   publicPath: "/images/projects/individual/",
+          //   directory: "/public/images/blog-images/",
+          //   publicPath: "/images/blog-images/",
           //   schema: {
           //     alt: fields.text({
           //       label: "Image Alternate Text",
