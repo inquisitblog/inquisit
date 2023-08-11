@@ -68,11 +68,13 @@ export default async function MainLayout({
 
   return (
     <html lang="en" className="scroll-p-36 scroll-smooth text-dark">
-      <Script
-        strategy="lazyOnload"
-        src="https://neesh-umami.vercel.app/script.js"
-        data-website-id="78a8ae54-c44a-4075-b1cc-c54cfe94789f"
-      />
+      {process.env.NODE_ENV === "production" && (
+        <Script
+          strategy="lazyOnload"
+          src="https://neesh-umami.vercel.app/script.js"
+          data-website-id="78a8ae54-c44a-4075-b1cc-c54cfe94789f"
+        />
+      )}
 
       <body
         className={`${poppins.variable} bg-lighter font-sans selection:bg-accent/25`}
