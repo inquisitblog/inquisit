@@ -16,6 +16,7 @@ interface Author {
   name: string
   description: string
   avatar: string
+  link: string | null
 }
 
 interface Category {

@@ -441,6 +441,11 @@ export default config({
           directory: "/public/images/authors/",
           publicPath: "/images/authors/",
         }),
+        link: fields.url({
+          label: "External Link",
+          description:
+            "Optional link to something you'd like to show off or link to.",
+        }),
       },
     }),
   },
