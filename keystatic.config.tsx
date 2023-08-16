@@ -344,25 +344,25 @@ export default config({
           links: true,
           dividers: true,
           // componentBlocks,
-          images: true,
-          // images: {
-          //   directory: "/public/images/blog-images/",
-          //   publicPath: "/images/blog-images/",
-          //   schema: {
-          //     alt: fields.text({
-          //       label: "Image Alternate Text",
-          //       description:
-          //         "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
-          //       validation: {
-          //         length: { min: 1 },
-          //       },
-          //     }),
-          //     title: fields.text({
-          //       label: "Image Caption",
-          //       description: "This is optional. Displayed under the image.",
-          //     }),
-          //   },
-          // },
+          // images: true,
+          images: {
+            directory: "public/images/blogposts/",
+            publicPath: "/images/blogposts/",
+            // schema: {
+            //   alt: fields.text({
+            //     label: "Image Alternate Text",
+            //     description:
+            //       "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
+            //     validation: {
+            //       length: { min: 1 },
+            //     },
+            //   }),
+            //   title: fields.text({
+            //     label: "Image Caption",
+            //     description: "This is optional. Displayed under the image.",
+            //   }),
+            // },
+          },
         }),
       },
     }),
