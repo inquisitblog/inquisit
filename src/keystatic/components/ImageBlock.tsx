@@ -16,9 +16,9 @@ const ImageBlock = async ({
       width={750}
       height={750}
       sizes="(min-width: 960px) 735px, (min-width: 760px) calc(45.56vw + 307px), calc(94.77vw - 48px)"
-      className="mb-4 object-cover"
+      className="object-cover"
     />
-    <p>{title}</p>
+    {title && <p className="mt-4">{title}</p>}
   </div>
 )
 
