@@ -7,7 +7,7 @@ import { getHighlighter } from "shiki"
 import { getSlug } from "@/lib/utils"
 import reader from "@/lib/keystatic"
 import { getPost } from "@/lib/data"
-import { Code, H2 } from "@/keystatic/components"
+import { Code, H2, ImageBlock } from "@/keystatic/components"
 
 import { DocumentRenderer } from "@keystatic/core/renderer"
 import {
@@ -101,7 +101,6 @@ const BlogArticle = async ({ params }: ParamsType) => {
           alt={imageAlt}
           fill
           priority
-          // 100vw on till 860px - max 768px
           sizes="(min-width: 860px) 768px, 100vw"
           className="rounded-xl object-cover"
         />
@@ -148,6 +147,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
                 }
               },
               code: (props) => <Code highlighter={highlighter} {...props} />,
+              image: (props) => <ImageBlock {...props} />,
             },
           }}
         />
