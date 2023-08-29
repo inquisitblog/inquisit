@@ -1,4 +1,5 @@
 ---
+published: true
 title: Understanding Algorithmic Bias
 description: >-
   Machine learning models are transforming decision-making and resource
@@ -13,71 +14,123 @@ categories:
   - ethics
 image: /images/blogposts/understanding-algorithmic-bias/image.jpg
 imageAlt: DALL.E Art Depicting Bias
-pubDate: '2023-06-10'
-updatedDate: '2023-06-10'
+pubDate: "2023-06-10"
+updatedDate: "2023-06-10"
 ---
-## The Rise of Machine Learning Models
 
-Machine learning models have become indispensable tools across institutions of all forms and sizes, revolutionizing the way decisions are made and resources are allocated.
-
-Why bear the recurrent cost of maintaining a panel of recruiters with limited working hours, when the cream-of-the-crop resumes can be curated as they arrive? Why police areas indiscriminately, when resources can be concentrated selectively at high-risk sites? Why bother with ads for a general population, when they can be targeted to groups that are actually interested?
-
-Predictive technologies have massively optimized the time and costs associated with traditional decision-making. That said, reducing their significance to mere affordability would be naive.
-
-Since 1997, when IBM’s Deep Blue program dethroned the world chess champion, Garry Kasparov, machine learning models have become increasingly comparable to human experts in many diverse fields, even outperforming them in unexpected ways. In 2019, for instance, Google’s deep learning algorithm achieved a 99.4% reduction in error compared to the average human radiologist in detecting breast cancer from mammograms. The improvement curve for these technologies is near its steepest and it only gets better from here.
-
-Given how impressive these models are, it’s no surprise that people are jumping aboard the AI bandwagon. For developing countries like India, the embrace of AI is also influenced by its symbolic association with modernity and progress. Due to its public conception as “neutral” and “human-free”, AI has also gained undue algorithmic authority over human decision-makers. Machines are considered more rational than humans, and little analysis goes into questioning their inner workings and impact.
-
-From personal beliefs to a bad morning coffee, human judgments are subject to countless non-objective factors. As Daniel Kahneman elucidates in his writings, this irrationality can take the form of a brilliant intuitive insight or simply a bad decision. Machine learning models are immune to such human factors, thereby being “neutral” in some sense.
-
-However, they are far from immune to bias.
-
-## Algorithmic Bias and a Fruity Experiment
-
-> “Face by face the answers seem uncertainYoung and old, proud icons are dismissedCan machines ever see my queens as I view them?Can machines ever see our grandmothers as we knew them?”
-> 
-> — From "AI, Ain't I a Woman" by Joy Buolamwini
-
-In a 2018 [research](https://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf), Joy Buolamwini revealed various axes of disparity in commercial gender classification models. Most strikingly, that there was a 34.7% error rate for dark-skinned women, as opposed to a mere 0.8% for light-skinned men.
-
-While these errors may be dismissed as inevitable in the early stages of these technologies, they elicit a deeper analysis. How does an algorithm, fundamentally just a complex mathematical function, come to demonstrate as human an error as racial bias? To understand, let’s get to know the algorithms in question.
-
-A human may use visual features like shape, color, texture to classify visual input. A round, red and shiny object, for example, is most likely a balloon. While humans rely on such intuitive visual features, machine learning models extract abstract features from the images that are impossible for us to comprehend. During training, the model learns to recognize these patterns and abstract features in the training data, enabling it to generalize and make predictions on new, unseen images.
-
-To isolate the effect of training data on a machine learning model, here’s a little experiment.
-
-I’ve implemented a simple image classification model ([GitHub](https://github.com/shan-shan-dar/fruity-algorithmic-bias-demonstration)) that identifies various types of fruits depicted in images. The model was trained on a dataset containing labeled images of apples, bananas, cherries, chickoos, grapes, kiwis, mangoes, oranges, and strawberries. Here’s a snapshot of the training data:
-
-![Training Data Snapshot](/images/blogposts/img/understanding-algorithmic-bias/Training%20Data%20Sample.png)
-
-The first model was trained with 40 images from each of the 9  fruit categories. Although 360 images form a rather small dataset, it suffices for training a trivial fruit classifier. The model classified unseen images correctly with about 92% accuracy. There were few errors, with no significant pattern, as seen in the confusion matrix (boxes outside of the main diagonal represent errors). That is to say, the algorithm was not biased towards or against a particular fruit.
-
-![Complete Model Matrix Confusion](/images/blogposts/img/understanding-algorithmic-bias/Complete%20Model%20Confusion%20Matrix.png)
-
-The second model was exactly identical to the first. The only difference: the training dataset. I manipulated the training dataset to include 50 images from the banana category but only 10 each from the other 8 categories. This makes the banana category heavily overrepresented in the data. Since the total size of the dataset was reduced to 130, the performance dropped expectedly to about 55%. More interestingly though, the errors did show an obvious pattern.
-
-![Biased Model Confusion Matrix](/images/blogposts/img/understanding-algorithmic-bias/Biased%20Model%20Confusion%20Matrix.png)
-
-Not only did the model make 0 errors in classifying banana images, a large majority of the errors came from classifying other fruits as bananas. Here’s what some of the predictions looked like:
-
-![Example Predictions](/images/blogposts/img/understanding-algorithmic-bias/Example%20Predictions.png)
-
-And there you have it! In our little fruit classifier, we've isolated the cause for bias. It turns out, when bananas get all the spotlight in the training data, our algorithm can't resist going bananas itself.
-
-Extrapolating to larger, more complex models, like the ones studied in Joy Buolamwini’s research, the racial and gender biases can be attributed to the data used in training them. And indeed, the most widely used datasets for face recognition and gender classification are overwhelmingly composed of lighter-skinned subjects (about 83%, according to Buolamiwini’s research).
-
-Although not very complicated, imbalances like these are notoriously tricky to identify and resolve. Collecting data at a physical location, for instance, may underrepresent foreign areas, while online surveys tend to overrepresent respondents with strong opinions.
-
-## A Mirror Held Up to Our Society
-
-Today, AI is integrated into systems that deal with real people’s lives. The consequences of algorithmic biases extend far beyond minor inconveniences, such as delayed facial recognition on your phone. They permeate vital domains, affecting access to insurance services, employment, legal cases, and more.
-
-Marginalized communities have seen unfair treatment by human decision-makers throughout history, often resulting in them being excluded from mainstream societal norms and practices. Women across most cultures, for instance, have had access to voting much later than men, resulting in a gender imbalance in historical voting data. Even the internet, conceived to be a place with boundless diversity and representation, creates biased data. A little browsing of the internet for the word ‘asian’ reveals that it is disproportionately associated with sexual content, misrepresenting entire cultures. As of a 2022 report, an unbelievable 48% of Indians lack access to the internet at all, effectively rendering them invisible in numerous datasets and to still more numerous services that utilize models trained from these datasets.
-
-Biases in our culture have manifested themselves in our data. As the AI revolution marks the next chapter in human history, we are presented with the responsibility to right our wrongs. And it’s more work than it looks.
-
-We have stumbled upon a whole new dimension of information. We can read and write literature, capture images, create art. What lies beyond our human capabilities is to comprehend large data. Machine learning models and AI are tools that can read and infer from patterns in data. Patterns that are abstrusely minute and patterns that are unfathomably large.
-
-The abstract space of large data holds an untold number of associations that we wouldn’t explicitly teach our children: prejudice, violence, spite. Scarier still, our data may hold darker truths about us that we have never been able to conceptualize. This uncharted realm is an infinitely complex mirror held up to our society, and our algorithms will come to reflect our flaws in this mirror.
-
-In progressing without caution with these technologies, we risk perpetuating the same human atrocities that have plagued our histories. AI, then, would be nothing more than another arm in the spiral of oppression, another weapon in the arsenal of the privileged.
+## The Rise of Machine Learning Models Machine learning models have become
+indispensable tools across institutions of all forms and sizes, revolutionizing
+the way decisions are made and resources are allocated. Why bear the recurrent
+cost of maintaining a panel of recruiters with limited working hours, when the
+cream-of-the-crop resumes can be curated as they arrive? Why police areas
+indiscriminately, when resources can be concentrated selectively at high-risk
+sites? Why bother with ads for a general population, when they can be targeted
+to groups that are actually interested? Predictive technologies have massively
+optimized the time and costs associated with traditional decision-making. That
+said, reducing their significance to mere affordability would be naive. Since
+1997, when IBM’s Deep Blue program dethroned the world chess champion, Garry
+Kasparov, machine learning models have become increasingly comparable to human
+experts in many diverse fields, even outperforming them in unexpected ways. In
+2019, for instance, Google’s deep learning algorithm achieved a 99.4% reduction
+in error compared to the average human radiologist in detecting breast cancer
+from mammograms. The improvement curve for these technologies is near its
+steepest and it only gets better from here. Given how impressive these models
+are, it’s no surprise that people are jumping aboard the AI bandwagon. For
+developing countries like India, the embrace of AI is also influenced by its
+symbolic association with modernity and progress. Due to its public conception
+as “neutral” and “human-free”, AI has also gained undue algorithmic authority
+over human decision-makers. Machines are considered more rational than humans,
+and little analysis goes into questioning their inner workings and impact. From
+personal beliefs to a bad morning coffee, human judgments are subject to
+countless non-objective factors. As Daniel Kahneman elucidates in his writings,
+this irrationality can take the form of a brilliant intuitive insight or simply
+a bad decision. Machine learning models are immune to such human factors,
+thereby being “neutral” in some sense. However, they are far from immune to
+bias. ## Algorithmic Bias and a Fruity Experiment > “Face by face the answers
+seem uncertainYoung and old, proud icons are dismissedCan machines ever see my
+queens as I view them?Can machines ever see our grandmothers as we knew them?” >
+> — From "AI, Ain't I a Woman" by Joy Buolamwini In a 2018
+[research](https://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf),
+Joy Buolamwini revealed various axes of disparity in commercial gender
+classification models. Most strikingly, that there was a 34.7% error rate for
+dark-skinned women, as opposed to a mere 0.8% for light-skinned men. While these
+errors may be dismissed as inevitable in the early stages of these technologies,
+they elicit a deeper analysis. How does an algorithm, fundamentally just a
+complex mathematical function, come to demonstrate as human an error as racial
+bias? To understand, let’s get to know the algorithms in question. A human may
+use visual features like shape, color, texture to classify visual input. A
+round, red and shiny object, for example, is most likely a balloon. While humans
+rely on such intuitive visual features, machine learning models extract abstract
+features from the images that are impossible for us to comprehend. During
+training, the model learns to recognize these patterns and abstract features in
+the training data, enabling it to generalize and make predictions on new, unseen
+images. To isolate the effect of training data on a machine learning model,
+here’s a little experiment. I’ve implemented a simple image classification model
+([GitHub](https://github.com/shan-shan-dar/fruity-algorithmic-bias-demonstration))
+that identifies various types of fruits depicted in images. The model was
+trained on a dataset containing labeled images of apples, bananas, cherries,
+chickoos, grapes, kiwis, mangoes, oranges, and strawberries. Here’s a snapshot
+of the training data: ![Training Data
+Snapshot](/images/blogposts/img/understanding-algorithmic-bias/Training%20Data%20Sample.png)
+The first model was trained with 40 images from each of the 9 fruit categories.
+Although 360 images form a rather small dataset, it suffices for training a
+trivial fruit classifier. The model classified unseen images correctly with
+about 92% accuracy. There were few errors, with no significant pattern, as seen
+in the confusion matrix (boxes outside of the main diagonal represent errors).
+That is to say, the algorithm was not biased towards or against a particular
+fruit. ![Complete Model Matrix
+Confusion](/images/blogposts/img/understanding-algorithmic-bias/Complete%20Model%20Confusion%20Matrix.png)
+The second model was exactly identical to the first. The only difference: the
+training dataset. I manipulated the training dataset to include 50 images from
+the banana category but only 10 each from the other 8 categories. This makes the
+banana category heavily overrepresented in the data. Since the total size of the
+dataset was reduced to 130, the performance dropped expectedly to about 55%.
+More interestingly though, the errors did show an obvious pattern. ![Biased
+Model Confusion
+Matrix](/images/blogposts/img/understanding-algorithmic-bias/Biased%20Model%20Confusion%20Matrix.png)
+Not only did the model make 0 errors in classifying banana images, a large
+majority of the errors came from classifying other fruits as bananas. Here’s
+what some of the predictions looked like: ![Example
+Predictions](/images/blogposts/img/understanding-algorithmic-bias/Example%20Predictions.png)
+And there you have it! In our little fruit classifier, we've isolated the cause
+for bias. It turns out, when bananas get all the spotlight in the training data,
+our algorithm can't resist going bananas itself. Extrapolating to larger, more
+complex models, like the ones studied in Joy Buolamwini’s research, the racial
+and gender biases can be attributed to the data used in training them. And
+indeed, the most widely used datasets for face recognition and gender
+classification are overwhelmingly composed of lighter-skinned subjects (about
+83%, according to Buolamiwini’s research). Although not very complicated,
+imbalances like these are notoriously tricky to identify and resolve. Collecting
+data at a physical location, for instance, may underrepresent foreign areas,
+while online surveys tend to overrepresent respondents with strong opinions. ##
+A Mirror Held Up to Our Society Today, AI is integrated into systems that deal
+with real people’s lives. The consequences of algorithmic biases extend far
+beyond minor inconveniences, such as delayed facial recognition on your phone.
+They permeate vital domains, affecting access to insurance services, employment,
+legal cases, and more. Marginalized communities have seen unfair treatment by
+human decision-makers throughout history, often resulting in them being excluded
+from mainstream societal norms and practices. Women across most cultures, for
+instance, have had access to voting much later than men, resulting in a gender
+imbalance in historical voting data. Even the internet, conceived to be a place
+with boundless diversity and representation, creates biased data. A little
+browsing of the internet for the word ‘asian’ reveals that it is
+disproportionately associated with sexual content, misrepresenting entire
+cultures. As of a 2022 report, an unbelievable 48% of Indians lack access to the
+internet at all, effectively rendering them invisible in numerous datasets and
+to still more numerous services that utilize models trained from these datasets.
+Biases in our culture have manifested themselves in our data. As the AI
+revolution marks the next chapter in human history, we are presented with the
+responsibility to right our wrongs. And it’s more work than it looks. We have
+stumbled upon a whole new dimension of information. We can read and write
+literature, capture images, create art. What lies beyond our human capabilities
+is to comprehend large data. Machine learning models and AI are tools that can
+read and infer from patterns in data. Patterns that are abstrusely minute and
+patterns that are unfathomably large. The abstract space of large data holds an
+untold number of associations that we wouldn’t explicitly teach our children:
+prejudice, violence, spite. Scarier still, our data may hold darker truths about
+us that we have never been able to conceptualize. This uncharted realm is an
+infinitely complex mirror held up to our society, and our algorithms will come
+to reflect our flaws in this mirror. In progressing without caution with these
+technologies, we risk perpetuating the same human atrocities that have plagued
+our histories. AI, then, would be nothing more than another arm in the spiral of
+oppression, another weapon in the arsenal of the privileged.
