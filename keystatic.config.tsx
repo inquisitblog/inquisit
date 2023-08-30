@@ -249,6 +249,12 @@ export default config({
       },
       slugField: "title",
       schema: {
+        published: fields.checkbox({
+          label: "Published",
+          description:
+            "Check it to publish. Unchecked posts remain as drafts in Keystatic and do not make it to the live site.",
+          defaultValue: false,
+        }),
         title: fields.slug({
           name: {
             label: "Title",
