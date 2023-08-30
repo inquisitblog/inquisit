@@ -59,8 +59,6 @@ export async function getPosts(options?: {
 
   let posts = await parsePosts(slugs)
 
-  posts = posts.filter((post) => post.published)
-
   posts = posts.sort((a, b) => (a.pubDate < b.pubDate ? 1 : -1))
 
   // If no options, return all posts
