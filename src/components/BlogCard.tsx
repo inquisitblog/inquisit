@@ -21,6 +21,7 @@ type BlogCardProps = {
   tags: Category[]
   slug: string
   priority?: boolean
+  sizes?: string
 }
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -34,6 +35,7 @@ const BlogCard: FC<BlogCardProps> = ({
   tags,
   slug,
   priority,
+  sizes,
 }) => {
   return (
     <div
@@ -57,11 +59,7 @@ const BlogCard: FC<BlogCardProps> = ({
           className="object-cover"
           fill
           priority={priority}
-          sizes={
-            type === "Regular"
-              ? "(min-width: 1640px) 684px, (min-width: 1280px) calc(37.65vw + 74px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
-              : "(min-width: 1640px) 286px, (min-width: 1280px) calc(16.18vw + 24px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
-          }
+          sizes={sizes}
         />
       </div>
 

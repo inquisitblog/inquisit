@@ -108,6 +108,7 @@ export default async function Home() {
                 description={featuredPost.description}
                 tags={featuredPost.categories}
                 slug={featuredPost.slug}
+                sizes="(min-width: 1640px) 684px, (min-width: 1280px) calc(37.65vw + 74px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
               />
             </div>
             <div className={`flex flex-col xl:w-1/2 ${verticalBlogGap}`}>
@@ -123,6 +124,7 @@ export default async function Home() {
                   description={post.description}
                   tags={post.categories}
                   slug={post.slug}
+                  sizes="(min-width: 1640px) 286px, (min-width: 1280px) calc(16.18vw + 24px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
                 />
               ))}
             </div>

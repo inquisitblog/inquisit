@@ -22,6 +22,7 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
           slug={post.slug}
           // Prio image loading for the first 4 posts bcoz they will be above the fold
           priority={i < 4}
+          sizes="(min-width: 1620px) 688px, (min-width: 1040px) 44.29vw, (min-width: 780px) calc(8.33vw + 587px), calc(94.78vw - 48px)"
         />
       ))}
     </div>
