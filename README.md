@@ -21,9 +21,13 @@ A collaborative blog project about igniting curiosity and exploring diverse acad
 - Once you're in the Blog Posts section, you'll see a list of all the posts, both drafts and published.
 - Click into a post to edit, or click the Add button at the top right to Create a new one.
 - The editor is divided into 3 sections:
+
   - The left sidebar shows a top level navigation,
   - The centre allows you to edit the actual article &
   - The right bar allows access to editing all the metadata behind the blog such as title, description, categories, authors(s), etc
+
+  You can adjust the sizing of these panels and collapse the sidebar. Bring your mouse to the edge of two panels and you should be able to drag to resize them.
+
 - Similarly, you can add or edit Categories & Authors.
 
   _(Keystatic doesn't allow granular control of what you can and cannot edit so just don't go around messing with any unnecessary data. Everything is stored on GitHub, documented in the commits and can easily be reverted.)_
