@@ -16,12 +16,16 @@ A collaborative blog project about igniting curiosity and exploring diverse acad
 
 - You should be greeted with the Dashboard where you have access to view and edit all the Posts, Categories, Authors, etc.
 
+  ![Screenshot of the Inquisit Keystatic Dashboard](https://github.com/inquisitblog/inquisit/assets/137633738/bf8e881f-6f50-4908-9664-7c8f34d705bd)
+
+
 ### Writing Articles
 
 - Once you're in the Blog Posts section, you'll see a list of all the posts, both drafts and published.
 - Click into a post to edit, or click the Add button at the top right to Create a new one.
+  ![Screenshot of the Header section of the Dashboard with the Add button](https://github.com/inquisitblog/inquisit/assets/137633738/4cc75e19-c6f8-4023-86e0-c09f04445ac6)
 - The editor is divided into 3 sections:
-
+  ![Screenshot of the 3 panels while editing a Blog Post](https://github.com/inquisitblog/inquisit/assets/137633738/a9007953-9417-420e-8acf-85db5e2124a8)
   - The left sidebar shows a top level navigation,
   - The centre allows you to edit the actual article &
   - The right bar allows access to editing all the metadata behind the blog such as title, description, categories, authors(s), etc
