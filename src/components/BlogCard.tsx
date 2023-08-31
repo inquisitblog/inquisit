@@ -43,7 +43,7 @@ const BlogCard: FC<BlogCardProps> = ({
         {
           "h-full": type === "Regular",
           "gap-4 xl:grid xl:grid-cols-1-2": type === "Sidebar",
-        }
+        },
       )}
     >
       <div
@@ -57,7 +57,11 @@ const BlogCard: FC<BlogCardProps> = ({
           className="object-cover"
           fill
           priority={priority}
-          sizes="(min-width: 1280px) 580px, (min-width: 740px) 672px, 100vw"
+          sizes={
+            type === "Regular"
+              ? "(min-width: 1640px) 684px, (min-width: 1280px) calc(37.65vw + 74px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
+              : "(min-width: 1640px) 286px, (min-width: 1280px) calc(16.18vw + 24px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
+          }
         />
       </div>
 
@@ -66,7 +70,7 @@ const BlogCard: FC<BlogCardProps> = ({
           "flex flex-grow flex-col justify-between gap-4 px-4 pb-4 md:px-6 md:pb-6",
           {
             "xl:p-0 xl:py-4 xl:pr-4 ": type === "Sidebar",
-          }
+          },
         )}
       >
         <div className="grid gap-3">
@@ -109,7 +113,7 @@ const BlogCard: FC<BlogCardProps> = ({
             "flex items-center gap-2 text-base font-semibold text-accent transition-opacity hover:opacity-70 xl:text-lg",
             {
               "2xl:text-xl": type === "Regular",
-            }
+            },
           )}
         >
           <span>Full article </span>

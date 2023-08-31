@@ -33,7 +33,7 @@ const SingleAuthor: FC<{ author: Author; date: string }> = ({
         alt={`Avatar of ${author.name}`}
         width={72}
         height={72}
-        sizes="48px, (min-width: 1280px) 72px"
+        sizes="(min-width: 1280px) 72px, 48px"
         className="aspect-square w-12 rounded-full object-cover xl:w-18"
       />
       <div className="grid xl:gap-1">
