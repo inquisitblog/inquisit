@@ -1,0 +1,70 @@
+---
+published: false
+title: Brain is Braining
+description: >-
+  Interdisciplinarity has greatly influenced neuroscience, making it one of the
+  most exciting areas of study in the sciences. It integrates aspects of
+  traditional biology, psychology, philosophy and even computation in the
+  investigation of the brain and behavior. In this exploration, discover how
+  neuroscience incorporates insights from the seemingly unrelated domains of
+  physics and chaos theory, forging exciting new frontiers in our understanding
+  of perhaps the greatest computational machineries in the universe: our brains.
+authors: []
+categories:
+  - cognitive-science
+image: /images/blogposts/brain-is-braining/image.png
+imageAlt: Chaos in the brain DALL-E image
+pubDate: '2023-09-11'
+updatedDate: '2023-09-11'
+---
+In the grand symphony of science, chaos theory serves as the hidden maestro, orchestrating the intricate dynamics of randomness and order across a multitude of fields. It connects seemingly disparate domains, from exploring the fluctuating nature of financial markets to understanding the unpredictability of natural disasters. Chaos theory unveils a universal language that resonates across sciences, politics, economics, and more. Let's delve into the ubiquity of chaos through the lens of critical states emerging in the brain—an intriguing manifestation of its pervasive influence on science.
+
+## Phase Transitions
+
+Critical states emerge during transitions. For instance, consider the familiar scenario of water transitioning from liquid to gas. During this phase transition, we encounter two distinct states characterized by parameters known as 'order' parameters. The driving forces behind changes in these order parameters, referred to as 'control' parameters, can be adjusted, such as temperature. Plotting any order parameter against a control parameter yields two types of graphs, contingent on external conditions like pressure: continuous and discontinuous. Our focus lies on the continuous phase transition, where the elusive critical point emerges.
+
+![](/images/blogposts/img/brain-is-braining/1.png)
+
+While the emergence of a critical point in water serves as an example, there is no direct connection between criticality in the brain and the critical point of water. However, this intuitive understanding of critical point emergence sets the stage for exploring a model that best exemplifies critical systems—the Ising model.
+
+## The Ising Model
+
+The Ising model essentially provides a visual representation of individual spins of atoms within a magnet.
+
+![](/images/blogposts/img/brain-is-braining/2.png)
+
+This lattice comprises multiple sites representing particle spins in the system as either +1 (up) or -1 (down). When one of the spin states predominates across the lattice, we observe the macroscopic effect of magnetism, typically occurring at low temperatures. Conversely, heating the system results in a disordered state, where the extra energy causes spins to flip randomly, leading to no net magnetism. At the critical state, which lies in between these two extremes, intriguing properties emerge. In this state, local interactions exhibit long-range effects—indeed, theoretically, the change in one particle's spin orientation can influence another particle's spin over an infinite distance. This correlation can be represented as follows:
+
+![](/images/blogposts/img/brain-is-braining/3.png)
+
+What does this graph signify? The peak, corresponding to the critical state, reflects the system's sensitivity to minor fluctuations in the spins of its particles. In a highly ordered state, there is no correlation between any two particles, as the majority of spins point in one direction. Conversely, in an extremely disordered state, randomness prevails, yielding no correlation. However, at the critical point, we observe the peak correlation length, where spins fluctuate in a coordinated manner. While this dynamic correlation diminishes as the distance between two examined particles increases, it still maintains a nonzero probability of correlation at infinite distances. At the critical point, the correlation drops to near zero at a much greater distance compared to the other two states, resulting in a peak in the correlation length graph.
+
+Analyzing the behavior of the Ising model brings us closer to discussing critical states in neuronal networks, as this theory elegantly seems to explain both behaviors. While this model adeptly elucidates criticality, questions persist about its relevance to criticality in the brain. Researchers initially detected hints of criticality in the brain by observing another intriguing property of critical states, often considered fundamental to such systems: power laws. Data from their studies on neuronal networks aligned with these power laws, motivating further exploration of the brain for signs of criticality.
+
+## Scale Invariance
+
+At the critical state, the Ising model follows power laws, indicating scale invariance or fractality. This well-known phenomenon in chaotic systems simplifies the system by demonstrating that relative cluster sizes of up and down spins remain similar at all scales. When researchers analyzed data from neuronal 'avalanches,' a term we will revisit shortly, they found that the data also adhered to power laws. Furthermore, this resemblance of data to power laws implies another crucial characteristic in the brain relevant to critical systems—the peak correlation length. The logical next step is to question why the brain operates in this critical state and whether any mechanisms are responsible for maintaining it.
+
+## Self-Organized Criticality (SOC) in the Brain
+
+Self-organized criticality has surfaced in various fields of study, ranging from sandpile models to stock market fluctuations and earthquake prediction. However, discovering SOC in neuronal networks was particularly exciting for researchers. SOC offers an evolutionary advantage to the brain, as it enables a system that is highly sensitive to even the slightest input and efficiently relays information—an invaluable asset for an organism. Let's gain a more intuitive understanding of SOC in the brain and the experiments conducted to unearth such data. Imagine a grid of dots representing a neuronal network, where each dot's illumination signifies the activation of the associated neuron.
+
+![](/images/blogposts/img/brain-is-braining/4.png)
+
+Each neuron forms random connections with a few others, and the neuronal activity spreading as neurons activate one another is termed an 'avalanche.' To be more precise, an avalanche comprises a period of inactivity before and after the activity, hence the term. We've reorganized the dot matrix so that information typically flows from left to right.
+
+Now, let's examine three scenarios regarding the number of 'descendants' each neuron activates. Suppose each neuron activates roughly 0.5 other neurons, meaning it takes two neurons to activate one neuron in the next layer. In this case, the activity would quickly dissipate and have a minimal chance of reaching the last stage of the neuronal network. This scenario corresponds to a deep comatose state. Conversely, if each neuron activates roughly 2, 3, or multiple other neurons, we observe a significant amplification of the signal, resulting in the activation of all neurons in the last stage. This extreme amplification provides no useful information about the number of neurons activated in the first layer and corresponds to epileptic states.
+
+What happens when each neuron activates only one other neuron? The data researchers found, concerning the observation of power laws in the brain, aligns with this scenario. Here, we observe that the final stage tends to have a similar number of neurons activated as in the first stage.
+
+![](/images/blogposts/img/brain-is-braining/5.png)
+
+The 'branching ratio' represents the most probable number of neurons activated by each neuron and can be likened to the control parameter when plotting the critical point graph for this activity.
+
+## "Theory will only take you so far"
+
+While this theory beautifully explains criticality, practical doubts may arise regarding its application to neuronal networks. Achieving the critical state itself necessitates meticulous fine-tuning of nearly every parameter that could influence the system—an arduous task. After all, real-world scenarios introduce numerous random disturbances that could disrupt the critical state. The current research challenge lies in unraveling the homeostatic mechanisms responsible for maintaining criticality in the brain. One theory posits that the brain operates slightly below the critical state, referred to as 'sub-critical,' as true criticality may entail risks. Another theory suggests a 'quasi-critical' state, where the system approaches the critical state but external factors push it to operate just below that threshold. Perhaps a complex interplay of compounds regulating inhibition and excitation within the brain holds the answer. The possibilities are indeed vast.
+
+As we stand on the brink of a new era in neuroscience, where criticality and consciousness intersect, it is evident that the answers we seek may be as intricate as the very systems we study. Investigating SOC in the brain could unlock a plethora of mysteries, from deciphering the secrets of efficient computation in machines to uncovering the link between sleep deprivation and sub-critical states in the brain.
+
+As we venture further into unraveling the enigmatic workings of our most complex organ, the human brain, we push the boundaries to unearth a wealth of secrets that will reshape our world in unimaginable ways.
