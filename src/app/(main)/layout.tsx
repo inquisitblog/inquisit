@@ -71,7 +71,7 @@ export default async function MainLayout({
       {process.env.NODE_ENV === "production" && (
         <Script
           strategy="lazyOnload"
-          src="https://neesh-umami.vercel.app/script.js"
+          src="https://umami.neeshsamsi.com/script.js"
           data-website-id="78a8ae54-c44a-4075-b1cc-c54cfe94789f"
         />
       )}
