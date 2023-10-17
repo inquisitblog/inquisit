@@ -1,0 +1,78 @@
+---
+published: true
+title: Pixelated Sentience
+description: >-
+  In this beautiful creative masterpiece of a game, AI has a fascinating role to
+  play. Delve into some of the design decisions and implementation behind the
+  bizarrely like life creatures of the indie game 'Rain World.'
+authors:
+  - shan
+categories:
+  - artificial-intelligence
+  - creativity
+image: /images/blogposts/pixelated-sentience/image.jpg
+imageAlt: Rain World wallpaper
+pubDate: '2023-10-14'
+updatedDate: '2023-10-14'
+---
+As complex as a single biological lifeform can be, the most incredible phenomena in nature occur when creatures interact. From intricate food webs to the influence of abiotic factors, the manner in which the survival instinct of each individual fuels the grand machinery of an ecosystem is nothing short of a miracle.
+
+Dynamic and alive, an ecosystem is often comparable to a lifeform in itself, with its behavior emerging from the interactions of the creatures within it. Thus, it adds another layer of intricacy to the living world. Yet, an essence of a complex living ecosystem is ingeniously captured in this rather unexpected medium - a video game titled 'Rain World.'
+
+Rain World is a humble 2D pixel-art platformer game that introduced me to the extraordinary world of Slugcat, one of the many creatures inhabiting the remnants of an ancient intelligent civilization referred to simply as the ‘Ancients.’ The game's setting, through its landscape art and music, immersed me in a world saturated with the remnants of the Ancients' technologies. Amidst this wreckage, life has found a way to persist. Tunnel-like shrubs serve as sanctuaries for groups of Batflies, while the flooded shorelines harbor enigmatic biomechanical Leviathans. The world teems with incredibly detailed flora and fauna.
+
+While the sheer diversity of creatures undoubtedly contributes to the charm of Rain World, it's not solely responsible for the game's immersion. Countless aspects of Rain World’s design and gameplay work together to sell the realism of its ecosystems, but the flagship feature, for me, is the autonomy of Rain World’s creatures—their ability to independently ‘play’ the game in the same capacity as me, driven by seemingly real personalities and intentions. This illusion is powered by the game’s incredible use of Artificial Intelligence.
+
+## AI in Games
+
+The history of AI and video games is more entwined than one might think. Games like Pac-Man and Donkey Kong, arcade staples from the 80s, introduced AI systems that controlled enemy pathfinding and decision-making. Since then, AI in games has advanced significantly, with gaming technology companies like NVIDIA at the forefront of AI research.
+
+In today’s landscape of multi-million-dollar budgets, Rain World, crafted by an indie team of just four developers, stands out as a masterpiece in AI implementation. While its AI might not boast the technical complexity of some AAA titles, it excels in making the creatures feel genuinely autonomous and intelligent.
+
+In the realm of traditional game development, character behaviors and interactions were meticulously crafted through manually programmed scripts. Every event and interaction within the game world was necessarily a direct result of developers' specific intentions translated into detailed lines of code. In this pre-AI era, computers served as obedient tools, faithfully executing the exact set of instructions written in the code, but nothing more.
+
+The fundamental limitation of this approach lies in the inherent difficulty in scripting intricate and lifelike behaviors. While developers could indeed code the instructions for movement along a predefined path or the rules of a card game, phenomena like perception and decision-making simply couldn’t be scripted into explicit sets of instructions. These nuances were often not fully comprehended even by us humans, let alone being conveyed effectively through code.
+
+Enter AI, which advances the computer from a mere mechanical executor of code into a dynamic collaborator. While developers are still responsible for coding the fundamental properties and behaviors of individual entities, AI bridges the gap and takes over the intricacies of how these behaviors interact with other creatures, the player, and the environment. Rather than explicitly specifying every detail of "what" should happen, developers can dictate the "how," enabling AI to autonomously simulate these interactions.
+
+## Creature Behaviour in Rain World
+
+In Rain World, the behavior of every creature is a delicate orchestration of dynamic systems.
+
+The most direct influence on its creature’s behavior is one-sided Relationships that define the overall dynamic between creatures. In the code, Relationships come in 11 types: Ignores, Eats, Afraid, StayOutOfWay, AgressiveRival, Attacks, Uncomfortable, Antagonizes, PlaysWith, SocialDependent, and Pack. Relationships are also quantized with a range of 0-1, with 0 having no effect on behavior, and 1 having the highest possible effect. For instance, a high value of the Afraid Relationship influences Lantern Mice to run away from the Slugcat.
+
+Importantly, Relationships themselves are not static; they are shaped by a web of AI-driven Trackers, acting as a simulated analog for perception. These Trackers, including ThreatTracker, NoiseTracker, and FriendTracker, enable creatures to keep track of other creatures, the player, items, and the environment. The value and type of Relationships are continually modified by AI based on these Trackers, some of which are more influential than others for certain species.
+
+A third layer of intricacy is added by Rain World’s elaborate Reputation system, almost entirely invisible to the player. The player’s actions, affecting certain creatures, and the environment, cause fluctuations in Reputation, calculated holistically using four separate variables. At its simplest, low Reputation in certain areas or with certain tribes leads to more aggression and fear from creatures, while high Reputation facilitates neutrality and even friendliness.
+
+On top of this complex structure that dictates behavior is Personality. The more intelligent creatures in Rain World, notably Lizards and Scavengers, have a set of Personality modifiers—Aggression, Bravery, Dominance, Energy, Nervousness, and Sympathy. The strengths of these traits affect the more subtle differences in behavior and even appearance. For instance, Scavengers with a high Aggression value are more likely to attack the player or other trespassing creatures and to have longer teeth with narrower necks, whereas Scavies with a higher Sympathy are more likely to give weapons to unarmed pack members in combat and have wider eyes (which I find really cute).
+
+Unpacking this structure, we can see how certain systems and properties like Relationships, Trackers, Reputation, and Personality are more explicitly defined in code, but the way in which Trackers dynamically influence Relationships and how Relationships, Reputation, and Personality, in turn, influence the resulting behavior is calculated and carried out by AI.
+
+Because of this structure, most of the higher-level behaviors and interactions in Rain World are emergent. The interplay between Relationships, Personality, Reputation, and Trackers produces unique behavior that, when pitted against other creatures with their own behaviors and a rich environment with interactable items, gives rise to phenomena that are complex, contextual, and highly unpredictable.
+
+What adds an exceptional layer of realism is that the creatures are not infallible. Since developers haven't directly coded any higher-level behaviors, creatures occasionally make mistakes. A Scavenger may miscalculate an attack, injuring an ally, or a Lizard may misjudge your path as you crawl through a pipe, losing your trail. These unscripted events breathe life into the ecosystem. These interactions also have tangible consequences for gameplay. For instance, as a Lizard is carrying me back to its den, other Lizards sometimes fight it over prey or territory, allowing me a window to escape.
+
+## Procedural Animation
+
+The kind of animation used in most games is keyframe animation. Similar to traditional computer programming, this requires the animators to explicitly draw out all the possible animations. The software will then loop them correctly at specified times, but nothing more.
+
+Given how brilliantly Rain World’s AI powers creature behavior to simulate complex, spontaneous, and lifelike interactions, it would be a shame for the illusion to be broken by mechanical, predefined animation. Instead, the magic of procedural animation conveys its immersive and unpredictable world. In contrast to keyframe animation, this method involves generating visuals through code rather than traditional frame-by-frame drawing.
+
+Instead of specifying the actual movements of the creatures, procedural animation relies on setting certain physics rules in the game’s world and allowing AI to calculate the movements that result from the creatures’ body parts interacting with the game’s physics. Even when running across a plain surface, the animation feels incredibly organic, since tiny fluctuations in positions and momentums of creatures give rise to minute details in the movement. Further, the locomotion AI of the creatures directly informs their animations and vice-versa, creating a seamless connection between decision-making and movement to achieve grotesque and organic creatures.
+
+The choice to embrace procedural animation in Rain World is bold and speaks to the game's focus and intention, underscoring its dedication to delivering a unique and authentic gaming experience, one that challenges the boundaries of traditional game design and sets a new standard for immersive, AI-driven worlds.
+
+## Outsider in a Strange City
+
+This indifferent busyness of the creatures going about their lives in the ugly, cold urban landscape immediately evokes the feeling of being an outsider in a strange city. This theme of feeling lost and overwhelmed is maintained, even deepened, as I unravel the intricacies of this world.
+
+The influence I, even as the protagonist, have on the world is unforgivingly weak. Traditionally, video games are enjoyable in part because they fulfill the psychological desire for control. Rain World strips me of control, forcing me to learn the ways of this strange world and think not as a protagonist entitled with plot armor, but like a lost and vulnerable Slugcat, near the bottom of the food chain.
+
+This shift in power also changes the nature of gratification in the game. Rather than fighting every hostile creature in my way, I’m rewarded for avoiding and outsmarting them. And given how smart and distinct every creature is, I’m compelled to closely study their intentions, tendencies, and weaknesses. The Yellow Lizards will work as a pack to block off my exits, but if their leader, the one with the longest antennae, is hurt, they become uncoordinated. Some Scavenger tribes will set up outposts through important territory, letting you pass only if you pay them something of value, perhaps a pearl. Yet, every creature, even within the same species, is an incredibly autonomous being with their own personalities, behaviors, and visual details. Observing and learning about the world around me becomes essential to survive.
+
+This observation lends itself to another realization that truly distinguishes Rain World and makes its ecosystems profoundly immersive: the world and its inhabitants are not my adversaries. The creatures are not obstacles to overcome or objectives to complete but are as alive and struggling as I am. They exist not for me but in spite of me. They chase prey, find shelter, coordinate in social packs, and defend themselves from predators, all regardless of my presence, whether they are on screen or not. I truly feel like an insignificant part of a much larger context.
+
+Many of Rain World’s lifeforms have not only adapted to scour the abandoned world for survival but have themselves become amalgamations of organic and inorganic parts. As nature adapts in unforeseen ways to recover from the mechanical ruins, the creatures of Rain World are reminiscent of the tenacity of life on Earth.
+
+Although there are many aspects of the game yet to be covered in this article, from the game mechanics, and its name, to engaging story that unfolds, and the unbelievably emotional visual and music art that ties together the experience, I intended here simply to share my excitement for the game’s clever AI. As I uncovered more of the desolate world, the creatures became welcome sparks of life, often making me forget that they are but code. I encourage you to experience Rain World for yourself, and importantly, to take your time with it.
