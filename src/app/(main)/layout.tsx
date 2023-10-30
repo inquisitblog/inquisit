@@ -1,5 +1,7 @@
 import "./globals.css"
 
+import { type Viewport } from "next"
+
 import Script from "next/script"
 import { Poppins } from "next/font/google"
 
@@ -15,6 +17,13 @@ const poppins = Poppins({
   variable: "--font-poppins",
   display: "swap",
 })
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#FBEAD2",
+}
 
 export async function generateMetadata() {
   const settings = await reader.singletons.settings.read()
@@ -46,7 +55,6 @@ export async function generateMetadata() {
       description,
       card: "summary",
     },
-    themeColor: "#FBEAD2",
     alternates: {
       canonical: "/",
     },

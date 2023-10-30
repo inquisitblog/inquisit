@@ -1,4 +1,4 @@
-import { type Metadata } from "next"
+import type { Viewport, Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import reader from "@/lib/keystatic"
@@ -9,6 +9,13 @@ import BlogPostsGrid from "@/components/BlogPostsGrid"
 
 type ParamsType = {
   params: { name: string; slug: string }
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#FBEAD2",
 }
 
 export async function generateStaticParams() {
@@ -60,8 +67,6 @@ export async function generateMetadata({ params }: ParamsType) {
       // creator: twitterUsername,
       card: "summary",
     },
-
-    themeColor: "#FBEAD2",
     alternates: {
       canonical: `/blog/categories/${slug}`,
     },

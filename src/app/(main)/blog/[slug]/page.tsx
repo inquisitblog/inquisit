@@ -1,4 +1,4 @@
-import { type Metadata } from "next"
+import type { Viewport, Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -19,6 +19,13 @@ import BlogTags from "@/components/BlogTags"
 import BlogAuthors from "@/components/BlogAuthors"
 
 type ParamsType = { params: { slug: string } }
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#FBEAD2",
+}
 
 export async function generateStaticParams() {
   const posts = await reader.collections.blogposts.list()
@@ -67,8 +74,6 @@ export async function generateMetadata({ params }: ParamsType) {
       // creator: twitterUsername,
       card: "summary",
     },
-
-    themeColor: "#FBEAD2",
     alternates: {
       canonical: `/blog/${slug}`,
     },
