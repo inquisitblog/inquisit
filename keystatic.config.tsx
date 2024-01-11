@@ -240,6 +240,54 @@ export default config({
   },
 
   collections: {
+    collections: collection({
+      label: "Blog Collections",
+      path: "src/data/collections/*",
+      slugField: "title",
+      schema: {
+        title: fields.slug({
+          name: {
+            label: "Title",
+            validation: { length: { min: 1 } },
+          },
+          slug: {
+            label: "Slug",
+            description: "A unique url safe identifier for this article.",
+          },
+        }),
+        description: fields.text({
+          label: "Description",
+          description:
+            "Displayed on the Collection Section and on the Collection Page.",
+          multiline: true,
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        posts: fields.array(
+          fields.relationship({
+            label: "Blog Post",
+            collection: "blogposts",
+            validation: { isRequired: true },
+          }),
+          {
+            label: "Blog Posts",
+            itemLabel: (props) => props.value ?? "Please select a Blog Post",
+          },
+        ),
+        buttonText: fields.text({
+          label: "Button Text",
+          description:
+            "The text on the full collection button - default text is 'Read complete collection'",
+          validation: {
+            length: {
+              min: 1,
+            },
+          },
+        }),
+      },
+    }),
+
     blogposts: collection({
       label: "Blog Posts",
       path: "src/data/blogposts/*",
