@@ -276,14 +276,9 @@ export default config({
           },
         ),
         buttonText: fields.text({
-          label: "Button Text",
+          label: "Button Text (Optional)",
           description:
             "The text on the full collection button - default text is 'Read complete collection'",
-          validation: {
-            length: {
-              min: 1,
-            },
-          },
         }),
       },
     }),
