@@ -7,11 +7,6 @@ const nextConfig = {
   },
   redirects: async () => [
     {
-      source: "/categories",
-      destination: "/blog/categories",
-      permanent: true,
-    },
-    {
       source: "/stats",
       destination:
         "https://umami.neeshsamsi.com/websites/78a8ae54-c44a-4075-b1cc-c54cfe94789f",
