@@ -19,10 +19,10 @@ const NavLink = ({ text, path, active, newWindow }: NavLinkProps) => {
     <Link
       href={path}
       className={cn(
-        "relative w-fit transition-opacity before:absolute before:-bottom-1  before:left-0 before:h-[2px] before:w-full before:scale-x-0  before:bg-accent before:transition-transform hover:opacity-80 hover:before:scale-x-100",
+        "relative w-fit transition-opacity before:absolute before:-bottom-1 before:left-0 before:h-[2px] before:w-full before:scale-x-0 before:bg-accent before:transition-transform hover:opacity-80 hover:before:scale-x-100",
         {
           "before:scale-x-100": isActive,
-        }
+        },
       )}
       target={newWindow ? "_blank" : ""}
     >
