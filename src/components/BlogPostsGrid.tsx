@@ -1,5 +1,5 @@
 import { FC } from "react"
-import BlogCard from "./BlogCard"
+import PostCard from "./PostCard"
 
 type Props = {
   posts: BlogPost[]
@@ -9,9 +9,9 @@ const BlogPostsGrid: FC<Props> = ({ posts }) => {
   return posts.length ? (
     <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 lg:max-w-none lg:grid-cols-2">
       {posts.map((post, i) => (
-        <BlogCard
+        <PostCard
           key={post.slug}
-          type="Regular"
+          type="single"
           img={post.image}
           alt={post.imageAlt}
           date={post.pubDate}

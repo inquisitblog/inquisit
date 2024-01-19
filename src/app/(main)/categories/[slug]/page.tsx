@@ -4,8 +4,7 @@ import { notFound } from "next/navigation"
 import reader from "@/lib/keystatic"
 import { getPosts, getCategory } from "@/lib/data"
 import { capitalise } from "@/lib/utils"
-
-import BlogPostsGrid from "@/components/BlogPostsGrid"
+import PostCard from "@/components/PostCard"
 
 type ParamsType = {
   params: { name: string; slug: string }
@@ -90,7 +89,24 @@ const Category = async ({ params }: ParamsType) => {
       <h1 className="mb-12 text-4xl font-bold text-accent md:mb-16 md:text-5xl xl:text-6xl">
         {capitalise(category.name)}
       </h1>
-      <BlogPostsGrid posts={posts} />
+
+      <div className="grid grid-cols-1 gap-8 md:gap-8 xl:gap-10 2xl:grid-cols-2">
+        {posts.map((post) => (
+          <PostCard
+            key={post.slug}
+            type="full"
+            img={post.image}
+            alt={post.imageAlt}
+            date={post.pubDate}
+            authors={post.authors}
+            title={post.title}
+            description={post.description}
+            tags={post.categories}
+            slug={post.slug}
+            sizes="100vw"
+          />
+        ))}
+      </div>
     </main>
   )
 }
