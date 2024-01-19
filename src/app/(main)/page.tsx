@@ -95,7 +95,12 @@ export default async function Home() {
 
         <div className="grid gap-12">
           {collections.map((collection) => (
-            <PostCollection key={collection.slug} collection={collection} />
+            <PostCollection
+              key={collection.slug}
+              collection={collection}
+              type="multiple"
+              postLimit={2}
+            />
           ))}
         </div>
 
