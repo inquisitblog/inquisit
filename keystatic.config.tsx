@@ -172,9 +172,9 @@ export default config({
       },
     }),
 
-    blogpage: singleton({
-      label: "Blog Page",
-      path: "src/data/pages/blog",
+    collectionspage: singleton({
+      label: "Collections Page",
+      path: "src/data/pages/collections",
       schema: {
         metaTitle: fields.text({
           label: "Metadata Title",
@@ -202,9 +202,9 @@ export default config({
       },
     }),
 
-    blogcategoriespage: singleton({
-      label: "Blog Categories Page",
-      path: "src/data/pages/blogcategories/",
+    categoriespage: singleton({
+      label: "Post Categories Page",
+      path: "src/data/pages/categories",
       schema: {
         metaTitle: fields.text({
           label: "Metadata Title",
