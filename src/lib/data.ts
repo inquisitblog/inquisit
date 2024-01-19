@@ -94,6 +94,19 @@ export async function getCollections(options?: {
   return collections
 }
 
+export async function getCollection(slug: string) {
+  const collection = await reader.collections.collections.read(slug)
+
+  if (collection) {
+    return {
+      slug,
+      ...collection,
+      authors: await parseAuthors([...collection.authors]),
+      posts: await parsePosts([...collection.posts]),
+    }
+  } else return undefined
+}
+
 async function parsePosts(slugs: string[]) {
   const posts = await Promise.all(
     slugs.map(async (slug) => {
