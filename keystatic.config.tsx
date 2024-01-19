@@ -264,6 +264,17 @@ export default config({
             length: { min: 1 },
           },
         }),
+        authors: fields.array(
+          fields.relationship({
+            label: "Blog Authors",
+            collection: "authors",
+            validation: { isRequired: true },
+          }),
+          {
+            label: "Blog Authors",
+            itemLabel: (props) => props.value ?? "Please select an Author",
+          },
+        ),
         posts: fields.array(
           fields.relationship({
             label: "Blog Post",
