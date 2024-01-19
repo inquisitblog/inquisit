@@ -5,27 +5,26 @@ import { cn, displayNames, formatDate } from "@/lib/utils"
 
 type Props = {
   authors: Author[]
-  date: string
-  className?: string
+  date?: string
 }
 
-const BlogAuthors: FC<Props> = ({ authors, date, className }) => {
+const BlogAuthors: FC<Props> = ({ authors, date }) => {
   return (
-    <div className={className}>
+    <>
       {authors.length === 1 ? (
         <SingleAuthor author={authors[0]} date={date} />
       ) : (
         <MultipleAuthors authors={authors} date={date} />
       )}
-    </div>
+    </>
   )
 }
 
-const SingleAuthor: FC<{ author: Author; date: string }> = ({
+const SingleAuthor: FC<{ author: Author; date?: string }> = ({
   author,
   date,
 }) => {
-  const commonClasses = `flex w-fit items-center gap-2 xl:gap-4 rounded-xl py-2 px-3 xl:py-3 xl:px-4`
+  const commonClasses = `flex w-fit items-center gap-2 xl:gap-4 rounded-xl`
   const children = (
     <>
       <Image
@@ -34,11 +33,13 @@ const SingleAuthor: FC<{ author: Author; date: string }> = ({
         width={72}
         height={72}
         sizes="(min-width: 1280px) 72px, 48px"
-        className="aspect-square w-12 rounded-full object-cover xl:w-18"
+        className="aspect-square w-8 rounded-full object-cover xl:w-14"
       />
       <div className="grid xl:gap-1">
         <p className="text-lg font-semibold xl:text-xl">By {author.name}</p>
-        <p className="text-sm font-normal xl:text-base">{formatDate(date)}</p>
+        {date && (
+          <p className="text-sm font-normal xl:text-base">{formatDate(date)}</p>
+        )}
       </div>
     </>
   )
@@ -55,13 +56,13 @@ const SingleAuthor: FC<{ author: Author; date: string }> = ({
   )
 }
 
-const MultipleAuthors: FC<{ authors: Author[]; date: string }> = ({
+const MultipleAuthors: FC<{ authors: Author[]; date?: string }> = ({
   authors,
   date,
 }) => {
   return (
     <Link
-      href="/blog/authors"
+      href="/authors"
       className="flex w-fit items-center gap-4 rounded-xl px-3 py-2 transition-colors hover:bg-light xl:px-4 xl:py-3"
     >
       <div className="flex">
@@ -72,7 +73,7 @@ const MultipleAuthors: FC<{ authors: Author[]; date: string }> = ({
             alt={`Avatar of ${author.name}`}
             width={72}
             height={72}
-            className={cn("aspect-square w-12 rounded-full shadow-lg xl:w-18", {
+            className={cn("aspect-square w-8 rounded-full shadow-lg xl:w-14", {
               "-ml-8": i !== 0,
             })}
           />
@@ -82,7 +83,9 @@ const MultipleAuthors: FC<{ authors: Author[]; date: string }> = ({
         <p className="text-lg font-semibold xl:text-xl">
           By {displayNames(authors.map((author) => author.name))}
         </p>
-        <p className="text-sm font-normal xl:text-base">{formatDate(date)}</p>
+        {date && (
+          <p className="text-sm font-normal xl:text-base">{formatDate(date)}</p>
+        )}
       </div>
     </Link>
   )
