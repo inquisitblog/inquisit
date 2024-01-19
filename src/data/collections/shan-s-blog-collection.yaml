@@ -1,5 +1,7 @@
 title: Shan's Blog Collection
 description: Description for Shan's blog collection
+authors:
+  - shan
 posts:
   - understanding-algorithmic-bias
   - musings-on-resistance
