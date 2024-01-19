@@ -4,10 +4,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 import reader from "@/lib/keystatic"
-import { getCollections, getPosts } from "@/lib/data"
+import { getCollections } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
-import PostCard from "@/components/PostCard"
 import PostCollection from "@/components/PostCollection"
 
 export async function generateMetadata() {
