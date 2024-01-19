@@ -28,6 +28,72 @@ async function parseAuthors(slugs: string[]) {
   return authors
 }
 
+async function parseCollections(slugs: string[]) {
+  const collections = await Promise.all(
+    slugs.map(async (slug) => {
+      const collection = await reader.collections.collections.read(slug)
+
+      if (!collection)
+        throw new Error(`Keystatic Content Not Found - Collection - ${slug}`)
+
+      return {
+        slug,
+        ...collection,
+        authors: await parseAuthors([...collection.authors]),
+        posts: await parsePosts([...collection.posts]),
+      }
+    }),
+  )
+
+  return collections
+}
+export async function getCollections(options?: {
+  number?: number
+  author?: string
+}) {
+  const slugs = await reader.collections.collections.list()
+
+  let collections = await parseCollections(slugs)
+
+  // Sort each collections posts by latest -> Use the latest post from each to sort collections by latest
+  collections = collections.sort((a, b) => {
+    const aPost = a.posts.sort((a, b) => (a.pubDate < b.pubDate ? 1 : -1))[0]
+    const bPost = b.posts.sort((a, b) => (a.pubDate < b.pubDate ? 1 : -1))[0]
+
+    return aPost.pubDate < bPost.pubDate ? 1 : -1
+  })
+
+  // If no options, return all collections
+  if (!options) {
+    return collections
+  }
+
+  const { author, number } = options
+
+  if (author) {
+    collections = collections.filter((collection) => {
+      // If any posts have any matching authors, return true so it gets added
+      if (
+        collection.posts.filter((post) => {
+          // If any postAuthor matches provided author, the array will have a length
+          if (
+            post.authors.filter((postAuthor) => author === postAuthor.slug)
+              .length > 0
+          )
+            return true
+        }).length > 0
+      )
+        return true
+    })
+  }
+
+  if (number && number !== -1) {
+    collections = collections.slice(0, number)
+  }
+
+  return collections
+}
+
 async function parsePosts(slugs: string[]) {
   const posts = await Promise.all(
     slugs.map(async (slug) => {
@@ -77,13 +143,17 @@ export async function getPosts(options?: {
     })
   }
 
-  // if (author) {
-  //   posts = posts.filter((post) => {
-  //     return post.authors.some((element) => element.slug === author)
-  //   })
-  // } else {
-  //   return []
-  // }
+  if (author) {
+    posts = posts.filter((post) => {
+      // If any postAuthor matches provided author, the array will have a length
+      if (
+        post.authors.filter((postAuthor) => author === postAuthor.slug).length >
+        0
+      ) {
+        return true
+      }
+    })
+  }
 
   if (number && number !== -1) {
     posts = posts.slice(0, number)
