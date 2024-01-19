@@ -1,3 +1,12 @@
+interface PostCollection {
+  slug: string
+  title: string
+  description: string
+  authors: Author[]
+  posts: BlogPost[]
+  buttonText?: string
+}
+
 interface BlogPost {
   slug: string
   title: string
