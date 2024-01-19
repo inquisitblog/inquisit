@@ -11,12 +11,16 @@ navLinks:
     path: /
     newWindow: false
     btn: false
-  - text: Blog
-    path: /blog
+  - text: Collections
+    path: /collections
     newWindow: false
     btn: false
   - text: Categories
-    path: /blog/categories
+    path: /categories
+    newWindow: false
+    btn: false
+  - text: Authors
+    path: /authors
     newWindow: false
     btn: false
 footerTagline: Some sort of tagline?
