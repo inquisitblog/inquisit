@@ -4,10 +4,11 @@ import Image from "next/image"
 import Link from "next/link"
 
 import reader from "@/lib/keystatic"
-import { getPosts } from "@/lib/data"
+import { getCollections, getPosts } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
-import BlogCard from "@/components/BlogCard"
+import PostCard from "@/components/PostCard"
+import PostCollection from "@/components/PostCollection"
 
 export async function generateMetadata() {
   const homepage = await reader.singletons.homepage.read()
@@ -33,10 +34,7 @@ export default async function Home() {
   const { subheadline, aboutBlog, aboutPeople, blogHeadline, blogButtonText } =
     homepage
 
-  const posts = await getPosts({ number: 4 })
-  const featuredPost = posts?.shift()
-
-  const verticalBlogGap = "gap-16 xl:gap-10"
+  const collections = (await getCollections()).slice(0, 6)
 
   return (
     <>
@@ -90,51 +88,20 @@ export default async function Home() {
 
       <section
         id="blog"
-        className="mx-auto max-w-screen-2xl px-8 pb-16 pt-8 md:px-16"
+        className="mx-auto grid max-w-screen-2xl gap-y-12 px-8 pb-16 pt-8 md:px-16"
       >
-        <h3 className="text-5xl font-bold text-accent">{blogHeadline}</h3>
-        {featuredPost && posts ? (
-          <div
-            className={`flex max-w-2xl flex-col py-16 xl:w-full xl:max-w-none xl:flex-row ${verticalBlogGap}`}
-          >
-            <div className="xl:w-1/2">
-              <BlogCard
-                type="Regular"
-                img={featuredPost.image}
-                alt={featuredPost.imageAlt}
-                date={featuredPost.pubDate}
-                authors={featuredPost.authors}
-                title={featuredPost.title}
-                description={featuredPost.description}
-                tags={featuredPost.categories}
-                slug={featuredPost.slug}
-                sizes="(min-width: 1640px) 684px, (min-width: 1280px) calc(37.65vw + 74px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
-              />
-            </div>
-            <div className={`flex flex-col xl:w-1/2 ${verticalBlogGap}`}>
-              {posts.map((post) => (
-                <BlogCard
-                  key={post.slug}
-                  type="Sidebar"
-                  img={post.image}
-                  alt={post.imageAlt}
-                  date={post.pubDate}
-                  authors={post.authors}
-                  title={post.title}
-                  description={post.description}
-                  tags={post.categories}
-                  slug={post.slug}
-                  sizes="(min-width: 1640px) 286px, (min-width: 1280px) calc(16.18vw + 24px), (min-width: 780px) calc(4.17vw + 620px), calc(94.78vw - 48px)"
-                />
-              ))}
-            </div>
-          </div>
-        ) : (
-          <p className="mb-16 mt-8 text-xl">No latest posts.</p>
-        )}
+        <h2 className="text-4xl font-bold text-accent xl:text-5xl">
+          {blogHeadline}
+        </h2>
 
-        <Link href="/blog">
-          <button className="block rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:mx-auto xl:px-8 xl:py-4 xl:text-2xl">
+        <div className="grid gap-12">
+          {collections.map((collection) => (
+            <PostCollection key={collection.slug} collection={collection} />
+          ))}
+        </div>
+
+        <Link href="/collections">
+          <button className="mx-auto block rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:px-8 xl:py-4 xl:text-xl">
             {blogButtonText}
           </button>
         </Link>
