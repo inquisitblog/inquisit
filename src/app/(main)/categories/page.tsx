@@ -8,11 +8,11 @@ import pluralize from "pluralize"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 export async function generateMetadata() {
-  const blogcategoriespage = await reader.singletons.blogcategoriespage.read()
-  if (!blogcategoriespage)
-    throw new Error("Keystatic Content Not Found - Blog Categories Page")
+  const categoriespage = await reader.singletons.categoriespage.read()
+  if (!categoriespage)
+    throw new Error("Keystatic Content Not Found - Categories Page")
 
-  const { metaTitle: title, metaDescription: description } = blogcategoriespage
+  const { metaTitle: title, metaDescription: description } = categoriespage
 
   return {
     title,
@@ -20,24 +20,24 @@ export async function generateMetadata() {
     openGraph: {
       title,
       description,
-      url: "/blog/categories",
+      url: "/categories",
     },
     twitter: {
       title,
       description,
     },
     alternates: {
-      canonical: "/blog/categories",
+      canonical: "/categories",
     },
   }
 }
 
 export default async function Category() {
-  const blogcategoriespage = await reader.singletons.blogcategoriespage.read()
-  if (!blogcategoriespage)
-    throw new Error("Keystatic Content Not Found - Blog Categories Page")
+  const categoriespage = await reader.singletons.categoriespage.read()
+  if (!categoriespage)
+    throw new Error("Keystatic Content Not Found - Categories Page")
 
-  const { headline, ctaText } = blogcategoriespage
+  const { headline, ctaText } = categoriespage
 
   const categories = await getCategories()
 
@@ -69,7 +69,7 @@ export default async function Category() {
                 {pluralize("post", posts.length, true)}
               </p>
               <Link
-                href={`/blog/categories/${slug}`}
+                href={`/categories/${slug}`}
                 className="flex w-fit items-center gap-2 rounded border-2 border-accent px-2 py-1 text-base font-semibold text-accent transition-all hover:bg-accent hover:text-light xl:text-lg"
               >
                 <span>{ctaText}</span>
