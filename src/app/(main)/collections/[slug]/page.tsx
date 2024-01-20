@@ -1,9 +1,11 @@
 import { type Metadata } from "next"
-
 import { notFound } from "next/navigation"
+
 import reader from "@/lib/keystatic"
 import { getCollection } from "@/lib/data"
+
 import PostCollection from "@/components/PostCollection"
+import BackTo from "@/components/BackTo"
 
 type ParamsType = { params: { slug: string } }
 
@@ -72,7 +74,8 @@ export default async function Collection({ params: { slug } }: ParamsType) {
   }
 
   return (
-    <main className="mx-auto min-h-[80vh] max-w-screen-2xl px-8 py-8 md:px-16 md:py-16">
+    <main className="mx-auto grid min-h-[80vh] max-w-screen-2xl gap-4 px-8 py-8 md:gap-8 md:px-16 md:py-16">
+      <BackTo text="Back to all collections" link={"/collections"} />
       <PostCollection collection={collection} type="single" />
     </main>
   )
