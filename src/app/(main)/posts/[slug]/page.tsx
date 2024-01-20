@@ -1,22 +1,19 @@
 import type { Viewport, Metadata } from "next"
-import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { getHighlighter } from "shiki"
 
 import { getSlug } from "@/lib/utils"
 import reader from "@/lib/keystatic"
-import { getPost } from "@/lib/data"
+import { getCollectionFromPost, getPost } from "@/lib/data"
 import { Code, H2, ImageBlock } from "@/keystatic/components"
 
 import { DocumentRenderer } from "@keystatic/core/renderer"
-import {
-  ArrowLeftCircleIcon,
-  ArrowTopRightOnSquareIcon,
-} from "@heroicons/react/24/outline"
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline"
 import ScrollToTop from "@/components/ScrollToTop"
 import BlogTags from "@/components/BlogTags"
 import BlogAuthors from "@/components/BlogAuthors"
+import BackTo from "@/components/BackTo"
 
 type ParamsType = { params: { slug: string } }
 
@@ -93,13 +90,23 @@ const BlogArticle = async ({ params }: ParamsType) => {
 
   const { image, imageAlt, categories, title, authors, pubDate, article } = post
 
+  const collection = await getCollectionFromPost(slug)
+  if (!collection) {
+    throw new Error(
+      `Error fetching the collection for blog - ${slug}. This may be because this post isn't assigned to a collection or assigned to more than 1 collection. `,
+    )
+  }
+
   const highlighter = await getHighlighter({
     theme: "monokai",
   })
 
   return (
     <main className="relative mx-auto flex max-w-screen-2xl flex-col gap-4 px-8 py-8 md:gap-8 md:px-16 md:py-16">
-      <BackToBlog />
+      <BackTo
+        text="Back to collection"
+        link={`/collections/${collection.slug}`}
+      />
       <div className="relative aspect-[4/3] max-w-3xl">
         <Image
           src={image}
@@ -157,24 +164,13 @@ const BlogArticle = async ({ params }: ParamsType) => {
           }}
         />
       </article>
-      <BackToBlog />
+      <BackTo
+        text="Back to collection"
+        link={`/collections/${collection.slug}`}
+      />
 
       <ScrollToTop />
     </main>
-  )
-}
-
-function BackToBlog() {
-  return (
-    <Link
-      href="/blog"
-      className="flex items-center gap-3 text-lg transition-all hover:opacity-70 lg:text-xl"
-    >
-      <div className="w-6 lg:w-8">
-        <ArrowLeftCircleIcon strokeWidth={1.5} />
-      </div>
-      <p>Back to blog posts</p>
-    </Link>
   )
 }
 
