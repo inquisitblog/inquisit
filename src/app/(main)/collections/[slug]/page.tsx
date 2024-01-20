@@ -37,13 +37,13 @@ export async function generateMetadata({ params: { slug } }: ParamsType) {
   })
 
   const meta: Metadata = {
-    title: `${title}`,
+    title,
     description,
     // Removes duplicates
     keywords: keywords.filter((c, i) => keywords.indexOf(c) === i),
 
     openGraph: {
-      title: `${title}`,
+      title,
       description,
       url,
       siteName,
