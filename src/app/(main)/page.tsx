@@ -118,12 +118,7 @@ const InfoCard: FC<
   PropsWithChildren<{ title: { text: string; accent: string } }>
 > = ({ title, children }) => {
   return (
-    <div
-      className={cn(
-        "rounded-xl bg-light px-8 py-6 lg:px-12 lg:py-10",
-        "shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg", // card hover
-      )}
-    >
+    <div className="rounded-xl bg-light px-8 py-6 shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg lg:px-12 lg:py-10">
       <h2 className="text-2xl font-semibold md:text-3xl">
         {title.text} <span className="text-accent">{title.accent}</span>
       </h2>
