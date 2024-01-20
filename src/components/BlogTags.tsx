@@ -12,7 +12,7 @@ const BlogTags: FC<Props> = ({ tags }) => {
         <Link
           key={i}
           className="w-fit rounded border border-accent px-2 py-1 text-base transition-all hover:bg-accent hover:text-light 2xl:text-lg"
-          href={`/blog/categories/${tag.slug}`}
+          href={`/categories/${tag.slug}`}
         >
           {tag.name}
         </Link>
