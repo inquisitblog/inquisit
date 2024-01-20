@@ -1,6 +1,6 @@
-import PostCollection from "@/components/PostCollection"
-import { getCollections } from "@/lib/data"
 import reader from "@/lib/keystatic"
+import { getCollections } from "@/lib/data"
+import PostCollection from "@/components/PostCollection"
 
 export async function generateMetadata() {
   const collectionspage = await reader.singletons.collectionspage.read()
