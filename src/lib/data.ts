@@ -192,6 +192,19 @@ export async function getPost(slug: string) {
   }
 }
 
+export async function getCollectionFromPost(postSlug: string) {
+  const collections = await getCollections()
+
+  const result = collections.filter(
+    (collection) =>
+      collection.posts.filter((post) => post.slug === postSlug).length > 0,
+  )
+
+  if (result.length === 1) {
+    return result[0]
+  } else return undefined
+}
+
 export async function getCategories() {
   const categories = await reader.collections.categories.all()
 
