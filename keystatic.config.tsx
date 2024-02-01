@@ -60,7 +60,7 @@ export default config({
             path: fields.text({
               label: "Link Path",
               description:
-                "This can be either a relative path (/blog) or an absolute path (https://typeform.com). If it's an absolute path, consider opening the link in a new tab.",
+                "This can be either a relative path (/colletions) or an absolute path (https://typeform.com). If it's an absolute path, consider opening the link in a new tab.",
               validation: { length: { min: 1 } },
             }),
             newWindow: fields.checkbox({
@@ -156,15 +156,16 @@ export default config({
         ),
 
         blogHeadline: fields.text({
-          label: "Headline - Blog Section",
-          description: "The headline above the Blog Grid.",
+          label: "Headline - Collections Section",
+          description: "The headline above the Collections Grid.",
           validation: {
             length: { min: 1 },
           },
         }),
         blogButtonText: fields.text({
-          label: "Call to Action - Blog Button",
-          description: "The button text that links to the full Blog page.",
+          label: "Call to Action - Collections Button",
+          description:
+            "The button text that links to the All Collections page.",
           validation: {
             length: { min: 1 },
           },
@@ -271,7 +272,7 @@ export default config({
 
   collections: {
     collections: collection({
-      label: "Blog Collections",
+      label: "Collections",
       path: "src/data/collections/*",
       slugField: "title",
       schema: {
@@ -296,24 +297,24 @@ export default config({
         }),
         authors: fields.array(
           fields.relationship({
-            label: "Blog Authors",
+            label: "Authors",
             collection: "authors",
             validation: { isRequired: true },
           }),
           {
-            label: "Blog Authors",
+            label: "Authors",
             itemLabel: (props) => props.value ?? "Please select an Author",
           },
         ),
         posts: fields.array(
           fields.relationship({
-            label: "Blog Post",
+            label: "Post",
             collection: "blogposts",
             validation: { isRequired: true },
           }),
           {
-            label: "Blog Posts",
-            itemLabel: (props) => props.value ?? "Please select a Blog Post",
+            label: "Posts",
+            itemLabel: (props) => props.value ?? "Please select a Post",
           },
         ),
         buttonText: fields.text({
@@ -325,7 +326,7 @@ export default config({
     }),
 
     blogposts: collection({
-      label: "Blog Posts",
+      label: "Posts",
       path: "src/data/blogposts/*",
       entryLayout: "content",
       format: {
@@ -351,7 +352,7 @@ export default config({
         }),
         description: fields.text({
           label: "Description",
-          description: "Displayed on the Blog Card and on the Blog Page.",
+          description: "Displayed on the Post Card.",
           multiline: true,
           validation: {
             length: { min: 1 },
@@ -359,30 +360,30 @@ export default config({
         }),
         authors: fields.array(
           fields.relationship({
-            label: "Blog Authors",
+            label: "Authors",
             collection: "authors",
             validation: { isRequired: true },
           }),
           {
-            label: "Blog Authors",
+            label: "Authors",
             itemLabel: (props) => props.value ?? "Please select an Author",
           },
         ),
         categories: fields.array(
           fields.relationship({
-            label: "Blog Categories",
+            label: "Categories",
             collection: "categories",
             validation: { isRequired: true },
           }),
           {
-            label: "Blog Categories",
+            label: "Categories",
             itemLabel: (props) => props.value ?? "Please select a Category",
           },
         ),
         image: fields.image({
           label: "Image",
           description:
-            "Displayed on the Blog Card and prominently on the Blog Page.",
+            "Displayed on the Post Card and prominently on the Post Page.",
           validation: { isRequired: true },
           directory: "/public/images/blogposts/",
           publicPath: "/images/blogposts/",
@@ -407,9 +408,9 @@ export default config({
           validation: { isRequired: true },
         }),
         article: fields.document({
-          label: "Blog Post",
+          label: "Post",
           description:
-            "Actual blog post. ONLY use Paragraphs, Heading 2s and Heading 3s.",
+            "Actual Post content. ONLY use Paragraphs, Heading 2s and Heading 3s.",
           formatting: {
             inlineMarks: {
               bold: true,
@@ -457,7 +458,7 @@ export default config({
     }),
 
     categories: collection({
-      label: "Blog Categories",
+      label: "Categories",
       path: "src/data/categories/*",
       slugField: "name",
       schema: {
