@@ -29,7 +29,7 @@ Now that we're all caught up, let's get into installing Next.js. Personally, I u
 
 Use the following command and follow the prompts to create your next project in a folder inside the current directory.
 
-```
+```bash
 pnpx create-next-app@latest
 ```
 
@@ -45,13 +45,13 @@ Before getting into the project, I want to make sure my editor is all set up. Si
 
 Open up your terminal and run the following command to install both Prettier & the Tailwind plugin as dev dependencies
 
-```
+```bash
 pnpm i -d prettier prettier-plugin-tailwindcss
 ```
 
-Once the dependencies are installed, to actually use the plugin, create a `.prettierrc` file in the root of your project and add the following code:![[create prettier file.png]]
+Once the dependencies are installed, to actually use the plugin, create a `.prettierrc` file in the root of your project and add the following code:
 
-```
+```json
 {
   "semi": false,
   "plugins": ["prettier-plugin-tailwindcss"]
@@ -83,7 +83,7 @@ Alright, now you're up to speed on what we're working with. Let's remove some of
 
 We can also remove all custom css from the `globals.css` file in the `src/app` directory leaving just
 
-```
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -95,7 +95,7 @@ The `config.theme.extend` object can also be removed from the `tailwind.config.t
 
 Now that we have our project all set up, we're ready to push our changes to [GitHub](https://github.com). Using the git cli or any other gui git tool, we can commit our changes to the git project that Next already initialized during the initial setup. On GitHub, we can create a new repo at github.com/new. To push our code up, copy the "Push an existing repo from command line" section that should look something like this:
 
-```
+```bash
 git remote add origin git@github.com:NeeshSamsi/test.git
 git branch -M main
 git push -u origin main
