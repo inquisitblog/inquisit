@@ -4,5 +4,6 @@ description: >-
   tricks & projects.
 authors:
   - neesh
-posts: []
+posts:
+  - how-i-setup-a-new-next-js-project-from-scratch
 buttonText: Dive right in
