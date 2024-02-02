@@ -45,7 +45,11 @@ const PostCollection = ({
         </p>
       </Link>
 
-      <PostsStack posts={posts} />
+      {posts.length > 0 ? (
+        <PostsStack posts={posts} />
+      ) : (
+        <p>No posts to show here (Definitely not a mistake)</p>
+      )}
 
       {type === "multiple" && (
         <Link href={`/collections/${collection.slug}`}>

@@ -94,14 +94,18 @@ export default async function Home() {
         </h2>
 
         <div className="grid gap-12">
-          {collections.map((collection) => (
-            <PostCollection
-              key={collection.slug}
-              collection={collection}
-              type="multiple"
-              postLimit={2}
-            />
-          ))}
+          {collections.length > 0 ? (
+            collections.map((collection) => (
+              <PostCollection
+                key={collection.slug}
+                collection={collection}
+                type="multiple"
+                postLimit={2}
+              />
+            ))
+          ) : (
+            <p>No collections to show here (Definitely not a mistake)</p>
+          )}
         </div>
 
         <Link href="/collections">
