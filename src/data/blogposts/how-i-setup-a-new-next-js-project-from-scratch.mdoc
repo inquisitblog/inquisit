@@ -1,0 +1,118 @@
+---
+published: false
+title: How I Setup a New Next.js Project from Scratch
+description: >-
+  Next.js is a very solid fullstack framework to build on the web. However, you
+  are left with a few choices to choose between for styling, content management,
+  etc. There's also some boilerplate that we can remove as well as add to bring
+  up the Here's how I get started.
+authors:
+  - neesh
+categories:
+  - next-js
+  - tailwind-css
+  - web-development
+image: /images/blogposts/how-i-setup-a-new-next-js-project-from-scratch/image.png
+imageAlt: Placeholder
+pubDate: '2024-02-02'
+updatedDate: '2024-02-02'
+---
+## Initial Requirements
+
+Before we begin, let's make sure we're all on the same page. Next.js is a meta framework built on top of React.js, a library to write interactive frontend user interfaces. So a prerequisite is to have a solid grip over HTML, CSS, JavaScript and further, a fair understanding of React.
+
+If you've worked with anything other than vanilla JavaScript, you will be familiar with [Node.js](https://nodejs.org) which we need to set up our project. Make sure you have it installed if you don't already.
+
+## Get Started - Installing Next.js
+
+Now that we're all caught up, let's get into installing Next.js. Personally, I use pnpm however, feel free to replace pnpm with npm or yarn. Open a terminal, I use VS Code's built-in terminal, but you can use any external terminal as well
+
+Use the following command and follow the prompts to create your next project in a folder inside the current directory.
+
+```
+pnpx create-next-app@latest
+```
+
+Alternatively, you can follow the command with a period (`.`) to initialize the project in the current directory (Make sure the current directory is empty if you go this route).
+
+The installation command asks you prompts to set up Typescript, ES List & Tailwind CSS. Then it confirms if you'd like to create a `/src` directory if you're using the latest App Router & if you'd like to change the default import alias of `@/`. If you'd like to just follow all the defaults, you can also pass in the `-y` flag to skip the prompts. However, I chose to create a `/src` directory so I chose to go through the prompts. For more information, check out the [Next.js Docs](https://nextjs.org/docs/getting-started/installation)
+
+Once the project is initialized & dependencies are installed, you can `cd your-project-name` and open it in your editor, `code .` if you use VS Code.
+
+## Prettier Plugin for TailwindCSS
+
+Before getting into the project, I want to make sure my editor is all set up. Since we opted to use Tailwind in the initial Next.js setup & I use [Prettier](https://prettier.io) to format my code, let's set up Prettier's plugin for TailwindCSS which sorts the tailwind classes into a consistent order. It is just an arbitrary order, but once you get used to it, it does make complex tailwind styles much more readable.
+
+Open up your terminal and run the following command to install both Prettier & the Tailwind plugin as dev dependencies
+
+```
+pnpm i -d prettier prettier-plugin-tailwindcss
+```
+
+Once the dependencies are installed, to actually use the plugin, create a `.prettierrc` file in the root of your project and add the following code:![[create prettier file.png]]
+
+```
+{
+  "semi": false,
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
+The essential part is only the `"plugins"` key, along with this feel free to add any prettier configuration. I only change semicolons to false and keep the rest default.
+
+Learn more at the [TailwindCSS Docs](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
+
+## Folder Structure
+
+Now we have our editor setup, let's take a look at the folder structure and what exactly Next.js has scaffolded out for us.
+
+In the root of the folder, we have some configuration files:
+
+1. Of course, we have the package.json & lock files from the default node.js initialization. This keeps track of some project settings like name, version number, scripts & most importantly the dependencies.
+1. The `next.config.mjs` file that controls all configurations for the next compilation, redirects, image optimization settings, etc. Check out the Next Config Options Docs [here](https://nextjs.org/docs/app/api-reference/next-config-js).
+1. The `tailwind.config.ts` & `postcss.config.js` are configurations that you can learn more about from their respective documentation - [Tailwind Docs](https://tailwindcss.com/docs) & [PostCSS](https://postcss.org/docs/).
+1. And finally, the `.prettierrc` file that we created.
+
+Moving to the folders, we have the `/public` directory which is Next's way of exposing files to, well, the public. Add assets like images, icons, pdfs or anything that needs to be accessed from the front end. All files in the public directory can be accessed at the relative path of /filename.extension.
+
+Now we get to the directory, you'll be spending the most time in. The `src/app` directory or just app if you did not opt for the src. The app directory is the main app router introduced in Next.js 13 which will consist of our `page.tsx` files, layout, middleware & metadata files like the `robots.ts` & `sitemap.ts`.
+
+## Boilerplate Cleanup
+
+Alright, now you're up to speed on what we're working with. Let's remove some of the junk that's been generated and Let's start with the `src/app/page.tsx`, the index/home page. Remove all the jsx returned from the default Home function. From the `layout.tsx` file in the app directory, we can load the right fonts for the project. If they are not Google Fonts, refer to the [next/font docs](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to load local fonts. Since we've deleted the default Next.js landing page, we can now delete the `next.svg` & `vercel.svg` from the `/public` directory since they are now no longer in use.
+
+We can also remove all custom css from the `globals.css` file in the `src/app` directory leaving just
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+The `config.theme.extend` object can also be removed from the `tailwind.config.ts` in the root of the project.
+
+## GitHub Repo Setup
+
+Now that we have our project all set up, we're ready to push our changes to [GitHub](https://github.com). Using the git cli or any other gui git tool, we can commit our changes to the git project that Next already initialized during the initial setup. On GitHub, we can create a new repo at github.com/new. To push our code up, copy the "Push an existing repo from command line" section that should look something like this:
+
+```
+git remote add origin git@github.com:NeeshSamsi/test.git
+git branch -M main
+git push -u origin main
+```
+
+## Next Steps
+
+And that's pretty much it. You're now all set!
+
+All that's left is to develop your site. Hopefully, it's fully responsive and accessible. Once you have your app developed, we can go through some optimizations and considerations to ensure your site can be deployed smoothly.
+
+For example:
+
+1. All pages should export the right metadata so your site has a title & your URL looks good when it's shared on social media platforms.
+1. The app directory should also have a sitemap.ts & robots.ts so that search engines can index your site correctly.
+1. Next.js gives you access to a Next Image component that replaces the html img tag with a lot of properties that help optimize your images in production.
+
+For some more information & resources, check out the rest of my posts:
+
+Coming Soon 😋 (Hopefully I'll end up writing about all that one day. Soon™️)
