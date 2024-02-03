@@ -24,7 +24,7 @@ const SingleAuthor: FC<{ author: Author; date?: string }> = ({
   author,
   date,
 }) => {
-  const commonClasses = `flex w-fit items-center gap-2 xl:gap-4 rounded-xl`
+  const commonClasses = `flex w-fit items-center gap-2 xl:gap-4 rounded-xl py-2 px-3`
   const children = (
     <>
       <Image
