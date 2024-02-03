@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ul:m": "npx unlighthouse --site inquisit.blog",
-    "ul:d": "npx unlighthouse --desktop --site inquisit.blog"
+    "ul:m": "npx unlighthouse --site www.inquisit.blog",
+    "ul:d": "npx unlighthouse --desktop --site www.inquisit.blog"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
