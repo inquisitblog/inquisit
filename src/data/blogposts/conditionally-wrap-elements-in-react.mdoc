@@ -25,7 +25,7 @@ Let's take an example. On Inquisit itself, go check out my [Author page](https:/
 
 If you've been using React for a bit, you know how to show the icon only when we actually have a link provided
 
-```
+```tsx
 {link && (
   <ArrowTopRightOnSquareIcon
     className="aspect-square w-10 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
@@ -40,7 +40,7 @@ But here's the issue. You can conditionally render a complete element using the 
 
 Just use a ternary right, easy
 
-```
+```tsx
 {link ? (
   <a href={link}>
     <h1>Title</h1>
@@ -56,7 +56,7 @@ That works, I guess right? So that's what I was doing for a bit, but now let's s
 
 Let's make a component - ConditionalWrapper.
 
-```
+```tsx
 import { type ReactNode } from "react"
 
 const ConditionalWrapper = ({
@@ -76,7 +76,7 @@ Let's walk through this component. We take in some props. A `condition` we're lo
 
 Let's see how I'm using it. Here's our heading/children.
 
-```
+```tsx
 <h1 className="group mb-4 flex w-fit items-center gap-4 text-4xl font-bold text-accent md:mb-8 md:text-5xl xl:text-6xl">
   <span>{name}</span>
     {link && (
@@ -90,7 +90,7 @@ Let's see how I'm using it. Here's our heading/children.
 
 And here's the Conditional Wrapper Component
 
-```
+```tsx
 <ConditionalWrapper
   condition={Boolean(link)}
   wrapper={(children) => <a href={link!}>{children}</a>}
