@@ -82,7 +82,7 @@ export default async function Author({ params: { slug } }: ParamsType) {
       <h1 className="group mb-4 flex w-fit items-center gap-4 text-4xl font-bold text-accent md:mb-8 md:text-5xl xl:text-6xl">
         <span>{name}</span>
         {link && (
-          <a href="https://google.com">
+          <a href={link}>
             <ArrowTopRightOnSquareIcon
               className="aspect-square w-10 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
               strokeWidth={2}
@@ -90,6 +90,7 @@ export default async function Author({ params: { slug } }: ParamsType) {
           </a>
         )}
       </h1>
+
       <div className="mb-12 grid gap-6 rounded-xl bg-light px-6 py-6 shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg md:mb-16 xl:px-32">
         <div className="flex flex-col items-center gap-4 text-dark/70 xl:flex-row">
           <Image
