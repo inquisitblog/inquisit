@@ -102,7 +102,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
   })
 
   return (
-    <main className="relative mx-auto flex max-w-screen-2xl flex-col gap-4 px-8 py-8 md:gap-8 md:px-16 md:py-16">
+    <main className="relative mx-auto max-w-screen-2xl space-y-4 px-8 py-8 md:space-y-8 md:px-16 md:py-16">
       <BackTo
         text="Back to collection"
         link={`/collections/${collection.slug}`}

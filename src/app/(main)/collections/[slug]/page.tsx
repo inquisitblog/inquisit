@@ -74,7 +74,7 @@ export default async function Collection({ params: { slug } }: ParamsType) {
   }
 
   return (
-    <main className="mx-auto grid min-h-[80vh] max-w-screen-2xl gap-4 px-8 py-8 md:gap-8 md:px-16 md:py-16">
+    <main className="mx-auto min-h-[80vh] max-w-screen-2xl items-start space-y-4 px-8 py-8 md:space-y-8 md:px-16 md:py-16">
       <BackTo text="Back to all collections" link={"/collections"} />
       <PostCollection collection={collection} type="single" />
     </main>
