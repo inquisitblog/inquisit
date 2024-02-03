@@ -25,8 +25,12 @@ const SingleAuthor: FC<{ author: Author; date?: string }> = ({
   date,
 }) => {
   const commonClasses = `flex w-fit items-center gap-2 xl:gap-4 rounded-xl py-2 px-3`
-  const children = (
-    <>
+
+  return (
+    <Link
+      href={`/authors/${author.slug}`}
+      className={`${commonClasses} transition-colors hover:bg-light`}
+    >
       <Image
         src={author.avatar}
         alt={`Avatar of ${author.name}`}
@@ -41,18 +45,7 @@ const SingleAuthor: FC<{ author: Author; date?: string }> = ({
           <p className="text-sm font-normal xl:text-base">{formatDate(date)}</p>
         )}
       </div>
-    </>
-  )
-
-  return author.link ? (
-    <Link
-      href={author.link}
-      className={`${commonClasses} transition-colors hover:bg-light`}
-    >
-      {children}
     </Link>
-  ) : (
-    <div className={commonClasses}>{children}</div>
   )
 }
 
