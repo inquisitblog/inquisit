@@ -1,0 +1,110 @@
+---
+published: true
+title: Conditionally Wrap Elements in React
+description: >-
+  I've come across this problem a couple times now. As always I just used a
+  hacky solution as a one-off until it became a two-off and a three-off so then
+  I decided to find out if there's a better way.
+authors:
+  - neesh
+categories:
+  - react
+  - web-dev
+image: /images/blogposts/conditionally-wrap-elements-in-react/image.jpg
+imageAlt: >-
+  Cover image with the Conditionally Wrap React Elements, portrait of Neesh &
+  his website neeshsamsi.com & socials @neeshsamsi
+pubDate: '2024-02-04'
+updatedDate: '2024-02-04'
+---
+I've come across this problem a couple of times now. As always, I just used a hacky solution as a one-off until it became a two-off and a three-off, so I decided to find out if there's a better way.
+
+## The Problem
+
+Let's take an example. On Inquisit itself, go check out my [Author page](https://inquisit.blog/authors/neesh) and notice the Heading has an icon for an external link. However, this link is optional and not every author needs to have one.
+
+If you've been using React for a bit, you know how to show the icon only when we actually have a link provided
+
+```tsx
+{link && (
+  <ArrowTopRightOnSquareIcon
+    className="aspect-square w-10 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
+    strokeWidth={2}
+  />
+)}
+```
+
+But here's the issue. You can conditionally render a complete element using the ternary / && operator. But here I need to wrap our heading in the `<Link>` tag only when we actually have a link
+
+## Hacky Solution
+
+Just use a ternary right, easy
+
+```tsx
+{link ? (
+  <a href={link}>
+    <h1>Title</h1>
+  </a>
+) : (
+  <h1>Title</h1>
+)}
+```
+
+That works, I guess right? So that's what I was doing for a bit, but now let's say the heading has a whole bunch of styles, the heading has a span with the title and a span with an icon. And suddenly we have a whole bunch of duplicate code. We write code. We're extremely allergic to duplicate code. So let's look at how we can make this better.
+
+## The Better Solution (Kinda writing this post, I would know)
+
+Let's make a component - ConditionalWrapper.
+
+```tsx
+import { type ReactNode } from "react"
+
+const ConditionalWrapper = ({
+  condition,
+  wrapper,
+  children,
+}: {
+  condition: boolean
+  wrapper: (children: ReactNode) => ReactNode
+  children: ReactNode
+}) => (condition ? wrapper(children) : children)
+
+export default ConditionalWrapper
+```
+
+Let's walk through this component. We take in some props. A `condition` we're looking for. If it passes, we wrap, if not we don't. A `wrapper` function if the condition passes. The wrapper takes the children as an input & returns the wrapper element with the children. Lastly, we need the `children` we can pass it down to both cases.
+
+Let's see how I'm using it. Here's our heading/children.
+
+```tsx
+<h1 className="group mb-4 flex w-fit items-center gap-4 text-4xl font-bold text-accent md:mb-8 md:text-5xl xl:text-6xl">
+  <span>{name}</span>
+    {link && (
+      <ArrowTopRightOnSquareIcon
+        className="aspect-square w-10 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
+        strokeWidth={2}
+      />
+    )}
+</h1>
+```
+
+And here's the Conditional Wrapper Component
+
+```tsx
+<ConditionalWrapper
+  condition={Boolean(link)}
+  wrapper={(children) => <a href={link!}>{children}</a>}
+>
+  <h1 className="group mb-4 flex w-fit items-center gap-4 text-4xl font-bold text-accent md:mb-8 md:text-5xl xl:text-6xl">
+    <span>{name}</span>
+    {link && (
+      <ArrowTopRightOnSquareIcon
+        className="aspect-square w-10 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
+        strokeWidth={2}
+      />
+    )}
+  </h1>
+</ConditionalWrapper>
+```
+
+Ignoring the h1 & styling, etc. We have a `condition` of `link` which is either an external link or null hence the converting to `Boolean()`. Then the wrapper arrow function which simply accepts children, wraps them in an `<a>` tag and spits it out in an implicit return. And finally, the Heading being our `children` prop.

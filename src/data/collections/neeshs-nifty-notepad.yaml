@@ -6,4 +6,5 @@ authors:
   - neesh
 posts:
   - how-i-setup-a-new-next-js-project-from-scratch
+  - conditionally-wrap-elements-in-react
 buttonText: Get into the weeds
