@@ -122,7 +122,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
         <div className="flex flex-wrap items-center gap-2">
           <BlogTags tags={categories} />
         </div>
-        <h1 className="text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
+        <h1 className="max-w-4xl text-4xl font-bold text-accent md:text-5xl xl:text-6xl">
           {title}
         </h1>
         <BlogAuthors authors={authors} date={pubDate} />
