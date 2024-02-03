@@ -6,6 +6,7 @@ import { getAuthor, getCollections, getPosts } from "@/lib/data"
 import Image from "next/image"
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline"
 import PostCollection from "@/components/PostCollection"
+import ConditionalWrapper from "@/components/ConditionalWrapper"
 
 type ParamsType = { params: { slug: string } }
 
@@ -79,20 +80,26 @@ export default async function Author({ params: { slug } }: ParamsType) {
 
   return (
     <main className="mx-auto min-h-[80vh] max-w-screen-2xl px-8 py-8 md:px-16 md:py-16">
-      <h1 className="group mb-4 flex w-fit items-center gap-4 text-4xl font-bold text-accent md:mb-8 md:text-5xl xl:text-6xl">
-        <span>{name}</span>
-        {link && (
-          <a href={link}>
+      <ConditionalWrapper
+        condition={Boolean(link)}
+        wrapper={(children) => <a href={link!}>{children}</a>}
+      >
+        <h1 className="group mb-4 flex w-fit items-center gap-4 text-4xl font-bold text-accent md:mb-8 md:text-5xl xl:text-6xl">
+          <span>{name}</span>
+          {link && (
             <ArrowTopRightOnSquareIcon
               className="aspect-square w-10 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
               strokeWidth={2}
             />
-          </a>
-        )}
-      </h1>
+          )}
+        </h1>
+      </ConditionalWrapper>
 
-      <div className="mb-12 grid gap-6 rounded-xl bg-light px-6 py-6 shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg md:mb-16 xl:px-32">
-        <div className="flex flex-col items-center gap-4 text-dark/70 xl:flex-row">
+      <ConditionalWrapper
+        condition={Boolean(link)}
+        wrapper={(children) => <a href={link!}>{children}</a>}
+      >
+        <div className="mb-12 flex flex-col items-center gap-4 rounded-xl bg-light px-6 py-6 text-dark/70 shadow-md shadow-dark/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg md:mb-16 xl:flex-row xl:px-32">
           <Image
             src={`${avatar}`}
             alt={`${name}'s image`}
@@ -103,7 +110,7 @@ export default async function Author({ params: { slug } }: ParamsType) {
           />
           <p className="text-lg md:text-center md:text-xl">{description}</p>
         </div>
-      </div>
+      </ConditionalWrapper>
 
       <div className="grid gap-12">
         {finalCollections.map((collection) => (
