@@ -108,8 +108,8 @@ export default async function Home() {
           )}
         </div>
 
-        <Link href="/collections">
-          <button className="mx-auto block rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:px-8 xl:py-4 xl:text-xl">
+        <Link href="/collections" className="mx-auto inline-block w-fit">
+          <button className="rounded border-2 border-accent px-6 py-3 font-semibold text-accent transition-all hover:bg-accent hover:text-light focus:outline-none md:text-lg xl:px-8 xl:py-4 xl:text-xl">
             {blogButtonText}
           </button>
         </Link>

@@ -26,7 +26,7 @@ const PostCollection = ({
       <Link
         href={`/collections/${collection.slug}`}
         className={cn("group grid w-fit", {
-          "gap-1": type === "multiple",
+          "gap-2": type === "multiple",
           "gap-4": type === "single",
         })}
       >
@@ -52,8 +52,11 @@ const PostCollection = ({
       )}
 
       {type === "multiple" && (
-        <Link href={`/collections/${collection.slug}`}>
-          <button className="group flex w-fit items-center gap-2 rounded border-2 border-dark px-3 py-2 text-lg font-medium text-dark transition-all hover:bg-dark hover:text-light">
+        <Link
+          href={`/collections/${collection.slug}`}
+          className="inline-block w-fit"
+        >
+          <button className="group flex items-center gap-2 rounded border-2 border-dark px-3 py-2 text-lg font-medium text-dark transition-all hover:bg-dark hover:text-light">
             <span>{collection.buttonText || "Read complete collection"}</span>
             <ArrowRightIcon
               className="aspect-square w-6 transition-transform group-hover:translate-x-1"
