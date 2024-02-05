@@ -9,6 +9,20 @@ export default config({
     },
   },
 
+  ui: {
+    brand: { name: "Inquisit" },
+    navigation: {
+      "Site Settings": ["settings"],
+      "Page Settings": [
+        "homepage",
+        "collectionspage",
+        "categoriespage",
+        "authorspage",
+      ],
+      Collections: ["collections", "blogposts", "categories", "authors"],
+    },
+  },
+
   singletons: {
     settings: singleton({
       label: "Site Settings",
