@@ -289,6 +289,7 @@ export default config({
       label: "Collections",
       path: "src/data/collections/*",
       slugField: "title",
+      columns: ["title"],
       schema: {
         title: fields.slug({
           name: {
@@ -347,6 +348,7 @@ export default config({
         contentField: "article",
       },
       slugField: "title",
+      columns: ["updatedDate", "title", "published"],
       schema: {
         published: fields.checkbox({
           label: "Published",
@@ -475,6 +477,7 @@ export default config({
       label: "Categories",
       path: "src/data/categories/*",
       slugField: "name",
+      columns: ["name"],
       schema: {
         name: fields.slug({
           name: {
@@ -518,6 +521,7 @@ export default config({
       label: "Authors",
       path: "src/data/authors/*",
       slugField: "name",
+      columns: ["name", "description", "link"],
       schema: {
         name: fields.slug({
           name: {
