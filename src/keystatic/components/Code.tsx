@@ -1,24 +1,25 @@
-import { renderToHtml, type Highlighter } from "shiki"
+import type {
+  BundledLanguage,
+  SpecialLanguage,
+  StringLiteralUnion,
+} from "shiki"
+import { codeToHtml } from "shiki"
 
-export default function Code({
+export default async function Code({
   children,
-  highlighter,
   language,
 }: {
   children: string
-  highlighter: Highlighter
-  language?: string
+  language?:
+    | StringLiteralUnion<BundledLanguage | SpecialLanguage, string>
+    | undefined
 }) {
-  let codeBlock = children
+  let codeBlock: string
 
   try {
-    const tokens = highlighter.codeToThemedTokens(children, language)
-    codeBlock = renderToHtml(tokens, {
-      elements: {
-        pre({ children }) {
-          return `<pre>${children}</pre>`
-        },
-      },
+    codeBlock = await codeToHtml(children, {
+      lang: language ? language : "typescript",
+      theme: "monokai",
     })
   } catch (_error) {
     throw new Error(`Failed to highlight code block with language: ${language}`)

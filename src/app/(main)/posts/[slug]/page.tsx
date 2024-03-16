@@ -1,7 +1,7 @@
 import type { Viewport, Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { getHighlighter } from "shiki"
+
 
 import { getSlug } from "@/lib/utils"
 import reader from "@/lib/keystatic"
@@ -97,9 +97,6 @@ const BlogArticle = async ({ params }: ParamsType) => {
     )
   }
 
-  const highlighter = await getHighlighter({
-    theme: "monokai",
-  })
 
   return (
     <main className="relative mx-auto max-w-screen-2xl space-y-4 px-8 py-8 md:space-y-8 md:px-16 md:py-16">
@@ -158,7 +155,7 @@ const BlogArticle = async ({ params }: ParamsType) => {
                   return <H2 id={slug}>{children}</H2>
                 }
               },
-              code: (props) => <Code highlighter={highlighter} {...props} />,
+              code: (props) => <Code {...props} />,
               image: (props) => <ImageBlock {...props} />,
             },
           }}
