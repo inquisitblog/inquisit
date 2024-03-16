@@ -1,0 +1,28 @@
+---
+published: true
+title: Update a Forked Repo to the Latest Version Upstream
+description: >-
+  I have an opensource project that I have forked and self host. Every time they
+  release a new version, I end up googling how to do this so here it is. 
+authors:
+  - neesh
+categories:
+  - git
+  - github
+image: >-
+  /images/blogposts/update-a-forked-repo-to-the-latest-version-upstream/image.jpg
+imageAlt: >-
+  Cover image with the title Update Forked Repo From Upstream, portrait of Neesh
+  & his website neeshsamsi.com & socials @neeshsamsi
+pubDate: '2024-03-14'
+updatedDate: '2024-03-14'
+---
+Here's a quick one. I have an opensource project that I have forked and self-hosted. Every time they release a new version, I end up googling how to update my forked version of the repo to the latest version of the original repo. So here it is:
+
+```
+git fetch upstream
+
+git merge upstream/master
+
+git push
+```
